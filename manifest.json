@@ -1,0 +1,9 @@
+{
+  "name": "Karadeniz Lezzet Haritası",
+  "short_name": "Karadeniz",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F5F7F5",
+  "theme_color": "#2E7D32",
+  "icons": []
+}
