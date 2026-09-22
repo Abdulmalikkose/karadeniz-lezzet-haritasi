@@ -103,10 +103,7 @@ if (rizeCard) {
 
   rizeCard.addEventListener("click", () => {
 
-    alert(
-      "🌿 RİZE\n\n" +
-      "Rize keşif sayfasını birazdan oluşturacağız."
-    );
+    window.location.href = "rize.html";
 
   });
 
