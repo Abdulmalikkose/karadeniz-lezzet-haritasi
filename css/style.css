@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f5;
+    color: #18352b;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(5, 35, 25, 0.45), rgba(5, 35, 25, 0.65)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.hero-content {
+    color: white;
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 80px);
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: clamp(18px, 3vw, 26px);
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 32px;
+    background: #2f855a;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #276749;
+    transform: translateY(-3px);
+}
+
+/* ŞEHİRLER */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.container h2 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 45px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.card {
+    position: relative;
+    height: 450px;
+    border-radius: 25px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 55px rgba(0,0,0,0.20);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.card:hover img {
+    transform: scale(1.06);
+}
+
+.card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 35px 25px;
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,0.8)
+    );
+}
+
+.card-text h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.card-text p {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* ÖZELLİKLER */
+
+.features {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 20px 80px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 35px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+}
+
+.feature span {
+    display: block;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 17px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #0d3326;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer p {
+    margin: 5px;
+    opacity: 0.9;
+}
+
+/* MOBİL */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        height: 380px;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        padding: 60px 15px;
+    }
+
+    .container h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        height: 350px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+}
