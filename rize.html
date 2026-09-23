@@ -1,3555 +1,2295 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Rize Gezi Rehberi | Karadeniz'i Keşfet</title>
 
-<meta
-name="description"
-content="Rize gezi rehberi. Ayder, Pokut, Zilkale, Palovit, Anzer, Fırtına Vadisi, yöresel yemekler ve Rize'nin en güzel keşif noktaları."
->
+<meta name="description" content="Rize gezi rehberi. Ayder, Pokut, Zilkale, Palovit, Anzer, Rize yemekleri ve keşfedilecek yerler.">
 
 <link
-rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
->
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
 
 <style>
 
-/* =====================================================
-   TEMEL
-===================================================== */
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-    background:#f4f7f2;
-
-    color:#173326;
-
-    padding-bottom:82px;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7f5;
+  color:#17231d;
+  padding-bottom:80px;
 }
 
 a{
-    text-decoration:none;
-    color:inherit;
+  text-decoration:none;
+  color:inherit;
 }
 
 img{
-    display:block;
-    width:100%;
+  width:100%;
+  display:block;
 }
 
-
-/* =====================================================
-   RENKLER
-===================================================== */
-
-:root{
-
-    --rize-green:#155b3a;
-
-    --rize-dark:#0d3925;
-
-    --rize-light:#eaf4ed;
-
-    --rize-tea:#2d8a58;
-
-    --rize-cream:#f8f4e9;
-
-    --text:#173326;
-
-    --muted:#68776f;
-
+button{
+  font-family:inherit;
 }
 
-
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
-
-    min-height:560px;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:flex-end;
-
-    overflow:hidden;
-
-    background-image:
-
-    linear-gradient(
-        to top,
-        rgba(5,35,22,.92) 0%,
-        rgba(5,35,22,.55) 42%,
-        rgba(5,35,22,.08) 100%
-    ),
-
-    url("https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg");
-
-    background-position:center;
-
-    background-size:cover;
+  position:relative;
+  height:470px;
+  overflow:hidden;
+  background:#173d2a;
 }
 
-.hero::before{
+.hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(
-        circle at 20% 30%,
-        rgba(255,255,255,.16),
-        transparent 30%
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.08),
+      rgba(0,0,0,.18) 35%,
+      rgba(0,0,0,.78) 100%
     );
-
-    pointer-events:none;
 }
 
 .hero-content{
-
-    position:relative;
-
-    width:100%;
-
-    max-width:1150px;
-
-    margin:auto;
-
-    padding:45px 22px 50px;
-
-    color:white;
+  position:absolute;
+  z-index:2;
+  left:7%;
+  right:7%;
+  bottom:45px;
+  color:white;
 }
 
 .hero-badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    background:
-    rgba(255,255,255,.15);
-
-    border:
-    1px solid
-    rgba(255,255,255,.28);
-
-    backdrop-filter:
-    blur(12px);
-
-    padding:
-    9px 14px;
-
-    border-radius:30px;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    letter-spacing:.5px;
-
-    margin-bottom:17px;
+  display:inline-block;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:14px;
 }
 
 .hero h1{
-
-    font-size:58px;
-
-    line-height:1;
-
-    letter-spacing:-2px;
-
-    margin-bottom:16px;
-}
-
-.hero h1 span{
-
-    color:#b9e5c8;
+  font-size:clamp(38px,7vw,72px);
+  line-height:.95;
+  margin-bottom:16px;
+  letter-spacing:-2px;
 }
 
 .hero p{
-
-    max-width:680px;
-
-    font-size:18px;
-
-    line-height:1.65;
-
-    color:
-    rgba(255,255,255,.92);
-
-    margin-bottom:24px;
+  max-width:650px;
+  font-size:17px;
+  line-height:1.6;
+  color:rgba(255,255,255,.92);
 }
 
-.hero-actions{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-}
-
-.hero-button{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:13px 18px;
-
-    border-radius:13px;
-
-    font-size:14px;
-
-    font-weight:800;
-
-    transition:.2s;
-}
-
-.hero-button.primary{
-
-    background:white;
-
-    color:var(--rize-green);
-}
-
-.hero-button.secondary{
-
-    background:
-    rgba(255,255,255,.14);
-
-    color:white;
-
-    border:
-    1px solid
-    rgba(255,255,255,.3);
-
-    backdrop-filter:
-    blur(8px);
-}
-
-.hero-button:hover{
-
-    transform:
-    translateY(-2px);
-}
-
-
-/* =====================================================
-   RİZE KİMLİK ŞERİDİ
-===================================================== */
-
-.rize-strip{
-
-    background:
-    var(--rize-dark);
-
-    color:white;
-
-    padding:14px 18px;
-}
-
-.rize-strip-inner{
-
-    max-width:1150px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:10px;
-
-    text-align:center;
-}
-
-.rize-feature{
-
-    padding:8px;
-
-    border-right:
-    1px solid
-    rgba(255,255,255,.12);
-}
-
-.rize-feature:last-child{
-
-    border-right:0;
-}
-
-.rize-feature strong{
-
-    display:block;
-
-    font-size:13px;
-
-    margin-bottom:3px;
-}
-
-.rize-feature span{
-
-    font-size:11px;
-
-    opacity:.7;
-}
-
-
-/* =====================================================
-   CONTAINER
-===================================================== */
+/* =========================
+   MAIN
+========================= */
 
 .container{
-
-    width:100%;
-
-    max-width:1150px;
-
-    margin:auto;
-
-    padding:
-    35px 18px;
+  width:min(1180px,92%);
+  margin:auto;
 }
 
 .section{
-
-    margin-bottom:50px;
+  padding:55px 0;
 }
 
 .section-title{
-
-    font-size:29px;
-
-    letter-spacing:-.5px;
-
-    color:
-    var(--rize-dark);
-
-    margin-bottom:8px;
+  margin-bottom:25px;
 }
 
-.section-subtitle{
-
-    color:var(--muted);
-
-    margin-bottom:21px;
-
-    font-size:14px;
-
-    line-height:1.6;
+.section-title small{
+  color:#39845a;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:12px;
 }
 
-
-/* =====================================================
-   BÖLÜM BAŞLIĞI
-===================================================== */
-
-.section-heading{
-
-    display:flex;
-
-    align-items:flex-end;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    margin-bottom:18px;
+.section-title h2{
+  font-size:34px;
+  margin-top:7px;
+  letter-spacing:-1px;
 }
 
-.section-heading small{
-
-    color:
-    var(--rize-tea);
-
-    font-weight:800;
-
-    font-size:12px;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
+.section-title p{
+  color:#68736d;
+  margin-top:8px;
+  line-height:1.6;
 }
 
+/* =========================
+   RIZE STRIP
+========================= */
 
-/* =====================================================
-   KATEGORİLER
-===================================================== */
+.rize-strip{
+  margin-top:-35px;
+  position:relative;
+  z-index:5;
+}
 
-.categories{
+.rize-strip-inner{
+  background:white;
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 15px 45px rgba(0,0,0,.12);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
 
-    display:grid;
+.rize-stat{
+  padding:15px;
+  border-radius:18px;
+  background:#f4f8f5;
+}
 
-    grid-template-columns:
-    repeat(6,1fr);
+.rize-stat strong{
+  display:block;
+  font-size:22px;
+  color:#1d6940;
+  margin-bottom:4px;
+}
 
-    gap:12px;
+.rize-stat span{
+  color:#707a74;
+  font-size:13px;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
 }
 
 .category{
-
-    background:white;
-
-    border:
-    1px solid
-    #e1ebe4;
-
-    border-radius:19px;
-
-    padding:
-    19px 10px;
-
-    text-align:center;
-
-    box-shadow:
-    0 6px 20px
-    rgba(25,70,45,.05);
-
-    transition:.22s;
+  background:white;
+  border-radius:20px;
+  padding:24px 18px;
+  text-align:center;
+  box-shadow:0 7px 25px rgba(0,0,0,.05);
+  transition:.25s;
 }
 
 .category:hover{
-
-    transform:
-    translateY(-4px);
-
-    border-color:
-    #bdd8c6;
+  transform:translateY(-4px);
 }
 
 .category-icon{
-
-    width:48px;
-
-    height:48px;
-
-    margin:
-    0 auto 10px;
-
-    border-radius:15px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-    var(--rize-light);
-
-    font-size:23px;
+  width:58px;
+  height:58px;
+  margin:0 auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#e8f3eb;
+  border-radius:18px;
+  font-size:27px;
 }
 
 .category strong{
-
-    font-size:13px;
-
-    color:
-    var(--rize-dark);
+  display:block;
+  margin-bottom:5px;
 }
 
+.category span{
+  color:#777;
+  font-size:13px;
+}
 
-/* =====================================================
-   RASTGELE
-===================================================== */
+/* =========================
+   RANDOM
+========================= */
 
 .random-box{
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #0c3c26,
-        #237b4b
-    );
-
-    color:white;
-
-    padding:
-    34px 24px;
-
-    border-radius:26px;
-
-    text-align:center;
-
-    box-shadow:
-    0 15px 40px
-    rgba(15,76,43,.17);
-
-    margin-bottom:50px;
-}
-
-.random-box::before{
-
-    content:"🍃";
-
-    position:absolute;
-
-    right:25px;
-
-    top:10px;
-
-    font-size:80px;
-
-    opacity:.08;
-
-    transform:rotate(20deg);
+  background:linear-gradient(135deg,#174c31,#317c4d);
+  color:white;
+  border-radius:28px;
+  padding:35px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  box-shadow:0 15px 40px rgba(27,92,53,.2);
 }
 
 .random-box h2{
-
-    font-size:27px;
-
-    margin-bottom:8px;
+  font-size:28px;
+  margin-bottom:8px;
 }
 
 .random-box p{
-
-    opacity:.85;
-
-    margin-bottom:21px;
-
-    font-size:14px;
+  color:rgba(255,255,255,.8);
+  line-height:1.5;
 }
 
 .random-btn{
-
-    border:0;
-
-    background:white;
-
-    color:#12613a;
-
-    padding:
-    13px 22px;
-
-    border-radius:30px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+  border:0;
+  background:white;
+  color:#195a37;
+  padding:14px 20px;
+  border-radius:14px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
 }
 
-#randomResult{
-
-    margin-top:18px;
-
-    font-size:18px;
+.random-result{
+  margin-top:18px;
+  font-size:18px;
+  font-weight:700;
 }
 
+/* =========================
+   MAP
+========================= */
 
-/* =====================================================
-   HARİTA
-===================================================== */
-
-.map-wrapper{
-
-    background:white;
-
-    padding:11px;
-
-    border-radius:24px;
-
-    box-shadow:
-    0 8px 28px
-    rgba(20,65,42,.07);
-
-    border:
-    1px solid
-    #e1ebe4;
+.map-wrap{
+  background:white;
+  padding:10px;
+  border-radius:25px;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
 
 #map{
-
-    width:100%;
-
-    height:500px;
-
-    border-radius:18px;
+  height:480px;
+  border-radius:18px;
+  overflow:hidden;
 }
 
-.map-info{
+/* =========================
+   CARDS
+========================= */
 
-    padding:
-    13px 5px 3px;
-
-    color:
-    var(--muted);
-
-    font-size:13px;
-}
-
-
-/* =====================================================
-   KEŞİF KARTLARI
-===================================================== */
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:20px;
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
 }
 
 .card{
-
-    background:white;
-
-    border-radius:23px;
-
-    overflow:hidden;
-
-    border:
-    1px solid
-    #e2ebe5;
-
-    box-shadow:
-    0 8px 28px
-    rgba(20,65,42,.07);
-
-    transition:.25s;
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 8px 28px rgba(0,0,0,.06);
+  transition:.25s;
+  position:relative;
 }
 
 .card:hover{
-
-    transform:
-    translateY(-4px);
-
-    box-shadow:
-    0 15px 38px
-    rgba(20,65,42,.12);
+  transform:translateY(-5px);
+  box-shadow:0 15px 35px rgba(0,0,0,.1);
 }
 
-.card-img{
-
-    height:260px;
-
-    object-fit:cover;
+.card-image{
+  height:220px;
+  position:relative;
+  overflow:hidden;
 }
 
-.card-content{
-
-    padding:20px;
+.card-image img{
+  height:100%;
+  object-fit:cover;
+  transition:.4s;
 }
 
-.card h3{
-
-    font-size:21px;
-
-    margin-bottom:9px;
-
-    color:
-    var(--rize-dark);
+.card:hover .card-image img{
+  transform:scale(1.05);
 }
 
-.card p{
-
-    color:
-    var(--muted);
-
-    font-size:14px;
-
-    line-height:1.65;
-
-    margin-bottom:17px;
+.card-body{
+  padding:20px;
 }
 
-.buttons{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
+.card-body h3{
+  font-size:21px;
+  margin-bottom:8px;
 }
 
-.map-btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-    var(--rize-green);
-
-    color:white;
-
-    padding:
-    10px 14px;
-
-    border-radius:11px;
-
-    font-size:13px;
-
-    font-weight:bold;
+.card-body p{
+  color:#6b746f;
+  line-height:1.55;
+  font-size:14px;
 }
 
-.favorite-btn{
-
-    border:0;
-
-    background:
-    #edf4ef;
-
-    color:
-    var(--rize-green);
-
-    padding:
-    10px 14px;
-
-    border-radius:11px;
-
-    font-size:13px;
-
-    cursor:pointer;
-
-    font-weight:bold;
+.card-tag{
+  position:absolute;
+  left:14px;
+  top:14px;
+  background:rgba(0,0,0,.6);
+  color:white;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:11px;
+  backdrop-filter:blur(5px);
 }
 
-
-/* =====================================================
-   YEMEKLER
-===================================================== */
-
-.food-list{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:16px;
+.favorite{
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  cursor:pointer;
+  font-size:19px;
+  z-index:3;
 }
 
-.food{
-
-    background:white;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    border:
-    1px solid
-    #e2ebe5;
-
-    box-shadow:
-    0 7px 22px
-    rgba(20,65,42,.06);
+.card-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
 }
 
-.food img{
-
-    height:185px;
-
-    object-fit:cover;
+.btn{
+  flex:1;
+  border:0;
+  padding:11px 10px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:12px;
+  text-align:center;
 }
 
-.food-content{
-
-    padding:17px;
+.btn-primary{
+  background:#236b42;
+  color:white;
 }
 
-.food h3{
-
-    color:
-    var(--rize-dark);
-
-    margin-bottom:7px;
-
-    font-size:18px;
+.btn-light{
+  background:#edf3ef;
+  color:#235a3b;
 }
 
-.food p{
+/* =========================
+   FOOD
+========================= */
 
-    color:
-    var(--muted);
-
-    font-size:13px;
-
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   NEREDE NE YENİR
-===================================================== */
-
-.food-guide{
-
-    background:
-
-    linear-gradient(
-        180deg,
-        #eef6f0 0%,
-        #f8fbf8 100%
-    );
-
-    padding:
-    42px 18px;
-
-    margin:
-    0 -18px 50px;
-
-    border-top:
-    1px solid
-    #dce9df;
-
-    border-bottom:
-    1px solid
-    #dce9df;
-}
-
-.food-guide-inner{
-
-    max-width:1150px;
-
-    margin:auto;
-}
-
-.food-guide-header{
-
-    text-align:center;
-
-    max-width:720px;
-
-    margin:
-    0 auto 22px;
-}
-
-.food-guide-kicker{
-
-    color:
-    var(--rize-tea);
-
-    font-size:12px;
-
-    font-weight:900;
-
-    letter-spacing:1.5px;
-
-    text-transform:uppercase;
-
-    margin-bottom:8px;
-}
-
-.food-guide-header h2{
-
-    color:
-    var(--rize-dark);
-
-    font-size:32px;
-
-    margin-bottom:10px;
-}
-
-.food-guide-header p{
-
-    color:
-    var(--muted);
-
-    line-height:1.65;
-
-    font-size:14px;
-}
-
-.food-categories{
-
-    display:flex;
-
-    gap:9px;
-
-    overflow-x:auto;
-
-    padding:
-    5px 0 20px;
-
-    scrollbar-width:none;
-}
-
-.food-categories::-webkit-scrollbar{
-
-    display:none;
+.food-section{
+  background:#eaf2ec;
 }
 
 .food-filter{
-
-    flex:
-    0 0 auto;
-
-    border:
-    1px solid
-    #d4e4d9;
-
-    background:white;
-
-    padding:
-    10px 15px;
-
-    border-radius:50px;
-
-    cursor:pointer;
-
-    font-weight:700;
-
-    color:
-    #315247;
-
-    transition:.2s;
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
 }
 
-.food-filter.active,
-.food-filter:hover{
-
-    background:
-    var(--rize-green);
-
-    color:white;
-
-    border-color:
-    var(--rize-green);
+.food-filter button{
+  border:1px solid #d5e2d8;
+  background:white;
+  color:#315c42;
+  padding:10px 15px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
 }
 
-.food-guide-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:18px;
+.food-filter button.active{
+  background:#236b42;
+  color:white;
+  border-color:#236b42;
 }
 
-.food-guide-card{
-
-    background:white;
-
-    border-radius:22px;
-
-    overflow:hidden;
-
-    border:
-    1px solid
-    #dfebe2;
-
-    box-shadow:
-    0 7px 25px
-    rgba(20,65,42,.07);
+.food-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
 }
 
-.food-guide-image{
-
-    height:205px;
-
-    position:relative;
-
-    overflow:hidden;
+.food-card{
+  background:white;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+  position:relative;
 }
 
-.food-guide-image img{
-
-    height:100%;
-
-    object-fit:cover;
-
-    transition:.35s;
+.food-image{
+  height:220px;
+  position:relative;
+  overflow:hidden;
 }
 
-.food-guide-card:hover
-.food-guide-image img{
-
-    transform:scale(1.04);
+.food-image img{
+  height:100%;
+  object-fit:cover;
 }
 
-.food-tag{
-
-    position:absolute;
-
-    top:12px;
-
-    left:12px;
-
-    background:
-    rgba(255,255,255,.94);
-
-    color:
-    var(--rize-green);
-
-    padding:
-    7px 11px;
-
-    border-radius:30px;
-
-    font-size:11px;
-
-    font-weight:900;
+.food-content{
+  padding:20px;
 }
 
-.food-guide-content{
-
-    padding:18px;
+.food-content h3{
+  margin-bottom:7px;
+  font-size:21px;
 }
 
-.food-guide-content h3{
-
-    color:
-    var(--rize-dark);
-
-    font-size:19px;
-
-    margin-bottom:8px;
+.food-content p{
+  color:#69736d;
+  line-height:1.55;
+  font-size:14px;
 }
 
-.food-guide-content p{
-
-    color:
-    var(--muted);
-
-    font-size:13px;
-
-    line-height:1.6;
-
-    margin-bottom:14px;
+.food-region{
+  display:inline-block;
+  margin-top:12px;
+  background:#edf5ef;
+  color:#28633e;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
 }
 
-.food-place{
+/* =========================
+   RESTAURANT
+========================= */
 
-    color:
-    #315247;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    margin-bottom:13px;
+.restaurant-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
-.food-buttons{
-
-    display:flex;
-
-    gap:8px;
+.restaurant-card{
+  background:white;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+  border:1px solid #edf1ee;
 }
 
-.food-button{
-
-    flex:1;
-
-    border:0;
-
-    text-align:center;
-
-    padding:
-    10px 7px;
-
-    border-radius:11px;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    cursor:pointer;
+.restaurant-icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#edf5ef;
+  font-size:27px;
+  margin-bottom:15px;
 }
 
-.food-map{
-
-    background:
-    var(--rize-green);
-
-    color:white;
+.restaurant-card h3{
+  margin-bottom:7px;
 }
 
-.food-save{
-
-    background:
-    #edf5ef;
-
-    color:
-    var(--rize-green);
+.restaurant-card p{
+  color:#6e7772;
+  line-height:1.5;
+  font-size:14px;
 }
 
-.food-note{
-
-    margin-top:20px;
-
-    padding:18px;
-
-    background:
-    #e5f1e8;
-
-    border-radius:18px;
-
-    color:
-    #315247;
-
-    line-height:1.65;
-
-    font-size:13px;
+.restaurant-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:14px;
 }
 
-
-/* =====================================================
-   RESTORANLAR
-===================================================== */
-
-.restaurant-list{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:20px;
+.restaurant-meta span{
+  background:#f2f5f3;
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:11px;
+  color:#456050;
 }
 
-.restaurant{
-
-    background:white;
-
-    border-radius:22px;
-
-    overflow:hidden;
-
-    border:
-    1px solid
-    #e1ebe4;
-
-    box-shadow:
-    0 7px 25px
-    rgba(20,65,42,.07);
-}
-
-.restaurant img{
-
-    height:240px;
-
-    object-fit:cover;
-}
-
-.restaurant-content{
-
-    padding:19px;
-}
-
-.restaurant h3{
-
-    color:
-    var(--rize-dark);
-
-    font-size:20px;
-
-    margin-bottom:7px;
-}
-
-.restaurant-desc{
-
-    color:
-    var(--muted);
-
-    font-size:14px;
-
-    line-height:1.6;
-
-    margin-bottom:14px;
-}
-
-.restaurant-tags{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-
-    margin-bottom:16px;
-}
-
-.tag{
-
-    background:
-    #edf5ef;
-
-    color:
-    #17623c;
-
-    padding:
-    6px 9px;
-
-    border-radius:20px;
-
-    font-size:11px;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   FOTOĞRAF
-===================================================== */
+/* =========================
+   PHOTO POINTS
+========================= */
 
 .photo-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:16px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.photo-point{
-
-    position:relative;
-
-    height:330px;
-
-    border-radius:22px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 8px 25px
-    rgba(20,65,42,.1);
+.photo-card{
+  height:250px;
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
 }
 
-.photo-point img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    transition:.35s;
+.photo-card img{
+  height:100%;
+  object-fit:cover;
 }
 
-.photo-point:hover img{
-
-    transform:scale(1.05);
+.photo-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.7));
 }
 
-.photo-overlay{
-
-    position:absolute;
-
-    left:0;
-
-    right:0;
-
-    bottom:0;
-
-    padding:
-    75px 17px 17px;
-
-    color:white;
-
-    background:
-    linear-gradient(
-        transparent,
-        rgba(0,0,0,.82)
-    );
+.photo-name{
+  position:absolute;
+  z-index:2;
+  left:18px;
+  bottom:16px;
+  color:white;
+  font-weight:700;
+  font-size:17px;
 }
 
-.photo-overlay h3{
-
-    font-size:20px;
-
-    margin-bottom:5px;
-}
-
-.photo-overlay p{
-
-    font-size:12px;
-
-    opacity:.9;
-}
-
-
-/* =====================================================
+/* =========================
    INSTAGRAM
-===================================================== */
+========================= */
 
-.instagram{
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #123d28,
-        #26764b
-    );
-
-    color:white;
-
-    padding:
-    38px 20px;
-
-    border-radius:26px;
-
-    text-align:center;
-
-    margin-top:5px;
+.instagram-box{
+  background:#171b19;
+  color:white;
+  border-radius:28px;
+  padding:40px;
+  text-align:center;
 }
 
-.instagram h2{
-
-    margin-bottom:9px;
-
-    font-size:25px;
+.instagram-box h2{
+  font-size:30px;
+  margin-bottom:10px;
 }
 
-.instagram p{
-
-    margin-bottom:20px;
-
-    opacity:.88;
-
-    font-size:14px;
+.instagram-box p{
+  color:#bfc6c2;
+  margin-bottom:20px;
 }
 
-.instagram a{
-
-    display:inline-block;
-
-    background:white;
-
-    color:
-    var(--rize-green);
-
-    padding:
-    13px 22px;
-
-    border-radius:30px;
-
-    font-weight:bold;
+.instagram-btn{
+  display:inline-block;
+  background:white;
+  color:#171b19;
+  padding:13px 22px;
+  border-radius:14px;
+  font-weight:700;
 }
 
-
-/* =====================================================
-   ALT MENÜ
-===================================================== */
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav{
-
-    position:fixed;
-
-    left:0;
-
-    right:0;
-
-    bottom:0;
-
-    height:72px;
-
-    background:
-    rgba(255,255,255,.96);
-
-    backdrop-filter:
-    blur(12px);
-
-    border-top:
-    1px solid
-    #dfe8e2;
-
-    z-index:9999;
-
-    box-shadow:
-    0 -5px 20px
-    rgba(0,0,0,.07);
-}
-
-.bottom-inner{
-
-    max-width:700px;
-
-    height:100%;
-
-    margin:auto;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-around;
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:15px;
+  width:min(600px,92%);
+  background:rgba(20,29,24,.94);
+  backdrop-filter:blur(15px);
+  border-radius:22px;
+  padding:10px;
+  z-index:1000;
+  box-shadow:0 12px 35px rgba(0,0,0,.2);
+  display:flex;
+  justify-content:space-around;
 }
 
 .bottom-nav a{
+  color:#cbd4cf;
+  text-align:center;
+  font-size:11px;
+  padding:7px 13px;
+  border-radius:14px;
+}
 
-    color:
-    #64736b;
-
-    text-align:center;
-
-    font-size:10px;
-
-    font-weight:700;
+.bottom-nav a:hover{
+  background:#315d43;
+  color:white;
 }
 
 .bottom-nav span{
-
-    display:block;
-
-    font-size:20px;
-
-    margin-bottom:3px;
+  display:block;
+  font-size:19px;
+  margin-bottom:3px;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-/* =====================================================
-   POPUP
-===================================================== */
+@media(max-width:900px){
 
-.leaflet-popup-content-wrapper{
+  .card-grid,
+  .food-grid,
+  .restaurant-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    border-radius:16px;
-}
+  .category-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-.leaflet-popup-content{
-
-    margin:15px;
-}
-
-
-/* =====================================================
-   MOBİL
-===================================================== */
-
-@media(max-width:850px){
-
-    .categories{
-
-        grid-template-columns:
-        repeat(3,1fr);
-    }
-
-    .food-list{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .food-guide-grid{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .photo-grid{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .rize-strip-inner{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .rize-feature{
-
-        border-right:0;
-    }
+  .rize-strip-inner{
+    grid-template-columns:repeat(2,1fr);
+  }
 
 }
 
-@media(max-width:700px){
+@media(max-width:650px){
 
-    .hero{
+  .hero{
+    height:420px;
+  }
 
-        min-height:500px;
-    }
+  .hero-content{
+    left:5%;
+    right:5%;
+    bottom:35px;
+  }
 
-    .hero h1{
+  .hero h1{
+    font-size:48px;
+  }
 
-        font-size:43px;
-    }
+  .hero p{
+    font-size:14px;
+  }
 
-    .hero p{
+  .section{
+    padding:40px 0;
+  }
 
-        font-size:15px;
-    }
+  .section-title h2{
+    font-size:28px;
+  }
 
-    .container{
+  .random-box{
+    padding:25px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
 
-        padding:
-        28px 15px;
-    }
+  .random-btn{
+    width:100%;
+  }
 
-    .categories{
+  .card-grid,
+  .food-grid,
+  .restaurant-grid,
+  .photo-grid{
+    grid-template-columns:1fr;
+  }
 
-        grid-template-columns:
-        repeat(3,1fr);
+  .rize-strip-inner{
+    grid-template-columns:1fr 1fr;
+    padding:12px;
+  }
 
-        gap:9px;
-    }
+  .rize-stat{
+    padding:13px;
+  }
 
-    .category{
+  #map{
+    height:390px;
+  }
 
-        padding:
-        15px 7px;
-    }
+  .bottom-nav{
+    bottom:8px;
+  }
 
-    .category-icon{
-
-        width:42px;
-
-        height:42px;
-
-        font-size:20px;
-    }
-
-    .category strong{
-
-        font-size:11px;
-    }
-
-    .cards,
-    .restaurant-list,
-    .food-guide-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .food-list{
-
-        grid-template-columns:
-        1fr 1fr;
-
-        gap:10px;
-    }
-
-    .food img{
-
-        height:145px;
-    }
-
-    .food-content{
-
-        padding:13px;
-    }
-
-    .food h3{
-
-        font-size:15px;
-    }
-
-    .food p{
-
-        font-size:12px;
-    }
-
-    .photo-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .photo-point{
-
-        height:260px;
-    }
-
-    #map{
-
-        height:390px;
-    }
-
-    .section-title{
-
-        font-size:25px;
-    }
-
-    .food-guide{
-
-        margin-left:-15px;
-
-        margin-right:-15px;
-    }
-
-}
-
-@media(max-width:420px){
-
-    .hero h1{
-
-        font-size:38px;
-    }
-
-    .categories{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .food-list{
-
-        grid-template-columns:1fr;
-    }
-
-    .rize-strip-inner{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
+  .bottom-nav a{
+    padding:6px 8px;
+  }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
-<header class="hero">
+<section class="hero">
 
-    <div class="hero-content">
+  <img
+    src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
+    alt="Rize Ayder Yaylası"
+  >
 
-        <div class="hero-badge">
-            🌿 KARADENİZ DİJİTAL REHBERİ
-        </div>
+  <div class="hero-content">
 
-        <h1>
-            Rize'yi <span>Keşfet</span>
-        </h1>
-
-        <p>
-            Çayın memleketinden sisli yaylalara,
-            Fırtına Vadisi'nden yöresel lezzetlere kadar
-            Rize'de keşfedilecek yerleri tek yerde bul.
-        </p>
-
-        <div class="hero-actions">
-
-            <a
-            href="#rotalar"
-            class="hero-button primary">
-            ⛰️ Rotaları Keşfet
-            </a>
-
-            <a
-            href="#yemek"
-            class="hero-button secondary">
-            🍵 Rize Lezzetleri
-            </a>
-
-        </div>
-
+    <div class="hero-badge">
+      🌿 Karadeniz'i Keşfet
     </div>
 
-</header>
+    <h1>RİZE</h1>
+
+    <p>
+      Yaylaları, şelaleleri, çayı, eşsiz doğası ve Karadeniz mutfağıyla
+      Rize'yi keşfet.
+    </p>
+
+  </div>
+
+</section>
 
 
-<!-- =====================================================
-     RİZE ŞERİDİ
-===================================================== -->
+<!-- =========================
+     RIZE INFO
+========================= -->
 
-<div class="rize-strip">
+<div class="container rize-strip">
 
-    <div class="rize-strip-inner">
+  <div class="rize-strip-inner">
 
-        <div class="rize-feature">
-            <strong>🍵 Çayın Memleketi</strong>
-            <span>Yeşilin binbir tonu</span>
-        </div>
-
-        <div class="rize-feature">
-            <strong>⛰️ Kaçkarlar</strong>
-            <span>Sisli yaylalar</span>
-        </div>
-
-        <div class="rize-feature">
-            <strong>💦 Şelaleler</strong>
-            <span>Doğanın kalbinde</span>
-        </div>
-
-        <div class="rize-feature">
-            <strong>🥘 Karadeniz Mutfağı</strong>
-            <span>Yöresel lezzetler</span>
-        </div>
-
+    <div class="rize-stat">
+      <strong>⛰️</strong>
+      <span>Yaylalar</span>
     </div>
+
+    <div class="rize-stat">
+      <strong>🌊</strong>
+      <span>Şelaleler</span>
+    </div>
+
+    <div class="rize-stat">
+      <strong>🍵</strong>
+      <span>Çay Kültürü</span>
+    </div>
+
+    <div class="rize-stat">
+      <strong>🍽️</strong>
+      <span>Karadeniz Mutfağı</span>
+    </div>
+
+  </div>
 
 </div>
 
 
-<main class="container">
-
-
-<!-- =====================================================
-     KATEGORİLER
-===================================================== -->
+<!-- =========================
+     CATEGORIES
+========================= -->
 
 <section class="section">
 
-    <div class="section-heading">
+<div class="container">
 
-        <div>
+  <div class="section-title">
 
-            <small>RİZE'Yİ KEŞFET</small>
+    <small>Rize Rehberi</small>
 
-            <h2 class="section-title">
-                Rize Rehberi
-            </h2>
-
-        </div>
-
-    </div>
-
-
-    <div class="categories">
-
-        <a href="#yemek" class="category">
-
-            <div class="category-icon">
-                🍴
-            </div>
-
-            <strong>
-                Ne Yenir?
-            </strong>
-
-        </a>
-
-
-        <a href="#mekanlar" class="category">
-
-            <div class="category-icon">
-                🍳
-            </div>
-
-            <strong>
-                Kahvaltı
-            </strong>
-
-        </a>
-
-
-        <a href="#mekanlar" class="category">
-
-            <div class="category-icon">
-                ☕
-            </div>
-
-            <strong>
-                Çay & Kahve
-            </strong>
-
-        </a>
-
-
-        <a href="#rotalar" class="category">
-
-            <div class="category-icon">
-                🏔️
-            </div>
-
-            <strong>
-                Yaylalar
-            </strong>
-
-        </a>
-
-
-        <a href="#harita" class="category">
-
-            <div class="category-icon">
-                📍
-            </div>
-
-            <strong>
-                Harita
-            </strong>
-
-        </a>
-
-
-        <a href="#foto" class="category">
-
-            <div class="category-icon">
-                📸
-            </div>
-
-            <strong>
-                Fotoğraf
-            </strong>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RASTGELE ÖNERİ
-===================================================== -->
-
-<section class="random-box">
-
-    <h2>
-        🎲 Bugün Nereye Gidelim?
-    </h2>
+    <h2>Rize'de Ne Yapılır?</h2>
 
     <p>
-        Kararsız kaldıysan Rize'den sana rastgele bir keşif noktası seçelim.
+      Rize'yi keşfetmek için ihtiyacın olan her şey tek yerde.
     </p>
 
-    <button
-    class="random-btn"
-    onclick="randomPlace()">
+  </div>
 
-        ✨ Bana Bir Yer Öner
 
-    </button>
+  <div class="category-grid">
 
-    <div id="randomResult"></div>
+    <a href="#rotalar" class="category">
 
-</section>
+      <div class="category-icon">⛰️</div>
 
+      <strong>Gezilecek Yerler</strong>
 
-<!-- =====================================================
-     HARİTA
-===================================================== -->
-
-<section
-class="section"
-id="harita">
-
-    <div class="section-heading">
-
-        <div>
-
-            <small>HARİTADA KEŞFET</small>
-
-            <h2 class="section-title">
-                🗺️ Rize Keşif Haritası
-            </h2>
-
-        </div>
-
-    </div>
-
-    <p class="section-subtitle">
-        Yaylalar, şelaleler, tarihi yerler ve seçili mekanlar.
-        Bir noktaya dokunarak detayları görüntüleyebilirsin.
-    </p>
-
-
-    <div class="map-wrapper">
-
-        <div id="map"></div>
-
-        <div class="map-info">
-
-            📍 Bir noktaya dokun.
-            Bilgiyi görüntüle ve Google Maps üzerinden yol tarifini aç.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RİZE ROTALARI
-===================================================== -->
-
-<section
-class="section"
-id="rotalar">
-
-    <div class="section-heading">
-
-        <div>
-
-            <small>DOĞA & MACERA</small>
-
-            <h2 class="section-title">
-                ⛰️ Rize'de Keşfedilecek Yerler
-            </h2>
-
-        </div>
-
-    </div>
-
-    <p class="section-subtitle">
-        Rize'nin yaylalarından şelalelerine,
-        vadilerinden tarihi noktalarına kadar keşif rotaları.
-    </p>
-
-
-    <div class="cards">
-
-
-        <!-- AYDER -->
-
-        <article class="card">
-
-            <img
-            class="card-img"
-            src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
-            alt="Ayder Yaylası Rize"
-            loading="lazy"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    🌲 Ayder Yaylası
-                </h3>
-
-                <p>
-                    Kaçkar Dağları'nın eteklerinde yer alan Ayder;
-                    yayla atmosferi, ormanları, şelaleleri ve
-                    doğal güzellikleriyle Rize'nin önemli duraklarından biridir.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                    class="map-btn"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Ayder+Yaylası+Rize">
-
-                        🧭 Yol Tarifi
-
-                    </a>
-
-                    <button
-                    class="favorite-btn"
-                    onclick="favorite('Ayder Yaylası')">
-
-                        ❤️ Favori
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- POKUT -->
-
-        <article class="card">
-
-            <img
-            class="card-img"
-            src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
-            alt="Pokut Yaylası Rize"
-            loading="lazy"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    ⛰️ Pokut Yaylası
-                </h3>
-
-                <p>
-                    Sisli dağ manzaraları ve geleneksel yayla evleriyle
-                    doğa ve fotoğraf tutkunlarının ilgisini çeken
-                    Rize rotalarından biridir.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                    class="map-btn"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Pokut+Yaylası+Rize">
-
-                        🧭 Yol Tarifi
-
-                    </a>
-
-                    <button
-                    class="favorite-btn"
-                    onclick="favorite('Pokut Yaylası')">
-
-                        ❤️ Favori
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- ZİLKALE -->
-
-        <article class="card">
-
-            <img
-            class="card-img"
-            src="https://kulturportali.gov.tr/repoKulturPortali/small/23092014/cc721344-7102-4be4-bd83-92d391910621.jpg?format=jpg&quality=80"
-            alt="Zilkale Rize"
-            loading="lazy"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    🏰 Zilkale
-                </h3>
-
-                <p>
-                    Fırtına Vadisi'nin etkileyici doğal çevresi içerisinde
-                    yükselen tarihi kale, Rize'nin en karakteristik
-                    keşif noktalarından biridir.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                    class="map-btn"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Zilkale+Rize">
-
-                        🧭 Yol Tarifi
-
-                    </a>
-
-                    <button
-                    class="favorite-btn"
-                    onclick="favorite('Zilkale')">
-
-                        ❤️ Favori
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PALOVİT -->
-
-        <article class="card">
-
-            <img
-            class="card-img"
-            src="https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg"
-            alt="Palovit Şelalesi Rize"
-            loading="lazy"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    💦 Palovit Şelalesi
-                </h3>
-
-                <p>
-                    Kaçkar Dağları Milli Parkı çevresindeki yemyeşil
-                    doğanın içerisinde bulunan etkileyici şelale
-                    rotalarından biridir.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                    class="map-btn"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Palovit+Şelalesi+Rize">
-
-                        🧭 Yol Tarifi
-
-                    </a>
-
-                    <button
-                    class="favorite-btn"
-                    onclick="favorite('Palovit Şelalesi')">
-
-                        ❤️ Favori
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- ANZER -->
-
-        <article class="card">
-
-            <img
-            class="card-img"
-            src="https://cdn2.goturkiye.com/rize-routes-gi-1-liste-anzer-plateau.jpg"
-            alt="Anzer Yaylası Rize"
-            loading="lazy"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    🌿 Anzer Yaylası
-                </h3>
-
-                <p>
-                    Yüksek dağları ve zengin doğal çevresiyle
-                    Rize'nin dikkat çeken yayla rotalarından biridir.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                    class="map-btn"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Anzer+Yaylası+Rize">
-
-                        🧭 Yol Tarifi
-
-                    </a>
-
-                    <button
-                    class="favorite-btn"
-                    onclick="favorite('Anzer Yaylası')">
-
-                        ❤️ Favori
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- FIRTINA -->
-
-        <article class="card">
-
-            <img
-            class="card-img"
-            src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85"
-            alt="Fırtına Vadisi Rize"
-            loading="lazy"
-            >
-
-            <div class="card-content">
-
-                <h3>
-                    🌊 Fırtına Vadisi
-                </h3>
-
-                <p>
-                    Fırtına Deresi, tarihi kemer köprüleri,
-                    yemyeşil vadileri ve doğa aktiviteleriyle
-                    Rize'nin en karakteristik bölgelerinden biridir.
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                    class="map-btn"
-                    target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=Fırtına+Vadisi+Rize">
-
-                        🧭 Yol Tarifi
-
-                    </a>
-
-                    <button
-                    class="favorite-btn"
-                    onclick="favorite('Fırtına Vadisi')">
-
-                        ❤️ Favori
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RİZE MUTFAĞI
-===================================================== -->
-
-<section
-class="section"
-id="yemek">
-
-    <div class="section-heading">
-
-        <div>
-
-            <small>RİZE MUTFAĞI</small>
-
-            <h2 class="section-title">
-                🍴 Rize'de Ne Yenir?
-            </h2>
-
-        </div>
-
-    </div>
-
-    <p class="section-subtitle">
-        Rize'ye geldiğinde deneyebileceğin yöresel lezzetlerden bazıları.
-    </p>
-
-
-    <div class="food-list">
-
-
-        <article class="food">
-
-            <img
-            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=85"
-            alt="Muhlama"
-            loading="lazy"
-            >
-
-            <div class="food-content">
-
-                <h3>
-                    🧀 Muhlama
-                </h3>
-
-                <p>
-                    Mısır unu, tereyağı ve yöresel peynirle hazırlanan
-                    Karadeniz mutfağının sevilen lezzetlerinden.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="food">
-
-            <img
-            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
-            alt="Karalahana yemeği"
-            loading="lazy"
-            >
-
-            <div class="food-content">
-
-                <h3>
-                    🥬 Karalahana
-                </h3>
-
-                <p>
-                    Karalahana çorbası ve sarması,
-                    Rize mutfağında öne çıkan geleneksel seçeneklerdendir.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="food">
-
-            <img
-            src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=85"
-            alt="Kuru fasulye"
-            loading="lazy"
-            >
-
-            <div class="food-content">
-
-                <h3>
-                    🍛 Çayeli Kuru Fasulyesi
-                </h3>
-
-                <p>
-                    Çayeli tarafına gittiğinde deneyebileceğin
-                    Rize'nin bilinen yöresel lezzetlerinden.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="food">
-
-            <img
-            src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1000&q=85"
-            alt="Rize çayı"
-            loading="lazy"
-            >
-
-            <div class="food-content">
-
-                <h3>
-                    🍵 Rize Çayı
-                </h3>
-
-                <p>
-                    Rize'nin en karakteristik ürünlerinden biri.
-                    Çay bahçelerinde manzarayla birlikte deneyebilirsin.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     NEREDE NE YENİR
-===================================================== -->
-
-<section
-class="food-guide"
-id="nerede-ne-yenir">
-
-    <div class="food-guide-inner">
-
-
-        <div class="food-guide-header">
-
-            <div class="food-guide-kicker">
-                🍽️ RİZE LEZZET REHBERİ
-            </div>
-
-            <h2>
-                Rize'de Nerede Ne Yenir?
-            </h2>
-
-            <p>
-                Rize'ye geldin ve ne yiyeceğine karar veremiyor musun?
-                Kahvaltıdan yöresel yemeklere, kuru fasulyeden çaya kadar
-                keşfedebileceğin seçenekleri tek yerde topluyoruz.
-            </p>
-
-        </div>
-
-
-        <div class="food-categories">
-
-            <button
-            class="food-filter active"
-            onclick="filterFood('all',this)">
-
-                🍽️ Hepsi
-
-            </button>
-
-            <button
-            class="food-filter"
-            onclick="filterFood('kahvalti',this)">
-
-                🍳 Kahvaltı
-
-            </button>
-
-            <button
-            class="food-filter"
-            onclick="filterFood('yoresel',this)">
-
-                🥘 Yöresel
-
-            </button>
-
-            <button
-            class="food-filter"
-            onclick="filterFood('fasulye',this)">
-
-                🍛 Kuru Fasulye
-
-            </button>
-
-            <button
-            class="food-filter"
-            onclick="filterFood('cay',this)">
-
-                ☕ Çay & Kahve
-
-            </button>
-
-        </div>
-
-
-        <div class="food-guide-grid">
-
-
-            <!-- DAĞMARAN -->
-
-            <article
-            class="food-guide-card"
-            data-category="kahvalti">
-
-                <div class="food-guide-image">
-
-                    <img
-                    src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=85"
-                    alt="Kahvaltı"
-                    loading="lazy"
-                    >
-
-                    <span class="food-tag">
-                        🍳 Kahvaltı
-                    </span>
-
-                </div>
-
-                <div class="food-guide-content">
-
-                    <h3>
-                        Dağmaran
-                    </h3>
-
-                    <p>
-                        Rize şehir manzarası eşliğinde
-                        kahvaltı ve yemek için değerlendirilebilecek
-                        seçeneklerden biri.
-                    </p>
-
-                    <div class="food-place">
-                        📍 Rize Merkez
-                    </div>
-
-                    <div class="food-buttons">
-
-                        <a
-                        class="food-button food-map"
-                        href="https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize"
-                        target="_blank">
-
-                            📍 Yol Tarifi
-
-                        </a>
-
-                        <button
-                        class="food-button food-save"
-                        onclick="saveFood('Dağmaran')">
-
-                            ♡ Favori
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- NALIA -->
-
-            <article
-            class="food-guide-card"
-            data-category="yoresel">
-
-                <div class="food-guide-image">
-
-                    <img
-                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85"
-                    alt="Karadeniz mutfağı"
-                    loading="lazy"
-                    >
-
-                    <span class="food-tag">
-                        🥘 Yöresel
-                    </span>
-
-                </div>
-
-                <div class="food-guide-content">
-
-                    <h3>
-                        Nalia Karadeniz Mutfağı
-                    </h3>
-
-                    <p>
-                        Karadeniz mutfağını Rize merkezde
-                        keşfetmek isteyenlerin değerlendirebileceği
-                        mekanlardan biri.
-                    </p>
-
-                    <div class="food-place">
-                        📍 Rize Merkez
-                    </div>
-
-                    <div class="food-buttons">
-
-                        <a
-                        class="food-button food-map"
-                        href="https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize"
-                        target="_blank">
-
-                            📍 Yol Tarifi
-
-                        </a>
-
-                        <button
-                        class="food-button food-save"
-                        onclick="saveFood('Nalia Karadeniz Mutfağı')">
-
-                            ♡ Favori
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- LALE -->
-
-            <article
-            class="food-guide-card"
-            data-category="fasulye">
-
-                <div class="food-guide-image">
-
-                    <img
-                    src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=85"
-                    alt="Kuru fasulye"
-                    loading="lazy"
-                    >
-
-                    <span class="food-tag">
-                        🍛 Çayeli
-                    </span>
-
-                </div>
-
-                <div class="food-guide-content">
-
-                    <h3>
-                        LALE 1973
-                    </h3>
-
-                    <p>
-                        Çayeli tarafında yemek molası için
-                        değerlendirebileceğin bilinen mekanlardan biri.
-                    </p>
-
-                    <div class="food-place">
-                        📍 Çayeli / Rize
-                    </div>
-
-                    <div class="food-buttons">
-
-                        <a
-                        class="food-button food-map"
-                        href="https://www.google.com/maps/search/?api=1&query=LALE+1973+Çayeli+Rize"
-                        target="_blank">
-
-                            📍 Yol Tarifi
-
-                        </a>
-
-                        <button
-                        class="food-button food-save"
-                        onclick="saveFood('LALE 1973')">
-
-                            ♡ Favori
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- ÇAYLA -->
-
-            <article
-            class="food-guide-card"
-            data-category="cay">
-
-                <div class="food-guide-image">
-
-                    <img
-                    src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=85"
-                    alt="Rize çayı"
-                    loading="lazy"
-                    >
-
-                    <span class="food-tag">
-                        ☕ Çay
-                    </span>
-
-                </div>
-
-                <div class="food-guide-content">
-
-                    <h3>
-                        ÇAYLA RİZE
-                    </h3>
-
-                    <p>
-                        Çay, kahvaltı ve dinlenme molası için
-                        Rize merkezde değerlendirilebilecek seçeneklerden.
-                    </p>
-
-                    <div class="food-place">
-                        📍 Rize Merkez
-                    </div>
-
-                    <div class="food-buttons">
-
-                        <a
-                        class="food-button food-map"
-                        href="https://www.google.com/maps/search/?api=1&query=ÇAYLA+RİZE"
-                        target="_blank">
-
-                            📍 Yol Tarifi
-
-                        </a>
-
-                        <button
-                        class="food-button food-save"
-                        onclick="saveFood('ÇAYLA RİZE')">
-
-                            ♡ Favori
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- HUZUR -->
-
-            <article
-            class="food-guide-card"
-            data-category="yoresel">
-
-                <div class="food-guide-image">
-
-                    <img
-                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85"
-                    alt="Yöresel yemek"
-                    loading="lazy"
-                    >
-
-                    <span class="food-tag">
-                        🥘 Yöresel
-                    </span>
-
-                </div>
-
-                <div class="food-guide-content">
-
-                    <h3>
-                        Huzur Pide & Kebap
-                    </h3>
-
-                    <p>
-                        Rize merkezde yemek ve pide seçenekleri
-                        arayanların değerlendirebileceği alternatiflerden.
-                    </p>
-
-                    <div class="food-place">
-                        📍 Rize Merkez
-                    </div>
-
-                    <div class="food-buttons">
-
-                        <a
-                        class="food-button food-map"
-                        href="https://www.google.com/maps/search/?api=1&query=Huzur+Pide+Kebap+Rize"
-                        target="_blank">
-
-                            📍 Yol Tarifi
-
-                        </a>
-
-                        <button
-                        class="food-button food-save"
-                        onclick="saveFood('Huzur Pide & Kebap')">
-
-                            ♡ Favori
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-        <div class="food-note">
-
-            <strong>🌿 Rize'ye ilk kez geliyorsan:</strong>
-
-            Muhlama, karalahana yemekleri,
-            Çayeli kuru fasulyesi, Rize pidesi,
-            Laz böreği ve Rize çayı gibi
-            yöresel lezzetleri araştırabilirsin.
-
-            <br><br>
-
-            <strong>💡 Rehber notu:</strong>
-
-            Menü, fiyat ve çalışma saatleri değişebileceğinden
-            gitmeden önce mekanın güncel bilgilerini kontrol et.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     MEKANLAR
-===================================================== -->
-
-<section
-class="section"
-id="mekanlar">
-
-    <div class="section-heading">
-
-        <div>
-
-            <small>YEMEK & MOLALAR</small>
-
-            <h2 class="section-title">
-                🍽️ Rize'de Mekanlar
-            </h2>
-
-        </div>
-
-    </div>
-
-    <p class="section-subtitle">
-        Kahvaltı, yöresel yemek ve çay molası için rehberimize eklenen seçili mekanlar.
-    </p>
-
-
-    <div class="restaurant-list">
-
-
-        <article class="restaurant">
-
-            <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85"
-            alt="Dağmaran"
-            loading="lazy"
-            >
-
-            <div class="restaurant-content">
-
-                <h3>
-                    🌿 Dağmaran
-                </h3>
-
-                <p class="restaurant-desc">
-                    Rize merkezde manzara,
-                    kahvaltı ve yemek için
-                    değerlendirilebilecek mekanlardan.
-                </p>
-
-                <div class="restaurant-tags">
-
-                    <span class="tag">
-                        Kahvaltı
-                    </span>
-
-                    <span class="tag">
-                        Restoran
-                    </span>
-
-                    <span class="tag">
-                        Manzara
-                    </span>
-
-                </div>
-
-                <a
-                class="map-btn"
-                target="_blank"
-                href="https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize">
-
-                    📍 Google Maps
-
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="restaurant">
-
-            <img
-            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85"
-            alt="Nalia Karadeniz Mutfağı"
-            loading="lazy"
-            >
-
-            <div class="restaurant-content">
-
-                <h3>
-                    🍴 Nalia Karadeniz Mutfağı
-                </h3>
-
-                <p class="restaurant-desc">
-                    Karadeniz mutfağını denemek isteyenlerin
-                    Rize merkezde değerlendirebileceği seçeneklerden.
-                </p>
-
-                <div class="restaurant-tags">
-
-                    <span class="tag">
-                        Karadeniz Mutfağı
-                    </span>
-
-                    <span class="tag">
-                        Yöresel
-                    </span>
-
-                </div>
-
-                <a
-                class="map-btn"
-                target="_blank"
-                href="https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize">
-
-                    📍 Google Maps
-
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="restaurant">
-
-            <img
-            src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=85"
-            alt="ÇAYLA Rize"
-            loading="lazy"
-            >
-
-            <div class="restaurant-content">
-
-                <h3>
-                    ☕ ÇAYLA RİZE
-                </h3>
-
-                <p class="restaurant-desc">
-                    Kahvaltı, çay ve kahve molası için
-                    Rize merkezde değerlendirilebilecek seçeneklerden.
-                </p>
-
-                <div class="restaurant-tags">
-
-                    <span class="tag">
-                        Kahvaltı
-                    </span>
-
-                    <span class="tag">
-                        Kafe
-                    </span>
-
-                    <span class="tag">
-                        Çay
-                    </span>
-
-                </div>
-
-                <a
-                class="map-btn"
-                target="_blank"
-                href="https://www.google.com/maps/search/?api=1&query=ÇAYLA+RİZE">
-
-                    📍 Google Maps
-
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="restaurant">
-
-            <img
-            src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=85"
-            alt="Lale 1973"
-            loading="lazy"
-            >
-
-            <div class="restaurant-content">
-
-                <h3>
-                    🍛 LALE 1973
-                </h3>
-
-                <p class="restaurant-desc">
-                    Çayeli tarafında yemek molası için
-                    değerlendirebileceğin mekanlardan.
-                </p>
-
-                <div class="restaurant-tags">
-
-                    <span class="tag">
-                        Restoran
-                    </span>
-
-                    <span class="tag">
-                        Çayeli
-                    </span>
-
-                    <span class="tag">
-                        Yöresel
-                    </span>
-
-                </div>
-
-                <a
-                class="map-btn"
-                target="_blank"
-                href="https://www.google.com/maps/search/?api=1&query=LALE+1973+Çayeli+Rize">
-
-                    📍 Google Maps
-
-                </a>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOTOĞRAF
-===================================================== -->
-
-<section
-class="section"
-id="foto">
-
-    <div class="section-heading">
-
-        <div>
-
-            <small>FOTOĞRAF TUTKUNLARI</small>
-
-            <h2 class="section-title">
-                📸 Rize Fotoğraf Noktaları
-            </h2>
-
-        </div>
-
-    </div>
-
-    <p class="section-subtitle">
-        Sis, dağ, yayla ve yeşilin buluştuğu Rize'den fotoğraf noktaları.
-    </p>
-
-
-    <div class="photo-grid">
-
-
-        <article class="photo-point">
-
-            <img
-            src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
-            alt="Pokut Yaylası"
-            loading="lazy"
-            >
-
-            <div class="photo-overlay">
-
-                <h3>
-                    Pokut Yaylası
-                </h3>
-
-                <p>
-                    Sisli dağlar ve geleneksel yayla evleri.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="photo-point">
-
-            <img
-            src="https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg"
-            alt="Palovit Şelalesi"
-            loading="lazy"
-            >
-
-            <div class="photo-overlay">
-
-                <h3>
-                    Palovit Şelalesi
-                </h3>
-
-                <p>
-                    Ormanın içerisinde güçlü akan doğal güzellik.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="photo-point">
-
-            <img
-            src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
-            alt="Ayder Yaylası"
-            loading="lazy"
-            >
-
-            <div class="photo-overlay">
-
-                <h3>
-                    Ayder Yaylası
-                </h3>
-
-                <p>
-                    Kaçkarlar, ormanlar ve yayla atmosferi.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     INSTAGRAM
-===================================================== -->
-
-<section class="instagram">
-
-    <h2>
-        📸 Karadeniz'i Benimle Keşfet
-    </h2>
-
-    <p>
-        Rize ve Karadeniz'den doğa ve seyahat videoları için
-        Instagram'da takip et.
-    </p>
-
-    <a
-    href="https://www.instagram.com/malikkosephotographer/"
-    target="_blank">
-
-        Instagram'da Takip Et
+      <span>Yaylalar ve doğa</span>
 
     </a>
 
+
+    <a href="#yemek" class="category">
+
+      <div class="category-icon">🍽️</div>
+
+      <strong>Ne Yenir?</strong>
+
+      <span>Rize'nin meşhur lezzetleri</span>
+
+    </a>
+
+
+    <a href="#mekanlar" class="category">
+
+      <div class="category-icon">☕</div>
+
+      <strong>Mekanlar</strong>
+
+      <span>Kahvaltı ve restoranlar</span>
+
+    </a>
+
+
+    <a href="#fotograf" class="category">
+
+      <div class="category-icon">📸</div>
+
+      <strong>Fotoğraf Noktaları</strong>
+
+      <span>Manzara için ideal yerler</span>
+
+    </a>
+
+  </div>
+
+</div>
+
 </section>
 
 
-</main>
+<!-- =========================
+     RANDOM
+========================= -->
+
+<section class="section">
+
+<div class="container">
+
+  <div class="random-box">
+
+    <div>
+
+      <h2>🎲 Bugün Nereye Gidelim?</h2>
+
+      <p>
+        Kararsız kaldıysan Rize'deki keşif noktalarından birini senin için seçelim.
+      </p>
+
+      <div id="randomResult" class="random-result">
+        Bir yer seçmek için butona bas.
+      </div>
+
+    </div>
+
+    <button class="random-btn" onclick="randomPlace()">
+      Şansımı Dene
+    </button>
+
+  </div>
+
+</div>
+
+</section>
 
 
-<!-- =====================================================
-     ALT MENÜ
-===================================================== -->
+<!-- =========================
+     MAP
+========================= -->
+
+<section class="section">
+
+<div class="container">
+
+  <div class="section-title">
+
+    <small>Harita</small>
+
+    <h2>Rize'yi Haritada Keşfet</h2>
+
+    <p>
+      Gitmek istediğin noktayı seç ve yol tarifine ulaş.
+    </p>
+
+  </div>
+
+  <div class="map-wrap">
+
+    <div id="map"></div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ROUTES
+========================= -->
+
+<section class="section" id="rotalar">
+
+<div class="container">
+
+  <div class="section-title">
+
+    <small>Doğa & Keşif</small>
+
+    <h2>Rize'de Gezilecek Yerler</h2>
+
+    <p>
+      Rize'nin en güzel doğa rotalarından bazıları.
+    </p>
+
+  </div>
+
+
+  <div class="card-grid">
+
+
+    <!-- AYDER -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
+          alt="Ayder Yaylası"
+          loading="lazy"
+        >
+
+        <span class="card-tag">YAYLA</span>
+
+        <button
+          class="favorite"
+          onclick="toggleFavorite('Ayder Yaylası',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="card-body">
+
+        <h3>Ayder Yaylası</h3>
+
+        <p>
+          Rize'nin en bilinen yaylalarından biri. Doğa, orman ve
+          Karadeniz atmosferini bir arada yaşayabileceğin popüler rota.
+        </p>
+
+        <div class="card-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.google.com/maps/dir/?api=1&destination=Ayder+Yaylası+Rize"
+            target="_blank"
+          >
+            📍 Yol Tarifi
+          </a>
+
+          <a class="btn btn-light" href="#fotograf">
+            📸 Fotoğraf
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- POKUT -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
+          alt="Pokut Yaylası"
+          loading="lazy"
+        >
+
+        <span class="card-tag">YAYLA</span>
+
+        <button
+          class="favorite"
+          onclick="toggleFavorite('Pokut Yaylası',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="card-body">
+
+        <h3>Pokut Yaylası</h3>
+
+        <p>
+          Sisleri ve eşsiz dağ manzaralarıyla Rize'nin en özel
+          fotoğraf noktalarından biri.
+        </p>
+
+        <div class="card-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.google.com/maps/dir/?api=1&destination=Pokut+Yaylası+Rize"
+            target="_blank"
+          >
+            📍 Yol Tarifi
+          </a>
+
+          <a class="btn btn-light" href="#fotograf">
+            📸 Fotoğraf
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- ZILKALE -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="https://kulturportali.gov.tr/repoKulturPortali/small/23092014/cc721344-7102-4be4-bd83-92d391910621.jpg?format=jpg&quality=80"
+          alt="Zilkale"
+          loading="lazy"
+        >
+
+        <span class="card-tag">TARİH</span>
+
+        <button
+          class="favorite"
+          onclick="toggleFavorite('Zilkale',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="card-body">
+
+        <h3>Zilkale</h3>
+
+        <p>
+          Fırtına Vadisi'nin etkileyici tarihi yapılarından biri.
+          Vadinin yükseklerinde muhteşem bir manzara sunar.
+        </p>
+
+        <div class="card-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.google.com/maps/dir/?api=1&destination=Zilkale+Rize"
+            target="_blank"
+          >
+            📍 Yol Tarifi
+          </a>
+
+          <a class="btn btn-light" href="#fotograf">
+            📸 Fotoğraf
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- PALOVIT -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg"
+          alt="Palovit Şelalesi"
+          loading="lazy"
+        >
+
+        <span class="card-tag">ŞELALE</span>
+
+        <button
+          class="favorite"
+          onclick="toggleFavorite('Palovit Şelalesi',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="card-body">
+
+        <h3>Palovit Şelalesi</h3>
+
+        <p>
+          Rize'nin güçlü akışa sahip etkileyici şelalelerinden biri.
+          Doğa severler için güzel bir keşif noktası.
+        </p>
+
+        <div class="card-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.google.com/maps/dir/?api=1&destination=Palovit+Şelalesi+Rize"
+            target="_blank"
+          >
+            📍 Yol Tarifi
+          </a>
+
+          <a class="btn btn-light" href="#fotograf">
+            📸 Fotoğraf
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- ANZER -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="https://cdn2.goturkiye.com/rize-routes-gi-1-liste-anzer-plateau.jpg"
+          alt="Anzer Yaylası"
+          loading="lazy"
+        >
+
+        <span class="card-tag">YAYLA</span>
+
+        <button
+          class="favorite"
+          onclick="toggleFavorite('Anzer Yaylası',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="card-body">
+
+        <h3>Anzer Yaylası</h3>
+
+        <p>
+          Yüksek dağları, geniş yayla manzaraları ve doğal atmosferiyle
+          Rize'nin dikkat çeken rotalarından.
+        </p>
+
+        <div class="card-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.google.com/maps/dir/?api=1&destination=Anzer+Yaylası+Rize"
+            target="_blank"
+          >
+            📍 Yol Tarifi
+          </a>
+
+          <a class="btn btn-light" href="#fotograf">
+            📸 Fotoğraf
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- FIRTINA -->
+
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85"
+          alt="Fırtına Vadisi"
+          loading="lazy"
+        >
+
+        <span class="card-tag">DOĞA</span>
+
+        <button
+          class="favorite"
+          onclick="toggleFavorite('Fırtına Vadisi',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="card-body">
+
+        <h3>Fırtına Vadisi</h3>
+
+        <p>
+          Rize'nin yemyeşil ormanları, dereleri ve tarihi yapılarıyla
+          öne çıkan doğal güzelliklerinden.
+        </p>
+
+        <div class="card-buttons">
+
+          <a
+            class="btn btn-primary"
+            href="https://www.google.com/maps/dir/?api=1&destination=Fırtına+Vadisi+Rize"
+            target="_blank"
+          >
+            📍 Yol Tarifi
+          </a>
+
+          <a class="btn btn-light" href="#fotograf">
+            📸 Fotoğraf
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOD
+========================= -->
+
+<section class="section food-section" id="yemek">
+
+<div class="container">
+
+  <div class="section-title">
+
+    <small>Karadeniz Mutfağı</small>
+
+    <h2>Rize'de Ne Yenir?</h2>
+
+    <p>
+      Rize'ye geldiğinde mutlaka denemen gereken yöresel lezzetler.
+    </p>
+
+  </div>
+
+
+  <div class="food-filter">
+
+    <button
+      class="active"
+      onclick="filterFood('all',this)"
+    >
+      Tümü
+    </button>
+
+    <button onclick="filterFood('ana',this)">
+      Ana Yemek
+    </button>
+
+    <button onclick="filterFood('hamur',this)">
+      Hamur İşi
+    </button>
+
+    <button onclick="filterFood('tatli',this)">
+      Tatlı
+    </button>
+
+    <button onclick="filterFood('icecek',this)">
+      İçecek
+    </button>
+
+  </div>
+
+
+  <div class="food-grid">
+
+
+    <!-- MUHLAMA -->
+
+    <article class="food-card" data-category="ana">
+
+      <div class="food-image">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Muhlama.jpg?width=1200"
+          alt="Muhlama"
+          loading="lazy"
+        >
+
+        <button
+          class="favorite"
+          onclick="toggleFoodFavorite('Muhlama',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="food-content">
+
+        <h3>🧀 Muhlama</h3>
+
+        <p>
+          Karadeniz mutfağının en sevilen lezzetlerinden.
+          Mısır unu, tereyağı ve peynirle hazırlanır.
+        </p>
+
+        <span class="food-region">
+          Karadeniz Mutfağı
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- KARALAHANA -->
+
+    <article class="food-card" data-category="ana">
+
+      <div class="food-image">
+
+        <img
+          src="https://cdn.img.anlatilaninotesi.com.tr/img/07e7/0c/0f/1078493117_0:0:865:486_1920x0_80_0_0_012f3fab8cb3e3a48358a119da2cd397.jpg"
+          alt="Karalahana Çorbası"
+          loading="lazy"
+        >
+
+        <button
+          class="favorite"
+          onclick="toggleFoodFavorite('Karalahana Çorbası',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="food-content">
+
+        <h3>🥬 Karalahana Çorbası</h3>
+
+        <p>
+          Karadeniz sofralarının klasiklerinden olan,
+          yörede özellikle kış aylarında sevilen geleneksel bir çorba.
+        </p>
+
+        <span class="food-region">
+          Rize
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- KURU FASULYE -->
+
+    <article class="food-card" data-category="ana">
+
+      <div class="food-image">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kuru%20fasulye%2C%20Turkish%20style.jpg?width=1200"
+          alt="Çayeli kuru fasulyesi"
+          loading="lazy"
+        >
+
+        <button
+          class="favorite"
+          onclick="toggleFoodFavorite('Çayeli Kuru Fasulyesi',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="food-content">
+
+        <h3>🫘 Çayeli Kuru Fasulyesi</h3>
+
+        <p>
+          Çayeli ile özdeşleşen kuru fasulye,
+          Rize'ye gelenlerin denemek istediği yöresel yemeklerden.
+        </p>
+
+        <span class="food-region">
+          Çayeli
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PIDE -->
+
+    <article class="food-card" data-category="hamur">
+
+      <div class="food-image">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20pide%20from%20the%20Black%20Sea%20Region.jpg?width=1200"
+          alt="Karadeniz Pidesi"
+          loading="lazy"
+        >
+
+        <button
+          class="favorite"
+          onclick="toggleFoodFavorite('Derepazarı Pidesi',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="food-content">
+
+        <h3>🥖 Derepazarı Pidesi</h3>
+
+        <p>
+          Rize'nin özellikle Derepazarı ilçesiyle anılan
+          geleneksel Karadeniz pidesi.
+        </p>
+
+        <span class="food-region">
+          Derepazarı
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- LAZ BÖREĞİ -->
+
+    <article class="food-card" data-category="tatli">
+
+      <div class="food-image">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20dessert%20from%20the%20Black%20Sea%20Region.jpg?width=1200"
+          alt="Laz Böreği"
+          loading="lazy"
+        >
+
+        <button
+          class="favorite"
+          onclick="toggleFoodFavorite('Laz Böreği',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="food-content">
+
+        <h3>🥮 Laz Böreği</h3>
+
+        <p>
+          Karadeniz bölgesinin kendine özgü tatlılarından.
+          İncecik yufkalar ve muhallebiyle hazırlanır.
+        </p>
+
+        <span class="food-region">
+          Karadeniz Tatlısı
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- ÇAY -->
+
+    <article class="food-card" data-category="icecek">
+
+      <div class="food-image">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20tea%20glass.jpg?width=1200"
+          alt="Rize Çayı"
+          loading="lazy"
+        >
+
+        <button
+          class="favorite"
+          onclick="toggleFoodFavorite('Rize Çayı',this)"
+        >
+          ♡
+        </button>
+
+      </div>
+
+      <div class="food-content">
+
+        <h3>🍵 Rize Çayı</h3>
+
+        <p>
+          Rize denince akla gelen ilk şeylerden biri.
+          Karadeniz gezisinin vazgeçilmez içeceği.
+        </p>
+
+        <span class="food-region">
+          Rize
+        </span>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     WHERE TO EAT
+========================= -->
+
+<section class="section" id="nerede">
+
+<div class="container">
+
+  <div class="section-title">
+
+    <small>Yeme & İçme</small>
+
+    <h2>Rize'de Nerede Ne Yenir?</h2>
+
+    <p>
+      Rize'de yöresel lezzet ararken değerlendirebileceğin mekanlar.
+    </p>
+
+  </div>
+
+
+  <div class="restaurant-grid">
+
+
+    <article class="restaurant-card">
+
+      <div class="restaurant-icon">
+        🍽️
+      </div>
+
+      <h3>Dağmaran</h3>
+
+      <p>
+        Rize'de manzara eşliğinde yemek ve kahvaltı deneyimi
+        arayanların değerlendirebileceği mekanlardan.
+      </p>
+
+      <div class="restaurant-meta">
+
+        <span>🌄 Manzara</span>
+        <span>🍳 Kahvaltı</span>
+        <span>🍽️ Yemek</span>
+
+      </div>
+
+      <div class="card-buttons">
+
+        <a
+          class="btn btn-primary"
+          href="https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize"
+          target="_blank"
+        >
+          📍 Haritada Aç
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <article class="restaurant-card">
+
+      <div class="restaurant-icon">
+        🍴
+      </div>
+
+      <h3>Nalia Karadeniz Mutfağı</h3>
+
+      <p>
+        Karadeniz yöresel yemeklerini denemek isteyenlerin
+        değerlendirebileceği restoran seçeneklerinden.
+      </p>
+
+      <div class="restaurant-meta">
+
+        <span>🥘 Yöresel</span>
+        <span>🍽️ Restoran</span>
+        <span>🌿 Karadeniz</span>
+
+      </div>
+
+      <div class="card-buttons">
+
+        <a
+          class="btn btn-primary"
+          href="https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize"
+          target="_blank"
+        >
+          📍 Haritada Aç
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <article class="restaurant-card">
+
+      <div class="restaurant-icon">
+        🍵
+      </div>
+
+      <h3>ÇAYLA</h3>
+
+      <p>
+        Rize merkezde çay ve yöresel lezzet deneyimi için
+        değerlendirilebilecek seçeneklerden.
+      </p>
+
+      <div class="restaurant-meta">
+
+        <span>🍵 Çay</span>
+        <span>🍽️ Yemek</span>
+        <span>📍 Merkez</span>
+
+      </div>
+
+      <div class="card-buttons">
+
+        <a
+          class="btn btn-primary"
+          href="https://www.google.com/maps/search/?api=1&query=ÇAYLA+Rize"
+          target="_blank"
+        >
+          📍 Haritada Aç
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MEKANLAR
+========================= -->
+
+<section class="section" id="mekanlar">
+
+<div class="container">
+
+  <div class="section-title">
+
+    <small>Rize'de Yaşam</small>
+
+    <h2>Rize'de Mekanlar</h2>
+
+    <p>
+      Kahve, çay, kahvaltı ve şehir içinde vakit geçirmek için
+      farklı mekan seçenekleri.
+    </p>
+
+  </div>
+
+
+  <div class="restaurant-grid">
+
+
+    <article class="restaurant-card">
+
+      <div class="restaurant-icon">☕</div>
+
+      <h3>Çay & Kahve</h3>
+
+      <p>
+        Rize'de geleneksel çay kültürünü deneyimlemek için
+        şehir merkezindeki çay mekanlarını keşfet.
+      </p>
+
+      <div class="restaurant-meta">
+        <span>🍵 Çay</span>
+        <span>☕ Kahve</span>
+      </div>
+
+    </article>
+
+
+    <article class="restaurant-card">
+
+      <div class="restaurant-icon">🥞</div>
+
+      <h3>Kahvaltı</h3>
+
+      <p>
+        Karadeniz kahvaltısı, muhlama ve yöresel ürünleri
+        deneyebileceğin mekanları keşfet.
+      </p>
+
+      <div class="restaurant-meta">
+        <span>🍳 Kahvaltı</span>
+        <span>🧀 Muhlama</span>
+      </div>
+
+    </article>
+
+
+    <article class="restaurant-card">
+
+      <div class="restaurant-icon">🌄</div>
+
+      <h3>Manzaralı Mekanlar</h3>
+
+      <p>
+        Rize'nin yeşil doğasını izleyerek çayını içmek
+        isteyenler için manzaralı mekanları keşfet.
+      </p>
+
+      <div class="restaurant-meta">
+        <span>🌿 Doğa</span>
+        <span>📸 Fotoğraf</span>
+      </div>
+
+    </article>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PHOTO POINTS
+========================= -->
+
+<section class="section" id="fotograf">
+
+<div class="container">
+
+  <div class="section-title">
+
+    <small>Fotoğraf</small>
+
+    <h2>Rize'de Fotoğraf İçin Noktalar</h2>
+
+    <p>
+      Karadeniz manzaralarını fotoğraflamak için öne çıkan rotalar.
+    </p>
+
+  </div>
+
+
+  <div class="photo-grid">
+
+
+    <div class="photo-card">
+
+      <img
+        src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
+        alt="Ayder"
+        loading="lazy"
+      >
+
+      <div class="photo-name">
+        📸 Ayder Yaylası
+      </div>
+
+    </div>
+
+
+    <div class="photo-card">
+
+      <img
+        src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
+        alt="Pokut"
+        loading="lazy"
+      >
+
+      <div class="photo-name">
+        📸 Pokut Yaylası
+      </div>
+
+    </div>
+
+
+    <div class="photo-card">
+
+      <img
+        src="https://cdn2.goturkiye.com/rize-routes-gi-1-liste-anzer-plateau.jpg"
+        alt="Anzer"
+        loading="lazy"
+      >
+
+      <div class="photo-name">
+        📸 Anzer Yaylası
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     INSTAGRAM
+========================= -->
+
+<section class="section">
+
+<div class="container">
+
+  <div class="instagram-box">
+
+    <h2>📸 Karadeniz'i Instagram'da Keşfet</h2>
+
+    <p>
+      Rize ve Karadeniz'in en güzel doğa görüntülerini takip et.
+    </p>
+
+    <a
+      class="instagram-btn"
+      href="https://www.instagram.com/malikkosephotographer/"
+      target="_blank"
+    >
+      Instagram'da Takip Et
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
 
 <nav class="bottom-nav">
 
-    <div class="bottom-inner">
+  <a href="#">
+    <span>🏠</span>
+    Ana Sayfa
+  </a>
 
-        <a href="#">
+  <a href="#rotalar">
+    <span>⛰️</span>
+    Gez
+  </a>
 
-            <span>🏠</span>
+  <a href="#yemek">
+    <span>🍽️</span>
+    Ye
+  </a>
 
-            Ana Sayfa
+  <a href="#mekanlar">
+    <span>☕</span>
+    Mekan
+  </a>
 
-        </a>
-
-
-        <a href="#harita">
-
-            <span>🗺️</span>
-
-            Harita
-
-        </a>
-
-
-        <a href="#rotalar">
-
-            <span>🏔️</span>
-
-            Rotalar
-
-        </a>
-
-
-        <a href="#yemek">
-
-            <span>🍴</span>
-
-            Yemek
-
-        </a>
-
-
-        <a href="#foto">
-
-            <span>📸</span>
-
-            Fotoğraf
-
-        </a>
-
-    </div>
+  <a href="#fotograf">
+    <span>📸</span>
+    Fotoğraf
+  </a>
 
 </nav>
 
 
-<!-- =====================================================
+<!-- =========================
      LEAFLET
-===================================================== -->
+========================= -->
 
-<script
-src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 
 <script>
 
-/* =====================================================
-   HARİTA
-===================================================== */
+/* =========================
+   MAP
+========================= */
 
-const map =
-L.map("map").setView(
-    [41.0201,40.5234],
-    9
+const map = L.map("map").setView(
+  [41.0201,40.5234],
+  9
 );
 
-
 L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    {
-
-        attribution:
-        '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-
-    }
-
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    attribution:
+      '&copy; OpenStreetMap contributors'
+  }
 ).addTo(map);
 
 
-/* =====================================================
-   RİZE NOKTALARI
-===================================================== */
+/* Rize Merkez */
+
+L.marker([41.0201,40.5234])
+  .addTo(map)
+  .bindPopup("<b>📍 Rize Merkez</b><br>Şehir merkezi");
+
+
+/* Ayder */
+
+L.marker([40.9528,41.0925])
+  .addTo(map)
+  .bindPopup(
+    "<b>⛰️ Ayder Yaylası</b><br>Rize"
+  );
+
+
+/* Pokut */
+
+L.marker([41.0140,40.9410])
+  .addTo(map)
+  .bindPopup(
+    "<b>⛰️ Pokut Yaylası</b><br>Rize"
+  );
+
+
+/* Zilkale */
+
+L.marker([40.9487,40.9526])
+  .addTo(map)
+  .bindPopup(
+    "<b>🏰 Zilkale</b><br>Fırtına Vadisi"
+  );
+
+
+/* Palovit */
+
+L.marker([40.9782,40.8818])
+  .addTo(map)
+  .bindPopup(
+    "<b>💦 Palovit Şelalesi</b><br>Rize"
+  );
+
+
+/* Anzer */
+
+L.marker([40.5967,40.5440])
+  .addTo(map)
+  .bindPopup(
+    "<b>🌿 Anzer Yaylası</b><br>Rize"
+  );
+
+
+/* Dağmaran */
+
+L.marker([41.0260,40.5165])
+  .addTo(map)
+  .bindPopup(
+    "<b>🍽️ Dağmaran</b><br>Rize"
+  );
+
+
+/* Nalia */
+
+L.marker([41.0265,40.5235])
+  .addTo(map)
+  .bindPopup(
+    "<b>🍴 Nalia Karadeniz Mutfağı</b><br>Rize"
+  );
+
+
+/* ÇAYLA */
+
+L.marker([41.0254,40.5216])
+  .addTo(map)
+  .bindPopup(
+    "<b>🍵 ÇAYLA</b><br>Rize"
+  );
+
+
+/* =========================
+   RANDOM PLACE
+========================= */
 
 const places = [
 
-    {
-        name:"Rize Merkez",
-        lat:41.0201,
-        lng:40.5234,
-        type:"📍 Şehir Merkezi",
-        url:"https://www.google.com/maps/search/?api=1&query=Rize+Merkez"
-    },
+  {
+    name:"Ayder Yaylası",
+    url:"https://www.google.com/maps/dir/?api=1&destination=Ayder+Yaylası+Rize"
+  },
 
-    {
-        name:"Ayder Yaylası",
-        lat:40.9514,
-        lng:41.0983,
-        type:"🌲 Yayla",
-        url:"https://www.google.com/maps/search/?api=1&query=Ayder+Yaylası+Rize"
-    },
+  {
+    name:"Pokut Yaylası",
+    url:"https://www.google.com/maps/dir/?api=1&destination=Pokut+Yaylası+Rize"
+  },
 
-    {
-        name:"Pokut Yaylası",
-        lat:40.9972,
-        lng:40.9146,
-        type:"🏔️ Yayla",
-        url:"https://www.google.com/maps/search/?api=1&query=Pokut+Yaylası+Rize"
-    },
+  {
+    name:"Zilkale",
+    url:"https://www.google.com/maps/dir/?api=1&destination=Zilkale+Rize"
+  },
 
-    {
-        name:"Zilkale",
-        lat:41.0145,
-        lng:40.9786,
-        type:"🏰 Tarihi Yer",
-        url:"https://www.google.com/maps/search/?api=1&query=Zilkale+Rize"
-    },
+  {
+    name:"Palovit Şelalesi",
+    url:"https://www.google.com/maps/dir/?api=1&destination=Palovit+Şelalesi+Rize"
+  },
 
-    {
-        name:"Palovit Şelalesi",
-        lat:41.0200,
-        lng:40.9450,
-        type:"💦 Şelale",
-        url:"https://www.google.com/maps/search/?api=1&query=Palovit+Şelalesi+Rize"
-    },
+  {
+    name:"Anzer Yaylası",
+    url:"https://www.google.com/maps/dir/?api=1&destination=Anzer+Yaylası+Rize"
+  },
 
-    {
-        name:"Anzer Yaylası",
-        lat:40.6667,
-        lng:40.7500,
-        type:"🌿 Yayla",
-        url:"https://www.google.com/maps/search/?api=1&query=Anzer+Yaylası+Rize"
-    },
-
-    {
-        name:"Dağmaran",
-        lat:41.0169,
-        lng:40.5251,
-        type:"🍴 Restoran / Kahvaltı",
-        url:"https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize"
-    },
-
-    {
-        name:"Nalia Karadeniz Mutfağı",
-        lat:41.0262,
-        lng:40.5218,
-        type:"🍴 Karadeniz Mutfağı",
-        url:"https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize"
-    },
-
-    {
-        name:"ÇAYLA RİZE",
-        lat:41.0235,
-        lng:40.5168,
-        type:"☕ Kahvaltı / Kafe",
-        url:"https://www.google.com/maps/search/?api=1&query=ÇAYLA+RİZE"
-    }
+  {
+    name:"Fırtına Vadisi",
+    url:"https://www.google.com/maps/dir/?api=1&destination=Fırtına+Vadisi+Rize"
+  }
 
 ];
 
 
-/* =====================================================
-   MARKERLAR
-===================================================== */
-
-places.forEach(place => {
-
-    const marker =
-    L.marker([
-        place.lat,
-        place.lng
-    ]).addTo(map);
-
-
-    marker.bindPopup(`
-
-        <div style="min-width:190px">
-
-            <h3 style="
-            margin-bottom:7px;
-            color:#173b27;
-            ">
-                ${place.name}
-            </h3>
-
-            <p style="
-            margin-bottom:12px;
-            color:#64748b;
-            font-size:13px;
-            ">
-                ${place.type}
-            </p>
-
-            <a
-            href="${place.url}"
-            target="_blank"
-            style="
-            display:inline-block;
-            background:#155b3a;
-            color:white;
-            padding:9px 13px;
-            border-radius:9px;
-            text-decoration:none;
-            font-size:13px;
-            font-weight:bold;
-            ">
-
-                🧭 Yol Tarifi
-
-            </a>
-
-        </div>
-
-    `);
-
-});
-
-
-/* =====================================================
-   RASTGELE ÖNERİ
-===================================================== */
-
 function randomPlace(){
 
-    const random =
-    places[
-        Math.floor(
-            Math.random() *
-            places.length
-        )
-    ];
+  const random =
+    places[Math.floor(Math.random()*places.length)];
 
-    document.getElementById(
-        "randomResult"
-    ).innerHTML =
-
-    "✨ Bugünkü önerimiz: <strong>" +
+  document.getElementById("randomResult").innerHTML =
+    "🎯 Bugünkü önerimiz: " +
+    "<a href='" +
+    random.url +
+    "' target='_blank' style='color:white;text-decoration:underline'>" +
     random.name +
-    "</strong>";
+    "</a>";
 
 }
 
 
-/* =====================================================
-   FAVORİ
-===================================================== */
+/* =========================
+   FAVORITES
+========================= */
 
-function favorite(place){
+function toggleFavorite(name,button){
 
-    let favorites =
+  let favorites =
     JSON.parse(
-        localStorage.getItem(
-            "rizeFavorites"
-        )
-    ) || [];
+      localStorage.getItem("rizeFavorites") || "[]"
+    );
 
+  if(favorites.includes(name)){
 
-    if(!favorites.includes(place)){
+    favorites =
+      favorites.filter(item => item !== name);
 
-        favorites.push(place);
+    button.innerHTML = "♡";
 
-        localStorage.setItem(
-            "rizeFavorites",
-            JSON.stringify(favorites)
-        );
+  }else{
 
-        alert(
-            "❤️ " +
-            place +
-            " favorilerine eklendi!"
-        );
+    favorites.push(name);
 
-    }
+    button.innerHTML = "♥";
 
-    else{
+  }
 
-        alert(
-            "❤️ " +
-            place +
-            " zaten favorilerinde."
-        );
-
-    }
+  localStorage.setItem(
+    "rizeFavorites",
+    JSON.stringify(favorites)
+  );
 
 }
 
 
-/* =====================================================
-   YEMEK FİLTRELEME
-===================================================== */
+/* =========================
+   FOOD FILTER
+========================= */
 
-function filterFood(
-    category,
-    button
-){
+function filterFood(category,button){
 
-    const cards =
-    document.querySelectorAll(
-        ".food-guide-card"
+  document
+    .querySelectorAll(".food-filter button")
+    .forEach(btn =>
+      btn.classList.remove("active")
     );
 
+  button.classList.add("active");
 
-    const buttons =
-    document.querySelectorAll(
-        ".food-filter"
-    );
+  document
+    .querySelectorAll(".food-card")
+    .forEach(card => {
 
+      if(
+        category === "all" ||
+        card.dataset.category === category
+      ){
 
-    buttons.forEach(btn => {
+        card.style.display = "";
 
-        btn.classList.remove(
-            "active"
-        );
+      }else{
 
-    });
+        card.style.display = "none";
 
-
-    button.classList.add(
-        "active"
-    );
-
-
-    cards.forEach(card => {
-
-        if(category === "all"){
-
-            card.style.display = "";
-
-        }
-
-        else{
-
-            if(
-                card.dataset.category ===
-                category
-            ){
-
-                card.style.display = "";
-
-            }
-
-            else{
-
-                card.style.display = "none";
-
-            }
-
-        }
+      }
 
     });
 
 }
 
 
-/* =====================================================
-   YEMEK FAVORİ
-===================================================== */
+/* =========================
+   FOOD FAVORITES
+========================= */
 
-function saveFood(name){
+function toggleFoodFavorite(name,button){
 
-    let favorites =
+  let favorites =
     JSON.parse(
-        localStorage.getItem(
-            "rizeFoodFavorites"
-        )
-    ) || [];
-
-
-    if(
-        favorites.includes(name)
-    ){
-
-        favorites =
-        favorites.filter(
-            item => item !== name
-        );
-
-        alert(
-            name +
-            " favorilerden çıkarıldı."
-        );
-
-    }
-
-    else{
-
-        favorites.push(name);
-
-        alert(
-            name +
-            " favorilere eklendi ❤️"
-        );
-
-    }
-
-
-    localStorage.setItem(
-        "rizeFoodFavorites",
-        JSON.stringify(favorites)
+      localStorage.getItem("rizeFoodFavorites") || "[]"
     );
 
+  if(favorites.includes(name)){
+
+    favorites =
+      favorites.filter(item => item !== name);
+
+    button.innerHTML = "♡";
+
+  }else{
+
+    favorites.push(name);
+
+    button.innerHTML = "♥";
+
+  }
+
+  localStorage.setItem(
+    "rizeFoodFavorites",
+    JSON.stringify(favorites)
+  );
+
 }
+
+
+/* =========================
+   LOAD FAVORITES
+========================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+
+    let favorites =
+      JSON.parse(
+        localStorage.getItem("rizeFavorites") || "[]"
+      );
+
+    document
+      .querySelectorAll(".favorite")
+      .forEach(button => {
+
+        const card =
+          button.closest(".card");
+
+        if(!card) return;
+
+        const title =
+          card.querySelector("h3");
+
+        if(
+          title &&
+          favorites.includes(title.innerText.trim())
+        ){
+
+          button.innerHTML = "♥";
+
+        }
+
+      });
+
+
+    let foodFavorites =
+      JSON.parse(
+        localStorage.getItem("rizeFoodFavorites") || "[]"
+      );
+
+    document
+      .querySelectorAll(".food-card .favorite")
+      .forEach(button => {
+
+        const card =
+          button.closest(".food-card");
+
+        const title =
+          card.querySelector("h3");
+
+        if(!title) return;
+
+        const name =
+          title.innerText
+            .replace(/^[^\wÇĞİÖŞÜçğıöşü]+/,"")
+            .trim();
+
+        if(
+          foodFavorites.includes(name) ||
+          foodFavorites.some(
+            item => title.innerText.includes(item)
+          )
+        ){
+
+          button.innerHTML = "♥";
+
+        }
+
+      });
+
+  }
+);
 
 </script>
 
-
 </body>
-
 </html>
