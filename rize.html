@@ -6,1927 +6,1325 @@
 
 <title>Rize Gezi Rehberi | Karadeniz'i Keşfet</title>
 
-<meta name="description" content="Rize gezi rehberi. Rize'de gezilecek yerler, ne yenir, mekanlar, hava durumu, yakınındaki ihtiyaç noktaları, fotoğraf noktaları ve rota önerileri.">
+<meta name="description" content="Rize gezi rehberi. Rize'de gezilecek yerler, ne yenir, mekanlar, hava durumu, fotoğraf noktaları ve rota önerileri.">
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
 <style>
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7f5;
-  color:#17352a;
-  line-height:1.5;
-  padding-bottom:80px;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7f6;
+    color:#18302a;
+    line-height:1.6;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
-}
-
-button{
-  font-family:inherit;
+    text-decoration:none;
+    color:inherit;
 }
 
 .container{
-  width:min(1150px,92%);
-  margin:auto;
+    width:min(1180px,92%);
+    margin:auto;
 }
 
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero{
-  min-height:570px;
-  position:relative;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.12),
-      rgba(0,0,0,.68)
-    ),
-    url("https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg");
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:flex-end;
-  color:white;
+    min-height:560px;
+    background:
+        linear-gradient(rgba(0,35,25,.42),rgba(0,35,25,.68)),
+        url("https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg")
+        center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    color:white;
 }
 
 .hero-content{
-  width:min(1150px,92%);
-  margin:auto;
-  padding:80px 0 65px;
+    padding:80px 0;
+    max-width:720px;
 }
 
 .badge{
-  display:inline-block;
-  background:rgba(255,255,255,.18);
-  backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.3);
-  padding:8px 15px;
-  border-radius:30px;
-  font-size:14px;
-  margin-bottom:15px;
+    display:inline-block;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.4);
+    padding:8px 16px;
+    border-radius:30px;
+    margin-bottom:18px;
+    backdrop-filter:blur(5px);
 }
 
 .hero h1{
-  font-size:clamp(42px,8vw,78px);
-  line-height:.95;
-  margin-bottom:18px;
+    font-size:clamp(45px,8vw,82px);
+    line-height:1;
+    margin-bottom:20px;
 }
 
 .hero p{
-  max-width:650px;
-  font-size:19px;
-  color:#f2f2f2;
+    font-size:20px;
+    max-width:650px;
+    margin-bottom:28px;
 }
 
 .hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:25px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 .hero-btn{
-  padding:13px 20px;
-  border-radius:30px;
-  background:white;
-  color:#17352a;
-  font-weight:bold;
+    padding:13px 20px;
+    border-radius:12px;
+    background:white;
+    color:#174b39;
+    font-weight:bold;
+    display:inline-block;
 }
 
 .hero-btn.dark{
-  background:#17352a;
-  color:white;
+    background:#174b39;
+    color:white;
 }
 
-/* =========================
-   STATS
-========================= */
-
+/* STATS */
 .stats{
-  background:white;
-  margin-top:-35px;
-  position:relative;
-  z-index:3;
-  border-radius:24px;
-  box-shadow:0 12px 35px rgba(0,0,0,.08);
-  padding:25px;
+    margin-top:-45px;
+    position:relative;
+    z-index:2;
 }
 
 .stats-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
 .stat{
-  text-align:center;
-  padding:15px;
-  border-right:1px solid #e5ebe7;
-}
-
-.stat:last-child{
-  border-right:none;
-}
-
-.stat-icon{
-  font-size:27px;
+    background:white;
+    padding:25px 15px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 .stat strong{
-  display:block;
-  font-size:25px;
-  margin-top:5px;
+    display:block;
+    font-size:30px;
+    color:#1b7353;
 }
 
 .stat span{
-  color:#718078;
-  font-size:13px;
+    color:#66736e;
 }
 
-/* =========================
-   GENERAL
-========================= */
-
+/* GENERAL */
 .section{
-  padding:65px 0;
+    padding:70px 0 20px;
 }
 
 .section-title{
-  margin-bottom:28px;
+    font-size:34px;
+    margin-bottom:10px;
 }
 
-.section-title small{
-  color:#3d8b68;
-  font-weight:bold;
-  text-transform:uppercase;
-  letter-spacing:1px;
+.section-subtitle{
+    color:#68756f;
+    margin-bottom:25px;
 }
 
-.section-title h2{
-  font-size:36px;
-  margin-top:5px;
-}
-
-.section-title p{
-  color:#6d7c74;
-  margin-top:8px;
-}
-
-/* =========================
-   CATEGORY
-========================= */
-
+/* CATEGORY */
 .category-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
 .category-card{
-  background:white;
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 7px 22px rgba(0,0,0,.05);
-  transition:.25s;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+    transition:.2s;
 }
 
 .category-card:hover{
-  transform:translateY(-5px);
+    transform:translateY(-4px);
 }
 
 .category-card .icon{
-  font-size:40px;
+    font-size:36px;
+    margin-bottom:10px;
 }
 
 .category-card h3{
-  margin-top:10px;
-  font-size:18px;
+    margin-bottom:5px;
 }
 
 .category-card p{
-  color:#78847f;
-  font-size:13px;
+    color:#68756f;
+    font-size:14px;
 }
 
-/* =========================
-   NEARBY
-========================= */
-
+/* NEARBY */
 .nearby-section{
-  background:
-    linear-gradient(
-      135deg,
-      #edf8f1,
-      #f9fcfa
-    );
+    background:#eaf5ef;
+    border-radius:28px;
+    padding:30px;
+    margin-top:45px;
 }
 
-.nearby-box{
-  background:white;
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 12px 35px rgba(0,0,0,.07);
+.nearby-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:25px;
 }
 
-.nearby-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  margin-bottom:22px;
+.nearby-header h2{
+    font-size:32px;
 }
 
-.nearby-head h3{
-  font-size:25px;
-}
-
-.nearby-head p{
-  color:#718078;
-  margin-top:5px;
-  font-size:14px;
-}
-
-.location-btn{
-  border:0;
-  background:#1f6b49;
-  color:white;
-  padding:13px 18px;
-  border-radius:25px;
-  font-weight:bold;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:.2s;
-}
-
-.location-btn:hover{
-  transform:translateY(-2px);
-}
-
-.location-status{
-  display:none;
-  background:#edf6f0;
-  color:#216043;
-  padding:12px 15px;
-  border-radius:15px;
-  margin-bottom:20px;
-  font-size:13px;
+.nearby-header p{
+    color:#60736a;
 }
 
 .nearby-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:13px;
 }
 
-.nearby-card{
-  border:1px solid #e3ebe6;
-  background:#fbfdfc;
-  border-radius:19px;
-  padding:18px 10px;
-  text-align:center;
-  cursor:pointer;
-  transition:.25s;
+.nearby-btn{
+    border:none;
+    background:white;
+    padding:18px 10px;
+    border-radius:16px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+    color:#17382d;
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+    transition:.2s;
 }
 
-.nearby-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 20px rgba(0,0,0,.07);
-  border-color:#b9d9c6;
+.nearby-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
 }
 
-.nearby-icon{
-  font-size:31px;
+.nearby-btn .near-icon{
+    display:block;
+    font-size:28px;
+    margin-bottom:6px;
 }
 
-.nearby-card h4{
-  font-size:14px;
-  margin-top:8px;
+.nearby-status{
+    margin-top:18px;
+    background:white;
+    border-radius:14px;
+    padding:13px 16px;
+    color:#4d6159;
+    display:none;
 }
 
-.nearby-card span{
-  display:block;
-  font-size:11px;
-  color:#7b8881;
-  margin-top:3px;
+.nearby-status.show{
+    display:block;
 }
 
-.nearby-note{
-  margin-top:18px;
-  color:#7a8780;
-  font-size:12px;
-  text-align:center;
-}
-
-/* =========================
-   WEATHER
-========================= */
-
-.weather-section{
-  background:#17352a;
-  color:white;
-}
-
-.weather-title small{
-  color:#9de0b8;
-}
-
-.weather-title p{
-  color:#c7d7ce;
-}
-
-.weather-main{
-  background:linear-gradient(135deg,#245d45,#17352a);
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 15px 35px rgba(0,0,0,.15);
-}
-
-.weather-loading{
-  text-align:center;
-  padding:35px 10px;
-  font-size:18px;
-}
-
-.weather-error{
-  text-align:center;
-  padding:25px;
-  background:rgba(255,255,255,.08);
-  border-radius:18px;
-}
-
-.weather-error button{
-  border:0;
-  background:white;
-  color:#17352a;
-  padding:10px 18px;
-  border-radius:20px;
-  margin-top:15px;
-  font-weight:bold;
-  cursor:pointer;
+/* WEATHER */
+.weather-box{
+    background:linear-gradient(135deg,#dff3eb,#f8fffc);
+    border-radius:25px;
+    padding:30px;
+    margin-top:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
 .weather-current{
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:25px;
-  align-items:center;
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:25px;
+    align-items:center;
 }
 
-.weather-big{
-  display:flex;
-  align-items:center;
-  gap:20px;
+.weather-main{
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
 .weather-icon{
-  font-size:72px;
+    font-size:65px;
 }
 
 .weather-temp{
-  font-size:64px;
-  font-weight:bold;
-  line-height:1;
-}
-
-.weather-desc{
-  font-size:19px;
-  margin-top:8px;
-  color:#d8eee1;
-}
-
-.weather-location{
-  color:#a9cbbb;
-  font-size:14px;
-  margin-top:8px;
+    font-size:55px;
+    font-weight:bold;
 }
 
 .weather-details{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
 .weather-detail{
-  background:rgba(255,255,255,.09);
-  border-radius:16px;
-  padding:16px;
+    background:white;
+    padding:13px;
+    border-radius:13px;
 }
 
-.weather-detail span{
-  display:block;
-  color:#a9cbbb;
-  font-size:13px;
-}
-
-.weather-detail strong{
-  display:block;
-  margin-top:4px;
-  font-size:18px;
+.weather-detail small{
+    display:block;
+    color:#718078;
 }
 
 .forecast{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-top:25px;
 }
 
 .forecast-day{
-  background:rgba(255,255,255,.08);
-  border-radius:17px;
-  padding:15px 10px;
-  text-align:center;
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
 }
 
-.forecast-day .day{
-  font-size:13px;
-  color:#b9d2c4;
-}
-
-.forecast-day .forecast-icon{
-  font-size:30px;
-  margin:8px 0;
+.forecast-icon{
+    font-size:30px;
+    margin:5px 0;
 }
 
 .forecast-temp{
-  font-weight:bold;
+    font-weight:bold;
 }
 
-.forecast-rain{
-  font-size:12px;
-  color:#a9cbbb;
-  margin-top:4px;
-}
-
-/* =========================
-   RANDOM
-========================= */
-
+/* RANDOM */
 .random-box{
-  background:linear-gradient(135deg,#dff4e7,#f7fff9);
-  border-radius:25px;
-  padding:30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
+    background:#183d31;
+    color:white;
+    border-radius:25px;
+    padding:30px;
+    margin-top:25px;
+    text-align:center;
 }
 
-.random-box h3{
-  font-size:25px;
+.random-place{
+    font-size:30px;
+    font-weight:bold;
+    margin:8px 0;
 }
 
-.random-box p{
-  color:#66756c;
-  margin-top:5px;
+.random-box button{
+    border:none;
+    background:white;
+    color:#173d30;
+    padding:12px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:12px;
 }
 
-.random-btn{
-  border:0;
-  background:#1f6b49;
-  color:white;
-  padding:15px 22px;
-  border-radius:30px;
-  font-weight:bold;
-  cursor:pointer;
-  white-space:nowrap;
-}
-
-.random-result{
-  margin-top:18px;
-  display:none;
-  background:white;
-  border-radius:18px;
-  padding:18px;
-}
-
-/* =========================
-   MAP
-========================= */
-
+/* MAP */
 .map-wrap{
-  background:white;
-  padding:12px;
-  border-radius:25px;
-  box-shadow:0 8px 25px rgba(0,0,0,.06);
+    background:white;
+    padding:10px;
+    border-radius:22px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
 }
 
 #map{
-  height:450px;
-  border-radius:18px;
+    height:480px;
+    border-radius:17px;
+    overflow:hidden;
 }
 
-/* =========================
-   ROUTES
-========================= */
-
+/* ROUTES */
 .route-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
 }
 
 .route-card{
-  background:white;
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 8px 25px rgba(0,0,0,.06);
-  transition:.25s;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
 }
 
-.route-card:hover{
-  transform:translateY(-5px);
+.route-card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    display:block;
 }
 
-.route-image{
-  height:210px;
-  width:100%;
-  object-fit:cover;
-  display:block;
-  background:#dfe9e3;
+.route-content{
+    padding:20px;
 }
 
-.route-body{
-  padding:20px;
+.route-content h3{
+    font-size:24px;
+    margin-bottom:8px;
 }
 
-.route-body h3{
-  font-size:21px;
+.route-content p{
+    color:#68756f;
+    margin-bottom:15px;
 }
 
-.route-body p{
-  color:#718078;
-  font-size:14px;
-  margin:7px 0 15px;
+.route-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.route-buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
+.route-link,
+.favorite-btn{
+    border:none;
+    padding:10px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.route-btn{
-  background:#edf6f0;
-  color:#216043;
-  padding:9px 13px;
-  border-radius:18px;
-  font-size:13px;
-  font-weight:bold;
-  border:0;
-  cursor:pointer;
-}
-
-/* =========================
-   FOOD
-========================= */
-
-.food-filter{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:25px;
-}
-
-.filter-btn{
-  border:0;
-  background:white;
-  color:#4e6258;
-  padding:9px 16px;
-  border-radius:20px;
-  cursor:pointer;
-}
-
-.filter-btn.active{
-  background:#1f6b49;
-  color:white;
-}
-
-.food-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.food-card{
-  background:white;
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 8px 25px rgba(0,0,0,.06);
-}
-
-.food-card.hidden{
-  display:none;
-}
-
-.food-image{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-  display:block;
-  background:#e5ebe7;
-}
-
-.food-body{
-  padding:19px;
-}
-
-.food-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.food-body h3{
-  font-size:20px;
+.route-link{
+    background:#1b7353;
+    color:white;
 }
 
 .favorite-btn{
-  border:0;
-  background:#f0f5f2;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:19px;
-  flex-shrink:0;
+    background:#edf4f1;
+    color:#245440;
 }
 
-.favorite-btn.active{
-  background:#ffe7e7;
+/* FOOD */
+.food-filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
 }
 
-.food-body p{
-  color:#748079;
-  font-size:14px;
-  margin-top:8px;
+.filter-btn{
+    border:none;
+    padding:10px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    background:#e5ece9;
+    color:#28463b;
+    font-weight:bold;
 }
 
-.food-tag{
-  display:inline-block;
-  margin-top:12px;
-  background:#edf6f0;
-  color:#216043;
-  padding:5px 10px;
-  border-radius:15px;
-  font-size:12px;
+.filter-btn.active{
+    background:#1b7353;
+    color:white;
 }
 
-/* =========================
-   RESTAURANTS
-========================= */
+.food-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
 
+.food-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.food-card.hidden{
+    display:none;
+}
+
+.food-card img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+}
+
+.food-content{
+    padding:18px;
+}
+
+.food-content h3{
+    font-size:22px;
+    margin-bottom:7px;
+}
+
+.food-content p{
+    color:#68756f;
+    margin-bottom:12px;
+}
+
+.food-type{
+    display:inline-block;
+    background:#e9f5ef;
+    color:#287050;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+/* RESTAURANTS */
 .restaurant-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
 .restaurant-card{
-  background:white;
-  padding:23px;
-  border-radius:22px;
-  box-shadow:0 8px 25px rgba(0,0,0,.06);
-}
-
-.restaurant-icon{
-  width:55px;
-  height:55px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#edf6f0;
-  border-radius:16px;
-  font-size:27px;
+    background:white;
+    padding:22px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
 }
 
 .restaurant-card h3{
-  margin-top:15px;
+    font-size:22px;
+    margin-bottom:8px;
 }
 
 .restaurant-card p{
-  color:#748079;
-  font-size:14px;
-  margin:7px 0 15px;
+    color:#68756f;
+    margin-bottom:15px;
 }
 
-.map-button{
-  display:inline-block;
-  background:#1f6b49;
-  color:white;
-  padding:10px 15px;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:bold;
+.restaurant-card a{
+    display:inline-block;
+    background:#1b7353;
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:bold;
 }
 
-/* =========================
-   PHOTO
-========================= */
-
+/* PHOTO */
 .photo-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
 .photo-card{
-  min-height:220px;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  background:#234d3b;
-  color:white;
-  display:flex;
-  align-items:flex-end;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    height:280px;
 }
 
-.photo-card:nth-child(1){
-  background:
-  linear-gradient(to top,rgba(0,0,0,.7),transparent),
-  url("https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg") center/cover;
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.photo-card:nth-child(2){
-  background:
-  linear-gradient(to top,rgba(0,0,0,.7),transparent),
-  url("https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg") center/cover;
+.photo-card span{
+    position:absolute;
+    left:15px;
+    bottom:15px;
+    color:white;
+    background:rgba(0,0,0,.55);
+    padding:7px 12px;
+    border-radius:10px;
 }
 
-.photo-card:nth-child(3){
-  background:
-  linear-gradient(to top,rgba(0,0,0,.7),transparent),
-  url("https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg") center/cover;
-}
-
-.photo-card div{
-  padding:20px;
-}
-
-.photo-card h3{
-  font-size:20px;
-}
-
-.photo-card p{
-  font-size:13px;
-  color:#e6e6e6;
-}
-
-/* =========================
-   INSTAGRAM
-========================= */
-
+/* INSTAGRAM */
 .instagram-box{
-  background:linear-gradient(135deg,#172d24,#244b39);
-  color:white;
-  border-radius:28px;
-  padding:35px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-
-.instagram-box h2{
-  font-size:30px;
-}
-
-.instagram-box p{
-  color:#c8d8cf;
-  margin-top:7px;
+    background:#fff;
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+    margin:50px 0 30px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
 .instagram-btn{
-  background:white;
-  color:#17352a;
-  padding:13px 20px;
-  border-radius:25px;
-  font-weight:bold;
-  white-space:nowrap;
+    display:inline-block;
+    margin-top:15px;
+    background:#183d31;
+    color:white;
+    padding:12px 20px;
+    border-radius:12px;
+    font-weight:bold;
 }
 
-/* =========================
-   FAVORITES
-========================= */
-
+/* FAVORITES */
 .favorites-box{
-  background:white;
-  border-radius:22px;
-  padding:25px;
-  box-shadow:0 8px 25px rgba(0,0,0,.05);
+    background:white;
+    border-radius:22px;
+    padding:25px;
+    margin-bottom:100px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
-.favorite-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:15px;
+#favoritesList{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
 }
 
 .favorite-item{
-  background:#edf6f0;
-  color:#216043;
-  padding:8px 13px;
-  border-radius:18px;
-  font-size:13px;
+    background:#edf5f1;
+    padding:9px 13px;
+    border-radius:10px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* FOOTER */
 footer{
-  background:#132b20;
-  color:#c9d8d0;
-  padding:35px 0;
-  margin-top:40px;
+    background:#16372d;
+    color:white;
+    text-align:center;
+    padding:35px 20px 100px;
 }
 
-.footer-content{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
+footer p{
+    opacity:.8;
 }
 
-footer strong{
-  color:white;
-}
-
-/* =========================
-   BOTTOM NAV
-========================= */
-
+/* BOTTOM NAV */
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:68px;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(15px);
-  border-top:1px solid #e3e9e5;
-  display:flex;
-  justify-content:center;
-  z-index:9999;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:white;
+    border-top:1px solid #dce5e1;
+    display:flex;
+    justify-content:center;
+    z-index:9999;
+    box-shadow:0 -5px 20px rgba(0,0,0,.08);
 }
 
-.bottom-nav-inner{
-  width:min(650px,100%);
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+.bottom-nav a{
+    padding:13px 25px;
+    color:#65736d;
+    font-size:13px;
+    text-align:center;
 }
 
-.nav-item{
-  text-align:center;
-  font-size:11px;
-  color:#708078;
+.bottom-nav a.active{
+    color:#1b7353;
+    font-weight:bold;
 }
 
-.nav-item span{
-  display:block;
-  font-size:22px;
-  margin-bottom:1px;
-}
-
-.nav-item.active{
-  color:#1f6b49;
-  font-weight:bold;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1100px){
-
-  .nearby-grid{
-    grid-template-columns:repeat(5,1fr);
-  }
-
-}
-
+/* MOBILE */
 @media(max-width:900px){
 
-  .stats-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .stat:nth-child(2){
-    border-right:none;
-  }
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .category-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .nearby-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 
-  .route-grid,
-  .food-grid,
-  .restaurant-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .weather-current{
+        grid-template-columns:1fr;
+    }
 
-  .weather-current{
-    grid-template-columns:1fr;
-  }
+    .forecast{
+        grid-template-columns:repeat(5,1fr);
+        overflow-x:auto;
+    }
 
-  .nearby-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
+    .route-grid{
+        grid-template-columns:1fr;
+    }
 
+    .food-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .restaurant-grid{
+        grid-template-columns:1fr;
+    }
+
+    .photo-grid{
+        grid-template-columns:1fr;
+    }
 }
 
 @media(max-width:650px){
 
-  body{
-    padding-bottom:70px;
-  }
+    .hero{
+        min-height:520px;
+    }
 
-  .hero{
-    min-height:520px;
-  }
+    .hero-content{
+        padding:60px 0;
+    }
 
-  .hero-content{
-    padding-bottom:45px;
-  }
+    .hero p{
+        font-size:17px;
+    }
 
-  .hero h1{
-    font-size:48px;
-  }
+    .stats{
+        margin-top:-30px;
+    }
 
-  .hero p{
-    font-size:16px;
-  }
+    .stats-grid{
+        gap:10px;
+    }
 
-  .stats{
-    margin-top:-25px;
-    padding:15px;
-  }
+    .stat{
+        padding:18px 10px;
+    }
 
-  .stats-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .stat strong{
+        font-size:24px;
+    }
 
-  .stat{
-    border-right:none;
-    padding:12px 5px;
-  }
+    .section{
+        padding-top:50px;
+    }
 
-  .section{
-    padding:45px 0;
-  }
+    .section-title{
+        font-size:28px;
+    }
 
-  .section-title h2{
-    font-size:29px;
-  }
+    .nearby-section{
+        padding:20px 15px;
+        border-radius:20px;
+    }
 
-  .category-grid{
-    gap:10px;
-  }
+    .nearby-header{
+        display:block;
+    }
 
-  .category-card{
-    padding:20px 10px;
-  }
+    .nearby-header h2{
+        font-size:27px;
+        margin-bottom:5px;
+    }
 
-  .nearby-box{
-    padding:20px;
-  }
+    .nearby-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .nearby-head{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    .nearby-btn{
+        padding:15px 7px;
+        font-size:13px;
+    }
 
-  .location-btn{
-    width:100%;
-  }
+    .near-icon{
+        font-size:25px !important;
+    }
 
-  .nearby-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
+    .weather-box{
+        padding:20px 15px;
+    }
 
-  .nearby-card{
-    padding:16px 8px;
-  }
+    .weather-temp{
+        font-size:43px;
+    }
 
-  .weather-main{
-    padding:20px;
-  }
+    .weather-details{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .weather-big{
-    gap:10px;
-  }
+    .forecast{
+        display:flex;
+        overflow-x:auto;
+    }
 
-  .weather-icon{
-    font-size:55px;
-  }
+    .forecast-day{
+        min-width:120px;
+    }
 
-  .weather-temp{
-    font-size:48px;
-  }
+    #map{
+        height:360px;
+    }
 
-  .weather-details{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .food-grid{
+        grid-template-columns:1fr;
+    }
 
-  .forecast{
-    grid-template-columns:repeat(5,120px);
-    overflow-x:auto;
-    padding-bottom:5px;
-  }
+    .photo-card{
+        height:230px;
+    }
 
-  .random-box{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .route-grid,
-  .food-grid,
-  .restaurant-grid,
-  .photo-grid{
-    grid-template-columns:1fr;
-  }
-
-  .route-image,
-  .food-image{
-    height:230px;
-  }
-
-  #map{
-    height:360px;
-  }
-
-  .instagram-box{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  .instagram-box h2{
-    font-size:25px;
-  }
-
+    .bottom-nav a{
+        padding:11px 9px;
+        font-size:11px;
+        flex:1;
+    }
 }
-
-/* =========================
-   MAP POPUP
-========================= */
-
-.leaflet-popup-content-wrapper{
-  border-radius:15px;
-}
-
-.leaflet-popup-content{
-  margin:14px;
-}
-
-.popup-title{
-  font-weight:bold;
-  font-size:16px;
-}
-
-.popup-link{
-  display:inline-block;
-  margin-top:7px;
-  color:#1f6b49;
-  font-weight:bold;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
+<header class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
 
-<header class="hero" id="anasayfa">
+            <div class="badge">🌿 Karadeniz Dijital Rehberi</div>
 
-  <div class="hero-content">
+            <h1>Rize</h1>
 
-    <div class="badge">
-      🌿 Karadeniz'i Keşfet
+            <p>
+                Yaylaları, şelaleleri, çayı, eşsiz doğası ve yöresel lezzetleriyle
+                Rize'yi keşfet.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#routes" class="hero-btn">🗺️ Rotaları Keşfet</a>
+                <a href="#food" class="hero-btn dark">🍴 Ne Yenir?</a>
+            </div>
+
+        </div>
     </div>
-
-    <h1>Rize</h1>
-
-    <p>
-      Yeşilin binbir tonu, çayın kokusu, sisli yaylalar,
-      şelaleler ve Karadeniz'in eşsiz lezzetleri.
-      Rize'yi keşfetmeye hazır mısın?
-    </p>
-
-    <div class="hero-buttons">
-
-      <a href="#rotalar" class="hero-btn">
-        🗺️ Rotaları Keşfet
-      </a>
-
-      <a href="#yemek" class="hero-btn dark">
-        🍴 Ne Yenir?
-      </a>
-
-    </div>
-
-  </div>
-
 </header>
 
 
-<!-- =========================
-     STATS
-========================= -->
+<!-- STATS -->
+<section class="stats">
+    <div class="container">
 
-<div class="container">
+        <div class="stats-grid">
 
-  <div class="stats">
+            <div class="stat">
+                <strong>50+</strong>
+                <span>Yayla</span>
+            </div>
 
-    <div class="stats-grid">
+            <div class="stat">
+                <strong>30+</strong>
+                <span>Şelale</span>
+            </div>
 
-      <div class="stat">
-        <div class="stat-icon">🏔️</div>
-        <strong>50+</strong>
-        <span>Yayla</span>
-      </div>
+            <div class="stat">
+                <strong>1</strong>
+                <span>Çay Kültürü</span>
+            </div>
 
-      <div class="stat">
-        <div class="stat-icon">💧</div>
-        <strong>30+</strong>
-        <span>Şelale</span>
-      </div>
-
-      <div class="stat">
-        <div class="stat-icon">🍃</div>
-        <strong>1</strong>
-        <span>Çay Kültürü</span>
-      </div>
-
-      <div class="stat">
-        <div class="stat-icon">🍴</div>
-        <strong>20+</strong>
-        <span>Yerel Lezzet</span>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     CATEGORY
-========================= -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="section-title">
-      <small>Rize Rehberi</small>
-      <h2>Bugün ne yapmak istersin?</h2>
-      <p>Rize'de aradığın her şeyi tek yerde keşfet.</p>
-    </div>
-
-    <div class="category-grid">
-
-      <a href="#rotalar" class="category-card">
-        <div class="icon">🏔️</div>
-        <h3>Gezilecek Yerler</h3>
-        <p>Yaylalar, şelaleler ve rotalar</p>
-      </a>
-
-      <a href="#yemek" class="category-card">
-        <div class="icon">🍴</div>
-        <h3>Ne Yenir?</h3>
-        <p>Rize'nin meşhur lezzetleri</p>
-      </a>
-
-      <a href="#mekanlar" class="category-card">
-        <div class="icon">☕</div>
-        <h3>Mekanlar</h3>
-        <p>Yemek ve kahve durakları</p>
-      </a>
-
-      <a href="#fotograf" class="category-card">
-        <div class="icon">📸</div>
-        <h3>Fotoğraf</h3>
-        <p>En güzel fotoğraf noktaları</p>
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     YAKINIMDA NE VAR
-========================= -->
-
-<section class="section nearby-section" id="yakinimda">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Akıllı Rize Rehberi</small>
-
-      <h2>📍 Yakınımda Ne Var?</h2>
-
-      <p>
-        Rize'de bulunduğun yerde ihtiyacın olan noktaları hızlıca bul.
-      </p>
-
-    </div>
-
-
-    <div class="nearby-box">
-
-      <div class="nearby-head">
-
-        <div>
-
-          <h3>📍 İhtiyacın olan yeri bul</h3>
-
-          <p>
-            Konumunu kullanarak Google Maps üzerinde yakınındaki
-            noktaları arayabilirsin.
-          </p>
+            <div class="stat">
+                <strong>20+</strong>
+                <span>Yerel Lezzet</span>
+            </div>
 
         </div>
 
-        <button
-          class="location-btn"
-          onclick="useMyLocation()"
-        >
-          📍 Konumumu Kullan
-        </button>
-
-      </div>
-
-
-      <div
-        class="location-status"
-        id="locationStatus"
-      ></div>
-
-
-      <div class="nearby-grid">
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('tuvalet')"
-        >
-
-          <div class="nearby-icon">
-            🚻
-          </div>
-
-          <h4>Tuvalet</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('hastane')"
-        >
-
-          <div class="nearby-icon">
-            🏥
-          </div>
-
-          <h4>Hastane</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('sağlık ocağı')"
-        >
-
-          <div class="nearby-icon">
-            🩺
-          </div>
-
-          <h4>Sağlık Ocağı</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('eczane')"
-        >
-
-          <div class="nearby-icon">
-            💊
-          </div>
-
-          <h4>Eczane</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('akaryakıt istasyonu')"
-        >
-
-          <div class="nearby-icon">
-            ⛽
-          </div>
-
-          <h4>Akaryakıt</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('market')"
-        >
-
-          <div class="nearby-icon">
-            🛒
-          </div>
-
-          <h4>Market</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('otopark')"
-        >
-
-          <div class="nearby-icon">
-            🅿️
-          </div>
-
-          <h4>Otopark</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('cami')"
-        >
-
-          <div class="nearby-icon">
-            🕌
-          </div>
-
-          <h4>Cami</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('kafe')"
-        >
-
-          <div class="nearby-icon">
-            ☕
-          </div>
-
-          <h4>Kafe</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-        <button
-          class="nearby-card"
-          onclick="findNearby('restoran')"
-        >
-
-          <div class="nearby-icon">
-            🍽️
-          </div>
-
-          <h4>Restoran</h4>
-
-          <span>Yakınımda bul</span>
-
-        </button>
-
-
-      </div>
-
-
-      <div class="nearby-note">
-        💡 Konum izni vermezsen Rize genelinde arama yapılır.
-      </div>
-
     </div>
-
-  </div>
-
 </section>
 
 
-<!-- =========================
-     WEATHER
-========================= -->
+<main class="container">
 
-<section class="section weather-section" id="hava">
-
-  <div class="container">
-
-    <div class="section-title weather-title">
-
-      <small>Canlı Hava Durumu</small>
-
-      <h2>🌦️ Rize'de Hava Nasıl?</h2>
-
-      <p>
-        Güncel hava durumu ve önümüzdeki 5 günün tahmini.
-      </p>
-
-    </div>
-
-
-    <div class="weather-main" id="weatherBox">
-
-      <div class="weather-loading">
-        🌤️ Rize hava durumu yükleniyor...
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     RANDOM RECOMMENDATION
-========================= -->
-
+<!-- CATEGORY -->
 <section class="section">
 
-  <div class="container">
+    <h2 class="section-title">Rize'yi Keşfet</h2>
+
+    <p class="section-subtitle">
+        Rize'de ihtiyacın olan şeylere hızlıca ulaş.
+    </p>
+
+    <div class="category-grid">
+
+        <a href="#routes" class="category-card">
+            <div class="icon">🏔️</div>
+            <h3>Gezilecek Yerler</h3>
+            <p>Yaylalar, şelaleler, vadiler ve tarihi yerler.</p>
+        </a>
+
+        <a href="#food" class="category-card">
+            <div class="icon">🍴</div>
+            <h3>Ne Yenir?</h3>
+            <p>Rize'nin meşhur yöresel lezzetleri.</p>
+        </a>
+
+        <a href="#restaurants" class="category-card">
+            <div class="icon">📍</div>
+            <h3>Mekanlar</h3>
+            <p>Yemek yiyebileceğin mekan önerileri.</p>
+        </a>
+
+        <a href="#photos" class="category-card">
+            <div class="icon">📸</div>
+            <h3>Fotoğraf</h3>
+            <p>Fotoğraf çekmek için güzel noktalar.</p>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- YAKINIMDA NE VAR -->
+<section class="nearby-section" id="nearby">
+
+    <div class="nearby-header">
+
+        <div>
+            <h2>📍 Yakınımda Ne Var?</h2>
+
+            <p>
+                Konumunu kullanarak bulunduğun yere en yakın
+                ihtiyaç noktalarını Google Maps'te bul.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="nearby-grid">
+
+        <button class="nearby-btn" onclick="findNearby('Tuvalet')">
+            <span class="near-icon">🚻</span>
+            Tuvalet
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Hastane')">
+            <span class="near-icon">🏥</span>
+            Hastane
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Sağlık Ocağı')">
+            <span class="near-icon">🩺</span>
+            Sağlık Ocağı
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Eczane')">
+            <span class="near-icon">💊</span>
+            Eczane
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Akaryakıt İstasyonu')">
+            <span class="near-icon">⛽</span>
+            Akaryakıt
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Market')">
+            <span class="near-icon">🛒</span>
+            Market
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Otopark')">
+            <span class="near-icon">🅿️</span>
+            Otopark
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Cami')">
+            <span class="near-icon">🕌</span>
+            Cami
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Kafe')">
+            <span class="near-icon">☕</span>
+            Kafe
+        </button>
+
+        <button class="nearby-btn" onclick="findNearby('Restoran')">
+            <span class="near-icon">🍽️</span>
+            Restoran
+        </button>
+
+    </div>
+
+    <div id="nearbyStatus" class="nearby-status"></div>
+
+</section>
+
+
+<!-- WEATHER -->
+<section class="section" id="weather">
+
+    <h2 class="section-title">🌦️ Rize Hava Durumu</h2>
+
+    <p class="section-subtitle">
+        Güncel hava durumu ve 5 günlük tahmin.
+    </p>
+
+    <div class="weather-box">
+
+        <div class="weather-current">
+
+            <div class="weather-main">
+
+                <div class="weather-icon" id="weatherIcon">🌤️</div>
+
+                <div>
+                    <div class="weather-temp" id="weatherTemp">--°</div>
+                    <div id="weatherDescription">Yükleniyor...</div>
+                    <small id="weatherUpdate"></small>
+                </div>
+
+            </div>
+
+
+            <div class="weather-details">
+
+                <div class="weather-detail">
+                    <small>🌡️ Hissedilen</small>
+                    <strong id="feelsLike">--°</strong>
+                </div>
+
+                <div class="weather-detail">
+                    <small>💧 Nem</small>
+                    <strong id="humidity">--%</strong>
+                </div>
+
+                <div class="weather-detail">
+                    <small>💨 Rüzgar</small>
+                    <strong id="wind">-- km/s</strong>
+                </div>
+
+                <div class="weather-detail">
+                    <small>🌧️ Yağış</small>
+                    <strong id="rain">-- mm</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="forecast" id="forecast"></div>
+
+    </div>
+
+</section>
+
+
+<!-- RANDOM -->
+<section class="section">
 
     <div class="random-box">
 
-      <div>
+        <div>🎲 Kararsız mısın?</div>
 
-        <h3>🎲 Bugün Nereye Gidelim?</h3>
+        <div class="random-place" id="randomPlace">
+            Ayder Yaylası
+        </div>
 
-        <p>
-          Kararsız kaldıysan Rize senin için bir yer seçsin.
-        </p>
+        <div id="randomDescription">
+            Bugün rotan burası olabilir.
+        </div>
 
-      </div>
+        <button onclick="randomPlace()">
+            🎲 Bana Bir Yer Seç
+        </button>
 
-      <button
-        class="random-btn"
-        onclick="randomPlace()"
-      >
-        Bana Bir Yer Seç
-      </button>
+        <div>
+            <a id="randomMapLink"
+               href="https://www.google.com/maps/search/?api=1&query=Ayder+Yaylası"
+               target="_blank"
+               style="display:inline-block;margin-top:12px;text-decoration:underline;">
+                Google Maps'te Aç →
+            </a>
+        </div>
 
     </div>
-
-    <div
-      class="random-result"
-      id="randomResult"
-    ></div>
-
-  </div>
 
 </section>
 
 
-<!-- =========================
-     MAP
-========================= -->
+<!-- MAP -->
+<section class="section" id="explore">
 
-<section class="section">
+    <h2 class="section-title">🗺️ Rize Haritası</h2>
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Harita</small>
-
-      <h2>📍 Rize'yi Haritada Keşfet</h2>
-
-      <p>
-        Önemli gezi noktalarını harita üzerinde görüntüle.
-      </p>
-
-    </div>
+    <p class="section-subtitle">
+        Rize'nin önemli noktalarını harita üzerinden keşfet.
+    </p>
 
     <div class="map-wrap">
-
-      <div id="map"></div>
-
+        <div id="map"></div>
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- =========================
-     ROUTES
-========================= -->
+<!-- ROUTES -->
+<section class="section" id="routes">
 
-<section class="section" id="rotalar">
+    <h2 class="section-title">🏔️ Gezilecek Yerler</h2>
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Keşfet</small>
-
-      <h2>🏔️ Rize Rotaları</h2>
-
-      <p>
-        Rize'de mutlaka görülmesi gereken yerler.
-      </p>
-
-    </div>
+    <p class="section-subtitle">
+        Rize'de mutlaka görmen gereken rotalar.
+    </p>
 
 
     <div class="route-grid">
 
 
-      <!-- AYDER -->
+        <article class="route-card">
 
-      <article class="route-card">
+            <img
+                src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
+                alt="Ayder Yaylası">
 
-        <img
-          class="route-image"
-          src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
-          alt="Ayder Yaylası"
-          loading="lazy"
-        >
+            <div class="route-content">
 
-        <div class="route-body">
+                <h3>Ayder Yaylası</h3>
 
-          <h3>Ayder Yaylası</h3>
+                <p>
+                    Rize'nin en bilinen yaylalarından biri.
+                    Doğası, yayla havası ve çevresindeki rotalarıyla
+                    dört mevsim ziyaret edilebilir.
+                </p>
 
-          <p>
-            Rize'nin en bilinen yaylalarından biri.
-            Doğa, sis ve yayla atmosferi.
-          </p>
+                <div class="route-actions">
 
-          <div class="route-buttons">
+                    <a class="route-link"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Ayder+Yaylası"
+                       target="_blank">
+                        📍 Yol Tarifi
+                    </a>
 
-            <a
-              class="route-btn"
-              target="_blank"
-              href="https://www.google.com/maps/dir/?api=1&destination=Ayder+Yaylası+Rize"
-            >
-              📍 Yol Tarifi
-            </a>
+                    <button class="favorite-btn"
+                            onclick="saveFavorite('Ayder Yaylası')">
+                        ❤️ Favori
+                    </button>
 
-            <button
-              class="route-btn"
-              onclick="saveFavorite('Ayder Yaylası')"
-            >
-              ❤️ Favori
-            </button>
+                </div>
 
-          </div>
+            </div>
 
-        </div>
+        </article>
 
-      </article>
 
+        <article class="route-card">
 
-      <!-- POKUT -->
+            <img
+                src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
+                alt="Pokut Yaylası">
 
-      <article class="route-card">
+            <div class="route-content">
 
-        <img
-          class="route-image"
-          src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
-          alt="Pokut Yaylası"
-          loading="lazy"
-        >
+                <h3>Pokut Yaylası</h3>
 
-        <div class="route-body">
+                <p>
+                    Bulutların üzerinde manzarasıyla Karadeniz'in
+                    en etkileyici yaylalarından biri.
+                </p>
 
-          <h3>Pokut Yaylası</h3>
+                <div class="route-actions">
 
-          <p>
-            Bulutların üzerinde hissedeceğin,
-            eşsiz manzaralara sahip yayla.
-          </p>
+                    <a class="route-link"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Pokut+Yaylası"
+                       target="_blank">
+                        📍 Yol Tarifi
+                    </a>
 
-          <div class="route-buttons">
+                    <button class="favorite-btn"
+                            onclick="saveFavorite('Pokut Yaylası')">
+                        ❤️ Favori
+                    </button>
 
-            <a
-              class="route-btn"
-              target="_blank"
-              href="https://www.google.com/maps/dir/?api=1&destination=Pokut+Yaylası+Rize"
-            >
-              📍 Yol Tarifi
-            </a>
+                </div>
 
-            <button
-              class="route-btn"
-              onclick="saveFavorite('Pokut Yaylası')"
-            >
-              ❤️ Favori
-            </button>
+            </div>
 
-          </div>
+        </article>
 
-        </div>
 
-      </article>
+        <article class="route-card">
 
+            <img
+                src="https://kulturportali.gov.tr/repoKulturPortali/small/23092014/cc721344-7102-4be4-bd83-92d391910621.jpg?format=jpg&quality=80"
+                alt="Zilkale">
 
-      <!-- ZILKALE -->
+            <div class="route-content">
 
-      <article class="route-card">
+                <h3>Zilkale</h3>
 
-        <img
-          class="route-image"
-          src="https://kulturportali.gov.tr/repoKulturPortali/small/23092014/cc721344-7102-4be4-bd83-92d391910621.jpg?format=jpg&quality=80"
-          alt="Zilkale"
-          loading="lazy"
-        >
+                <p>
+                    Fırtına Vadisi'ne hakim konumuyla Rize'nin
+                    en dikkat çekici tarihi yapılarından.
+                </p>
 
-        <div class="route-body">
+                <div class="route-actions">
 
-          <h3>Zilkale</h3>
+                    <a class="route-link"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Zilkale+Rize"
+                       target="_blank">
+                        📍 Yol Tarifi
+                    </a>
 
-          <p>
-            Fırtına Vadisi'nin etkileyici tarihi yapılarından biri.
-          </p>
+                    <button class="favorite-btn"
+                            onclick="saveFavorite('Zilkale')">
+                        ❤️ Favori
+                    </button>
 
-          <div class="route-buttons">
+                </div>
 
-            <a
-              class="route-btn"
-              target="_blank"
-              href="https://www.google.com/maps/dir/?api=1&destination=Zilkale+Rize"
-            >
-              📍 Yol Tarifi
-            </a>
+            </div>
 
-            <button
-              class="route-btn"
-              onclick="saveFavorite('Zilkale')"
-            >
-              ❤️ Favori
-            </button>
+        </article>
 
-          </div>
 
-        </div>
+        <article class="route-card">
 
-      </article>
+            <img
+                src="https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg"
+                alt="Palovit Şelalesi">
 
+            <div class="route-content">
 
-      <!-- PALOVIT -->
+                <h3>Palovit Şelalesi</h3>
 
-      <article class="route-card">
+                <p>
+                    Gürül gürül akan suyu ve yemyeşil doğasıyla
+                    Rize'nin görülmesi gereken şelalelerinden.
+                </p>
 
-        <img
-          class="route-image"
-          src="https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg"
-          alt="Palovit Şelalesi"
-          loading="lazy"
-        >
+                <div class="route-actions">
 
-        <div class="route-body">
+                    <a class="route-link"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Palovit+Şelalesi"
+                       target="_blank">
+                        📍 Yol Tarifi
+                    </a>
 
-          <h3>Palovit Şelalesi</h3>
+                    <button class="favorite-btn"
+                            onclick="saveFavorite('Palovit Şelalesi')">
+                        ❤️ Favori
+                    </button>
 
-          <p>
-            Kaçkarlar'ın güçlü ve etkileyici şelalelerinden.
-          </p>
+                </div>
 
-          <div class="route-buttons">
+            </div>
 
-            <a
-              class="route-btn"
-              target="_blank"
-              href="https://www.google.com/maps/dir/?api=1&destination=Palovit+Şelalesi+Rize"
-            >
-              📍 Yol Tarifi
-            </a>
+        </article>
 
-            <button
-              class="route-btn"
-              onclick="saveFavorite('Palovit Şelalesi')"
-            >
-              ❤️ Favori
-            </button>
 
-          </div>
+        <article class="route-card">
 
-        </div>
+            <img
+                src="https://cdn2.goturkiye.com/rize-routes-gi-1-liste-anzer-plateau.jpg"
+                alt="Anzer Yaylası">
 
-      </article>
+            <div class="route-content">
 
+                <h3>Anzer Yaylası</h3>
 
-      <!-- ANZER -->
+                <p>
+                    Yüksek rakımı, doğal güzellikleri ve meşhur
+                    Anzer balı ile tanınan yayla.
+                </p>
 
-      <article class="route-card">
+                <div class="route-actions">
 
-        <img
-          class="route-image"
-          src="https://cdn2.goturkiye.com/rize-routes-gi-1-liste-anzer-plateau.jpg"
-          alt="Anzer Yaylası"
-          loading="lazy"
-        >
+                    <a class="route-link"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Anzer+Yaylası"
+                       target="_blank">
+                        📍 Yol Tarifi
+                    </a>
 
-        <div class="route-body">
+                    <button class="favorite-btn"
+                            onclick="saveFavorite('Anzer Yaylası')">
+                        ❤️ Favori
+                    </button>
 
-          <h3>Anzer Yaylası</h3>
+                </div>
 
-          <p>
-            Doğası, yüksek rakımı ve meşhur Anzer balıyla
-            tanınan yayla.
-          </p>
+            </div>
 
-          <div class="route-buttons">
+        </article>
 
-            <a
-              class="route-btn"
-              target="_blank"
-              href="https://www.google.com/maps/dir/?api=1&destination=Anzer+Yaylası+Rize"
-            >
-              📍 Yol Tarifi
-            </a>
 
-            <button
-              class="route-btn"
-              onclick="saveFavorite('Anzer Yaylası')"
-            >
-              ❤️ Favori
-            </button>
+        <article class="route-card">
 
-          </div>
+            <img
+                src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80"
+                alt="Fırtına Vadisi">
 
-        </div>
+            <div class="route-content">
 
-      </article>
+                <h3>Fırtına Vadisi</h3>
 
+                <p>
+                    Dereleri, köprüleri, yemyeşil doğası ve
+                    macera aktiviteleriyle Rize'nin önemli rotalarından.
+                </p>
 
-      <!-- FIRTINA -->
+                <div class="route-actions">
 
-      <article class="route-card">
+                    <a class="route-link"
+                       href="https://www.google.com/maps/dir/?api=1&destination=Fırtına+Vadisi"
+                       target="_blank">
+                        📍 Yol Tarifi
+                    </a>
 
-        <img
-          class="route-image"
-          src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80"
-          alt="Fırtına Vadisi"
-          loading="lazy"
-        >
+                    <button class="favorite-btn"
+                            onclick="saveFavorite('Fırtına Vadisi')">
+                        ❤️ Favori
+                    </button>
 
-        <div class="route-body">
+                </div>
 
-          <h3>Fırtına Vadisi</h3>
+            </div>
 
-          <p>
-            Dere, köprüler, ormanlar ve Karadeniz'in
-            eşsiz doğası.
-          </p>
-
-          <div class="route-buttons">
-
-            <a
-              class="route-btn"
-              target="_blank"
-              href="https://www.google.com/maps/dir/?api=1&destination=Fırtına+Vadisi+Rize"
-            >
-              📍 Yol Tarifi
-            </a>
-
-            <button
-              class="route-btn"
-              onclick="saveFavorite('Fırtına Vadisi')"
-            >
-              ❤️ Favori
-            </button>
-
-          </div>
-
-        </div>
-
-      </article>
-
+        </article>
 
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- =========================
-     FOOD
-========================= -->
+<!-- FOOD -->
+<section class="section" id="food">
 
-<section class="section" id="yemek">
+    <h2 class="section-title">🍴 Rize'de Ne Yenir?</h2>
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Karadeniz Mutfağı</small>
-
-      <h2>🍴 Rize'de Ne Yenir?</h2>
-
-      <p>
-        Rize'ye geldiğinde mutlaka denemen gereken
-        yöresel lezzetler.
-      </p>
-
-    </div>
+    <p class="section-subtitle">
+        Rize mutfağından mutlaka denemen gereken lezzetler.
+    </p>
 
 
-    <div class="food-filter">
+    <div class="food-filters">
 
-      <button
-        class="filter-btn active"
-        onclick="filterFood('all',this)"
-      >
-        Hepsi
-      </button>
+        <button class="filter-btn active"
+                onclick="filterFood('Hepsi',this)">
+            Hepsi
+        </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterFood('ana',this)"
-      >
-        Ana Yemek
-      </button>
+        <button class="filter-btn"
+                onclick="filterFood('Ana Yemek',this)">
+            Ana Yemek
+        </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterFood('hamur',this)"
-      >
-        Hamur İşi
-      </button>
+        <button class="filter-btn"
+                onclick="filterFood('Hamur İşi',this)">
+            Hamur İşi
+        </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterFood('tatli',this)"
-      >
-        Tatlı
-      </button>
+        <button class="filter-btn"
+                onclick="filterFood('Tatlı',this)">
+            Tatlı
+        </button>
 
-      <button
-        class="filter-btn"
-        onclick="filterFood('icecek',this)"
-      >
-        İçecek
-      </button>
+        <button class="filter-btn"
+                onclick="filterFood('İçecek',this)">
+            İçecek
+        </button>
 
     </div>
 
@@ -1934,1709 +1332,1020 @@ footer strong{
     <div class="food-grid">
 
 
-      <!-- MUHLAMA -->
+        <article class="food-card" data-category="Ana Yemek">
 
-      <article
-        class="food-card"
-        data-category="ana"
-      >
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Muhlama.jpg?width=1200"
+                alt="Muhlama">
 
-        <img
-          class="food-image"
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Muhlama.jpg?width=1200"
-          alt="Muhlama"
-          loading="lazy"
-        >
+            <div class="food-content">
 
-        <div class="food-body">
+                <span class="food-type">Ana Yemek</span>
 
-          <div class="food-top">
+                <h3>Muhlama</h3>
 
-            <h3>Muhlama</h3>
+                <p>
+                    Mısır unu, tereyağı ve peynirle hazırlanan
+                    Karadeniz'in vazgeçilmez lezzeti.
+                </p>
 
-            <button
-              class="favorite-btn"
-              onclick="toggleFoodFavorite(this,'Muhlama')"
-            >
-              ♡
-            </button>
+                <button class="favorite-btn"
+                        onclick="toggleFoodFavorite(this,'Muhlama')">
+                    ❤️ Favori
+                </button>
 
-          </div>
+            </div>
 
-          <p>
-            Mısır unu, tereyağı ve peynirle hazırlanan
-            Karadeniz sofralarının sevilen lezzeti.
-          </p>
+        </article>
 
-          <span class="food-tag">
-            Ana Yemek
-          </span>
 
-        </div>
+        <article class="food-card" data-category="Ana Yemek">
 
-      </article>
+            <img
+                src="https://cdn.img.anlatilaninotesi.com.tr/img/07e7/0c/0f/1078493117_0:0:865:486_1920x0_80_0_0_012f3fab8cb3e3a48358a119da2cd397.jpg"
+                alt="Karalahana">
 
+            <div class="food-content">
 
-      <!-- KARALAHANA -->
+                <span class="food-type">Ana Yemek</span>
 
-      <article
-        class="food-card"
-        data-category="ana"
-      >
+                <h3>Karalahana</h3>
 
-        <img
-          class="food-image"
-          src="https://cdn.img.anlatilaninotesi.com.tr/img/07e7/0c/0f/1078493117_0:0:865:486_1920x0_80_0_0_012f3fab8cb3e3a48358a119da2cd397.jpg"
-          alt="Karalahana yemeği"
-          loading="lazy"
-        >
+                <p>
+                    Karadeniz mutfağının en bilinen yöresel
+                    yemeklerinden.
+                </p>
 
-        <div class="food-body">
+                <button class="favorite-btn"
+                        onclick="toggleFoodFavorite(this,'Karalahana')">
+                    ❤️ Favori
+                </button>
 
-          <div class="food-top">
+            </div>
 
-            <h3>Karalahana</h3>
+        </article>
 
-            <button
-              class="favorite-btn"
-              onclick="toggleFoodFavorite(this,'Karalahana')"
-            >
-              ♡
-            </button>
 
-          </div>
+        <article class="food-card" data-category="Ana Yemek">
 
-          <p>
-            Karadeniz mutfağının en karakteristik
-            sebze yemeklerinden biri.
-          </p>
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Kuru%20fasulye%2C%20Turkish%20style.jpg?width=1200"
+                alt="Çayeli Kuru Fasulyesi">
 
-          <span class="food-tag">
-            Ana Yemek
-          </span>
+            <div class="food-content">
 
-        </div>
+                <span class="food-type">Ana Yemek</span>
 
-      </article>
+                <h3>Çayeli Kuru Fasulyesi</h3>
 
+                <p>
+                    Rize'nin Çayeli ilçesiyle özdeşleşen
+                    kuru fasulye.
+                </p>
 
-      <!-- KURU FASULYE -->
+                <button class="favorite-btn"
+                        onclick="toggleFoodFavorite(this,'Çayeli Kuru Fasulyesi')">
+                    ❤️ Favori
+                </button>
 
-      <article
-        class="food-card"
-        data-category="ana"
-      >
+            </div>
 
-        <img
-          class="food-image"
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Kuru%20fasulye%2C%20Turkish%20style.jpg?width=1200"
-          alt="Kuru fasulye"
-          loading="lazy"
-        >
+        </article>
 
-        <div class="food-body">
 
-          <div class="food-top">
+        <article class="food-card" data-category="Hamur İşi">
 
-            <h3>Çayeli Kuru Fasulyesi</h3>
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20pide%20from%20the%20Black%20Sea%20Region.jpg?width=1200"
+                alt="Derepazarı Pidesi">
 
-            <button
-              class="favorite-btn"
-              onclick="toggleFoodFavorite(this,'Çayeli Kuru Fasulyesi')"
-            >
-              ♡
-            </button>
+            <div class="food-content">
 
-          </div>
+                <span class="food-type">Hamur İşi</span>
 
-          <p>
-            Çayeli ile özdeşleşen, pilav ve turşuyla
-            birlikte sevilen klasik lezzet.
-          </p>
+                <h3>Derepazarı Pidesi</h3>
 
-          <span class="food-tag">
-            Ana Yemek
-          </span>
+                <p>
+                    İncecik hamuru ve yöresel hazırlanışıyla
+                    Rize'nin sevilen pide çeşitlerinden.
+                </p>
 
-        </div>
+                <button class="favorite-btn"
+                        onclick="toggleFoodFavorite(this,'Derepazarı Pidesi')">
+                    ❤️ Favori
+                </button>
 
-      </article>
+            </div>
 
+        </article>
 
-      <!-- PIDE -->
 
-      <article
-        class="food-card"
-        data-category="hamur"
-      >
+        <article class="food-card" data-category="Tatlı">
 
-        <img
-          class="food-image"
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20pide%20from%20the%20Black%20Sea%20Region.jpg?width=1200"
-          alt="Karadeniz pidesi"
-          loading="lazy"
-        >
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20dessert%20from%20the%20Black%20Sea%20Region.jpg?width=1200"
+                alt="Laz Böreği">
 
-        <div class="food-body">
+            <div class="food-content">
 
-          <div class="food-top">
+                <span class="food-type">Tatlı</span>
 
-            <h3>Derepazarı Pidesi</h3>
+                <h3>Laz Böreği</h3>
 
-            <button
-              class="favorite-btn"
-              onclick="toggleFoodFavorite(this,'Derepazarı Pidesi')"
-            >
-              ♡
-            </button>
+                <p>
+                    Karadeniz mutfağının kendine özgü,
+                    şerbetli ve muhallebili tatlısı.
+                </p>
 
-          </div>
+                <button class="favorite-btn"
+                        onclick="toggleFoodFavorite(this,'Laz Böreği')">
+                    ❤️ Favori
+                </button>
 
-          <p>
-            İnce hamuru ve farklı iç harçlarıyla
-            Rize'nin sevilen pide çeşitlerinden.
-          </p>
+            </div>
 
-          <span class="food-tag">
-            Hamur İşi
-          </span>
+        </article>
 
-        </div>
 
-      </article>
+        <article class="food-card" data-category="İçecek">
 
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20tea%20glass.jpg?width=1200"
+                alt="Rize Çayı">
 
-      <!-- LAZ BOREGI -->
+            <div class="food-content">
 
-      <article
-        class="food-card"
-        data-category="tatli"
-      >
+                <span class="food-type">İçecek</span>
 
-        <img
-          class="food-image"
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20dessert%20from%20the%20Black%20Sea%20Region.jpg?width=1200"
-          alt="Laz böreği"
-          loading="lazy"
-        >
+                <h3>Rize Çayı</h3>
 
-        <div class="food-body">
+                <p>
+                    Rize denince akla gelen en önemli
+                    yerel ürünlerden biri.
+                </p>
 
-          <div class="food-top">
+                <button class="favorite-btn"
+                        onclick="toggleFoodFavorite(this,'Rize Çayı')">
+                    ❤️ Favori
+                </button>
 
-            <h3>Laz Böreği</h3>
+            </div>
 
-            <button
-              class="favorite-btn"
-              onclick="toggleFoodFavorite(this,'Laz Böreği')"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <p>
-            Kat kat hamur ve muhallebiyle hazırlanan
-            Karadeniz'in meşhur tatlılarından.
-          </p>
-
-          <span class="food-tag">
-            Tatlı
-          </span>
-
-        </div>
-
-      </article>
-
-
-      <!-- TEA -->
-
-      <article
-        class="food-card"
-        data-category="icecek"
-      >
-
-        <img
-          class="food-image"
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20tea%20glass.jpg?width=1200"
-          alt="Rize çayı"
-          loading="lazy"
-        >
-
-        <div class="food-body">
-
-          <div class="food-top">
-
-            <h3>Rize Çayı</h3>
-
-            <button
-              class="favorite-btn"
-              onclick="toggleFoodFavorite(this,'Rize Çayı')"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <p>
-            Rize gezisinin olmazsa olmazı.
-            İnce belli bardakta Karadeniz çayı.
-          </p>
-
-          <span class="food-tag">
-            İçecek
-          </span>
-
-        </div>
-
-      </article>
-
+        </article>
 
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- =========================
-     RESTAURANTS
-========================= -->
+<!-- RESTAURANTS -->
+<section class="section" id="restaurants">
 
-<section class="section" id="mekanlar">
+    <h2 class="section-title">🍽️ Rize'de Mekanlar</h2>
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Yeme İçme</small>
-
-      <h2>☕ Mekanlar</h2>
-
-      <p>
-        Rize'de yemek veya kahve molası için
-        keşfedebileceğin mekanlar.
-      </p>
-
-    </div>
+    <p class="section-subtitle">
+        Yemek için değerlendirebileceğin mekanlar.
+    </p>
 
 
     <div class="restaurant-grid">
 
 
-      <article class="restaurant-card">
+        <article class="restaurant-card">
 
-        <div class="restaurant-icon">
-          🍽️
-        </div>
+            <h3>Dağmaran</h3>
 
-        <h3>Dağmaran</h3>
+            <p>
+                Rize manzarası eşliğinde yemek ve kahvaltı
+                için tercih edilen mekanlardan.
+            </p>
 
-        <p>
-          Rize manzarası eşliğinde yemek ve
-          kahvaltı için tercih edilen mekanlardan.
-        </p>
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize"
+                target="_blank">
+                📍 Google Maps
+            </a>
 
-        <a
-          class="map-button"
-          target="_blank"
-          href="https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize"
-        >
-          📍 Haritada Aç
-        </a>
-
-      </article>
+        </article>
 
 
-      <article class="restaurant-card">
+        <article class="restaurant-card">
 
-        <div class="restaurant-icon">
-          🍴
-        </div>
+            <h3>Nalia Karadeniz Mutfağı</h3>
 
-        <h3>Nalia Karadeniz Mutfağı</h3>
+            <p>
+                Karadeniz yöresel yemeklerini deneyebileceğin
+                mekanlardan.
+            </p>
 
-        <p>
-          Karadeniz yöresel yemeklerini
-          deneyebileceğin mekanlardan biri.
-        </p>
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize"
+                target="_blank">
+                📍 Google Maps
+            </a>
 
-        <a
-          class="map-button"
-          target="_blank"
-          href="https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize"
-        >
-          📍 Haritada Aç
-        </a>
-
-      </article>
+        </article>
 
 
-      <article class="restaurant-card">
+        <article class="restaurant-card">
 
-        <div class="restaurant-icon">
-          ☕
-        </div>
+            <h3>ÇAYLA</h3>
 
-        <h3>ÇAYLA</h3>
+            <p>
+                Rize'de çay ve yöresel lezzetler için
+                değerlendirebileceğin mekanlardan.
+            </p>
 
-        <p>
-          Çay ve dinlenme molası için
-          değerlendirebileceğin seçeneklerden.
-        </p>
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=ÇAYLA+Rize"
+                target="_blank">
+                📍 Google Maps
+            </a>
 
-        <a
-          class="map-button"
-          target="_blank"
-          href="https://www.google.com/maps/search/?api=1&query=ÇAYLA+Rize"
-        >
-          📍 Haritada Aç
-        </a>
-
-      </article>
-
+        </article>
 
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- =========================
-     PHOTO
-========================= -->
+<!-- PHOTOS -->
+<section class="section" id="photos">
 
-<section class="section" id="fotograf">
+    <h2 class="section-title">📸 Fotoğraf Noktaları</h2>
 
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Fotoğraf</small>
-
-      <h2>📸 Fotoğraf Noktaları</h2>
-
-      <p>
-        Rize'de kameranı çıkarmak isteyeceğin yerler.
-      </p>
-
-    </div>
+    <p class="section-subtitle">
+        Rize'de fotoğraf çekmek için güzel rotalar.
+    </p>
 
 
     <div class="photo-grid">
 
-      <div class="photo-card">
+        <div class="photo-card">
 
-        <div>
+            <img
+                src="https://cdn2.goturkiye.com/rize-routes-gi-liste-ayder-plateau-2.jpg"
+                alt="Ayder">
 
-          <h3>Ayder</h3>
-
-          <p>
-            Yayla atmosferi ve sisli manzaralar.
-          </p>
+            <span>📍 Ayder Yaylası</span>
 
         </div>
 
-      </div>
 
+        <div class="photo-card">
 
-      <div class="photo-card">
+            <img
+                src="https://cdn2.goturkiye.com/rize-listen-gi-1-liste-pokut-plateau-2.jpg"
+                alt="Pokut">
 
-        <div>
-
-          <h3>Pokut</h3>
-
-          <p>
-            Bulut denizi ve dağ manzaraları.
-          </p>
+            <span>📍 Pokut Yaylası</span>
 
         </div>
 
-      </div>
 
+        <div class="photo-card">
 
-      <div class="photo-card">
+            <img
+                src="https://cdn2.goturkiye.com/rize-listen-gi-3-liste-palovit-waterfall.jpg"
+                alt="Palovit">
 
-        <div>
-
-          <h3>Palovit</h3>
-
-          <p>
-            Orman içinde güçlü bir şelale.
-          </p>
+            <span>📍 Palovit Şelalesi</span>
 
         </div>
-
-      </div>
 
     </div>
-
-  </div>
 
 </section>
 
 
-<!-- =========================
-     FAVORITES
-========================= -->
+<!-- INSTAGRAM -->
+<div class="instagram-box">
 
-<section class="section">
+    <h2>📸 Daha Fazla Karadeniz İçeriği</h2>
 
-  <div class="container">
+    <p>
+        Rize ve Karadeniz'den doğa ve seyahat videolarını
+        Instagram'da takip edebilirsin.
+    </p>
 
-    <div class="section-title">
-
-      <small>Senin Rehberin</small>
-
-      <h2>❤️ Favorilerin</h2>
-
-      <p>
-        Beğendiğin yerleri kaydet.
-      </p>
-
-    </div>
-
-
-    <div class="favorites-box">
-
-      <strong>
-        Kaydettiğin yerler
-      </strong>
-
-      <div
-        class="favorite-list"
-        id="favoriteList"
-      >
-
-        <span style="color:#7b8881;font-size:14px;">
-          Henüz favori eklemedin.
-        </span>
-
-      </div>
-
-
-      <div
-        class="favorite-list"
-        id="foodFavoriteList"
-      ></div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     INSTAGRAM
-========================= -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="instagram-box">
-
-      <div>
-
-        <h2>📸 Karadeniz'i Instagram'da Keşfet</h2>
-
-        <p>
-          Rize ve Karadeniz'den doğa, seyahat ve keşif videoları.
-        </p>
-
-      </div>
-
-      <a
+    <a
         class="instagram-btn"
-        target="_blank"
         href="https://www.instagram.com/malikkosephotographer/"
-      >
-        Instagram'a Git
-      </a>
+        target="_blank">
+        Instagram'da Takip Et
+    </a>
 
+</div>
+
+
+<!-- FAVORITES -->
+<div class="favorites-box">
+
+    <h2>❤️ Favorilerim</h2>
+
+    <p>
+        Beğendiğin yerleri ve yemekleri burada saklayabilirsin.
+    </p>
+
+    <div id="favoritesList">
+        Henüz favori eklemedin.
     </div>
 
-  </div>
+</div>
 
-</section>
+</main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
+<!-- FOOTER -->
 <footer>
 
-  <div class="container">
+    <h3>🌿 Karadeniz'i Keşfet</h3>
 
-    <div class="footer-content">
-
-      <div>
-        <strong>Karadeniz'i Keşfet 🌿</strong>
-        <p>
-          Rize dijital gezi rehberi
-        </p>
-      </div>
-
-      <div>
-        Rize • Trabzon • Karadeniz
-      </div>
-
-    </div>
-
-  </div>
+    <p>
+        Rize Dijital Gezi Rehberi
+    </p>
 
 </footer>
 
 
-<!-- =========================
-     BOTTOM NAV
-========================= -->
-
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
 
-  <div class="bottom-nav-inner">
-
-    <a
-      href="#anasayfa"
-      class="nav-item active"
-    >
-      <span>⌂</span>
-      Ana Sayfa
+    <a href="#home" class="active">
+        🏠<br> Ana Sayfa
     </a>
 
-    <a
-      href="#rotalar"
-      class="nav-item"
-    >
-      <span>🏔️</span>
-      Gez
+    <a href="#routes">
+        🏔️<br> Gez
     </a>
 
-    <a
-      href="#yemek"
-      class="nav-item"
-    >
-      <span>🍴</span>
-      Ye
+    <a href="#food">
+        🍴<br> Ye
     </a>
 
-    <a
-      href="#hava"
-      class="nav-item"
-    >
-      <span>🌦️</span>
-      Hava
+    <a href="#weather">
+        🌦️<br> Hava
     </a>
 
-    <a
-      href="#mekanlar"
-      class="nav-item"
-    >
-      <span>☕</span>
-      Mekan
+    <a href="#restaurants">
+        🍽️<br> Mekan
     </a>
-
-  </div>
 
 </nav>
 
 
-<!-- =========================
-     LEAFLET
-========================= -->
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 
 <script>
 
-/* =====================================================
-   YAKINIMDA NE VAR?
-===================================================== */
-
-let userLatitude = null;
-let userLongitude = null;
-
-
-/*
-  Kullanıcının konumunu alır.
-*/
-
-function useMyLocation(){
-
-  const status =
-    document.getElementById("locationStatus");
-
-  status.style.display = "block";
-
-  status.innerHTML =
-    "📍 Konumun alınıyor...";
-
-
-  if(!navigator.geolocation){
-
-    status.innerHTML =
-      "⚠️ Tarayıcın konum özelliğini desteklemiyor. Rize genelinde arama yapılacak.";
-
-    userLatitude = null;
-    userLongitude = null;
-
-    return;
-
-  }
-
-
-  navigator.geolocation.getCurrentPosition(
-
-    function(position){
-
-      userLatitude =
-        position.coords.latitude;
-
-      userLongitude =
-        position.coords.longitude;
-
-
-      status.innerHTML =
-        "✅ Konumun alındı. Artık seçeneklerden istediğine dokunabilirsin.";
-
-    },
-
-    function(error){
-
-      console.warn(
-        "Konum alınamadı:",
-        error
-      );
-
-
-      userLatitude = null;
-      userLongitude = null;
-
-
-      status.innerHTML =
-        "ℹ️ Konum izni verilmedi. Aramalar Rize genelinde yapılacak.";
-
-    },
-
-    {
-      enableHighAccuracy:true,
-      timeout:10000,
-      maximumAge:300000
-    }
-
-  );
-
-}
-
-
-/*
-  Yakındaki kategoriyi Google Maps'te açar.
-
-  Konum alınmışsa:
-  Kullanıcının koordinatlarıyla arama yapılır.
-
-  Konum alınamamışsa:
-  Rize genelinde arama yapılır.
-*/
+/* =========================================================
+   YAKINIMDA NE VAR
+========================================================= */
 
 function findNearby(category){
 
-  let mapsUrl = "";
+    const status = document.getElementById("nearbyStatus");
 
+    status.classList.add("show");
 
-  if(
-    userLatitude !== null &&
-    userLongitude !== null
-  ){
+    status.innerHTML =
+        "📍 Konumun alınıyor... Lütfen tarayıcının konum iznini onayla.";
 
-    const query =
-      encodeURIComponent(category);
+    if(!navigator.geolocation){
 
+        status.innerHTML =
+            "❌ Bu tarayıcı konum özelliğini desteklemiyor.";
 
-    mapsUrl =
-      "https://www.google.com/maps/search/?api=1" +
-      "&query=" +
-      query +
-      "&center=" +
-      userLatitude +
-      "," +
-      userLongitude;
+        return;
+    }
 
-  }
-  else{
+    navigator.geolocation.getCurrentPosition(
 
-    const query =
-      encodeURIComponent(
-        category + " Rize"
-      );
+        function(position){
 
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
 
-    mapsUrl =
-      "https://www.google.com/maps/search/?api=1" +
-      "&query=" +
-      query;
+            const query =
+                category + " near " + lat + "," + lng;
 
-  }
+            const mapsUrl =
+                "https://www.google.com/maps/search/?api=1&query="
+                + encodeURIComponent(query);
 
+            status.innerHTML =
+                "📍 Konumun bulundu. "
+                + category
+                + " için Google Maps açılıyor...";
 
-  window.open(
-    mapsUrl,
-    "_blank"
-  );
+            window.open(mapsUrl,"_blank");
+
+        },
+
+        function(error){
+
+            if(error.code === 1){
+
+                status.innerHTML =
+                    "⚠️ Konum izni verilmedi. " +
+                    "Tarayıcının adres çubuğundaki konum simgesinden " +
+                    "bu siteye konum izni verebilirsin.";
+
+            }else{
+
+                status.innerHTML =
+                    "❌ Konum alınamadı. Lütfen tekrar dene.";
+
+            }
+
+        },
+
+        {
+            enableHighAccuracy:true,
+            timeout:10000,
+            maximumAge:0
+        }
+
+    );
 
 }
 
 
-/* =====================================================
-   HAVA DURUMU
-===================================================== */
-
-const weatherBox =
-  document.getElementById("weatherBox");
-
+/* =========================================================
+   WEATHER
+========================================================= */
 
 function weatherInfo(code){
 
-  const weather = {
+    const data = {
 
-    0:  ["☀️","Açık hava"],
-    1:  ["🌤️","Çoğunlukla açık"],
-    2:  ["⛅","Parçalı bulutlu"],
-    3:  ["☁️","Kapalı"],
-    45: ["🌫️","Sisli"],
-    48: ["🌫️","Yoğun sisli"],
-    51: ["🌦️","Hafif çiseleme"],
-    53: ["🌦️","Çiseleme"],
-    55: ["🌧️","Yoğun çiseleme"],
-    56: ["🌧️","Hafif donan çiseleme"],
-    57: ["🌧️","Donan çiseleme"],
-    61: ["🌧️","Hafif yağmur"],
-    63: ["🌧️","Yağmurlu"],
-    65: ["🌧️","Kuvvetli yağmur"],
-    66: ["🌧️","Hafif donan yağmur"],
-    67: ["🌧️","Donan yağmur"],
-    71: ["🌨️","Hafif kar"],
-    73: ["🌨️","Kar yağışı"],
-    75: ["❄️","Yoğun kar"],
-    77: ["❄️","Kar taneleri"],
-    80: ["🌦️","Hafif sağanak"],
-    81: ["🌧️","Sağanak"],
-    82: ["⛈️","Kuvvetli sağanak"],
-    85: ["🌨️","Kar sağanağı"],
-    86: ["❄️","Yoğun kar sağanağı"],
-    95: ["⛈️","Gök gürültülü fırtına"],
-    96: ["⛈️","Dolu ihtimalli fırtına"],
-    99: ["⛈️","Kuvvetli fırtına"]
+        0:["☀️","Açık"],
 
-  };
+        1:["🌤️","Çoğunlukla açık"],
+        2:["⛅","Parçalı bulutlu"],
+        3:["☁️","Kapalı"],
 
-  return weather[code] || ["🌦️","Değişken hava"];
+        45:["🌫️","Sisli"],
+        48:["🌫️","Kırağılı sis"],
 
+        51:["🌦️","Hafif çisenti"],
+        53:["🌦️","Çisenti"],
+        55:["🌧️","Yoğun çisenti"],
+
+        61:["🌧️","Hafif yağmur"],
+        63:["🌧️","Yağmur"],
+        65:["🌧️","Kuvvetli yağmur"],
+
+        71:["🌨️","Hafif kar"],
+        73:["🌨️","Kar"],
+        75:["❄️","Yoğun kar"],
+
+        80:["🌦️","Sağanak yağış"],
+        81:["🌧️","Kuvvetli sağanak"],
+        82:["⛈️","Çok kuvvetli sağanak"],
+
+        95:["⛈️","Gök gürültülü fırtına"],
+        96:["⛈️","Dolu ihtimalli fırtına"],
+        99:["⛈️","Kuvvetli dolulu fırtına"]
+
+    };
+
+    return data[code] || ["🌤️","Değişken hava"];
 }
 
 
 function dayName(dateString,index){
 
-  if(index === 0){
-    return "Bugün";
-  }
+    if(index === 0) return "Bugün";
 
-  if(index === 1){
-    return "Yarın";
-  }
+    const date = new Date(dateString);
 
-  const date =
-    new Date(
-      dateString + "T12:00:00"
-    );
+    const days = [
+        "Pazar",
+        "Pazartesi",
+        "Salı",
+        "Çarşamba",
+        "Perşembe",
+        "Cuma",
+        "Cumartesi"
+    ];
 
-  return date.toLocaleDateString(
-    "tr-TR",
-    {weekday:"short"}
-  );
-
+    return days[date.getDay()];
 }
 
 
 function formatDateTime(dateString){
 
-  if(!dateString){
-    return "";
-  }
+    const date = new Date(dateString);
 
-  const date =
-    new Date(dateString);
-
-  if(isNaN(date.getTime())){
-    return "";
-  }
-
-  return date.toLocaleString(
-    "tr-TR",
-    {
-      day:"2-digit",
-      month:"2-digit",
-      hour:"2-digit",
-      minute:"2-digit"
-    }
-  );
+    return date.toLocaleString("tr-TR",{
+        day:"2-digit",
+        month:"2-digit",
+        hour:"2-digit",
+        minute:"2-digit"
+    });
 
 }
 
 
 async function loadWeather(){
 
-  weatherBox.innerHTML = `
-    <div class="weather-loading">
-      🌤️ Rize hava durumu yükleniyor...
-    </div>
-  `;
+    try{
 
+        const url =
+            "https://api.open-meteo.com/v1/forecast" +
+            "?latitude=41.0201" +
+            "&longitude=40.5234" +
+            "&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m" +
+            "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
+            "&timezone=Europe%2FIstanbul" +
+            "&forecast_days=5" +
+            "&temperature_unit=celsius" +
+            "&wind_speed_unit=kmh" +
+            "&precipitation_unit=mm";
 
-  try{
+        const response = await fetch(url);
 
-    const url =
-      new URL(
-        "https://api.open-meteo.com/v1/forecast"
-      );
-
-
-    url.searchParams.set(
-      "latitude",
-      "41.0201"
-    );
-
-
-    url.searchParams.set(
-      "longitude",
-      "40.5234"
-    );
-
-
-    url.searchParams.set(
-      "current",
-      "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m"
-    );
-
-
-    url.searchParams.set(
-      "daily",
-      "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
-    );
-
-
-    url.searchParams.set(
-      "timezone",
-      "Europe/Istanbul"
-    );
-
-
-    url.searchParams.set(
-      "forecast_days",
-      "5"
-    );
-
-
-    url.searchParams.set(
-      "temperature_unit",
-      "celsius"
-    );
-
-
-    url.searchParams.set(
-      "wind_speed_unit",
-      "kmh"
-    );
-
-
-    url.searchParams.set(
-      "precipitation_unit",
-      "mm"
-    );
-
-
-    const response =
-      await fetch(
-        url.toString(),
-        {
-          method:"GET",
-          cache:"no-store"
+        if(!response.ok){
+            throw new Error("Hava durumu alınamadı");
         }
-      );
+
+        const data = await response.json();
+
+        const current = data.current;
+
+        const info = weatherInfo(current.weather_code);
+
+        document.getElementById("weatherIcon").textContent = info[0];
+
+        document.getElementById("weatherTemp").textContent =
+            Math.round(current.temperature_2m) + "°";
+
+        document.getElementById("weatherDescription").textContent =
+            info[1];
+
+        document.getElementById("weatherUpdate").textContent =
+            "Son güncelleme: " + formatDateTime(current.time);
+
+        document.getElementById("feelsLike").textContent =
+            Math.round(current.apparent_temperature) + "°";
+
+        document.getElementById("humidity").textContent =
+            current.relative_humidity_2m + "%";
+
+        document.getElementById("wind").textContent =
+            Math.round(current.wind_speed_10m) + " km/s";
+
+        document.getElementById("rain").textContent =
+            current.precipitation + " mm";
 
 
-    if(!response.ok){
+        const forecast =
+            document.getElementById("forecast");
 
-      throw new Error(
-        "Hava servisine ulaşılamadı."
-      );
-
-    }
+        forecast.innerHTML = "";
 
 
-    const data =
-      await response.json();
+        data.daily.time.forEach(function(date,index){
 
+            const info =
+                weatherInfo(data.daily.weather_code[index]);
 
-    if(
-      !data ||
-      !data.current ||
-      !data.daily
-    ){
+            const card =
+                document.createElement("div");
 
-      throw new Error(
-        "Hava durumu verisi alınamadı."
-      );
+            card.className = "forecast-day";
 
-    }
+            card.innerHTML = `
 
+                <strong>${dayName(date,index)}</strong>
 
-    const current =
-      data.current;
+                <div class="forecast-icon">
+                    ${info[0]}
+                </div>
 
-    const daily =
-      data.daily;
+                <div>
+                    ${Math.round(data.daily.temperature_2m_max[index])}°
+                    /
+                    ${Math.round(data.daily.temperature_2m_min[index])}°
+                </div>
 
+                <small>
+                    🌧️ ${data.daily.precipitation_probability_max[index] ?? 0}%
+                </small>
 
-    const currentWeather =
-      weatherInfo(
-        Number(current.weather_code)
-      );
+            `;
 
+            forecast.appendChild(card);
 
-    let forecastHTML = "";
+        });
 
+    }catch(error){
 
-    for(
-      let i = 0;
-      i < daily.time.length;
-      i++
-    ){
+        console.error(error);
 
-      const info =
-        weatherInfo(
-          Number(daily.weather_code[i])
-        );
+        document.getElementById("weatherDescription").textContent =
+            "Hava durumu yüklenemedi";
 
-
-      const rain =
-        daily.precipitation_probability_max &&
-        daily.precipitation_probability_max[i] !== null
-          ? daily.precipitation_probability_max[i]
-          : 0;
-
-
-      forecastHTML += `
-
-        <div class="forecast-day">
-
-          <div class="day">
-            ${dayName(daily.time[i],i)}
-          </div>
-
-          <div class="forecast-icon">
-            ${info[0]}
-          </div>
-
-          <div class="forecast-temp">
-            ${Math.round(daily.temperature_2m_max[i])}°
-            /
-            ${Math.round(daily.temperature_2m_min[i])}°
-          </div>
-
-          <div class="forecast-rain">
-            💧 ${Math.round(rain)}%
-          </div>
-
-        </div>
-
-      `;
+        setTimeout(loadWeather,5000);
 
     }
-
-
-    weatherBox.innerHTML = `
-
-      <div class="weather-current">
-
-        <div>
-
-          <div class="weather-big">
-
-            <div class="weather-icon">
-              ${currentWeather[0]}
-            </div>
-
-            <div>
-
-              <div class="weather-temp">
-                ${Math.round(current.temperature_2m)}°
-              </div>
-
-              <div class="weather-desc">
-                ${currentWeather[1]}
-              </div>
-
-              <div class="weather-location">
-                📍 Rize Merkez • Güncelleme:
-                ${formatDateTime(current.time)}
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="weather-details">
-
-          <div class="weather-detail">
-
-            <span>🤔 Hissedilen</span>
-
-            <strong>
-              ${Math.round(current.apparent_temperature)}°C
-            </strong>
-
-          </div>
-
-
-          <div class="weather-detail">
-
-            <span>💧 Nem</span>
-
-            <strong>
-              ${Math.round(current.relative_humidity_2m)}%
-            </strong>
-
-          </div>
-
-
-          <div class="weather-detail">
-
-            <span>💨 Rüzgar</span>
-
-            <strong>
-              ${Math.round(current.wind_speed_10m)} km/sa
-            </strong>
-
-          </div>
-
-
-          <div class="weather-detail">
-
-            <span>🌧️ Yağış</span>
-
-            <strong>
-              ${Number(current.precipitation || 0).toFixed(1)} mm
-            </strong>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="forecast">
-
-        ${forecastHTML}
-
-      </div>
-
-    `;
-
-  }
-  catch(error){
-
-    console.error(
-      "Hava durumu hatası:",
-      error
-    );
-
-
-    weatherBox.innerHTML = `
-
-      <div class="weather-error">
-
-        <div style="font-size:42px;">
-          🌦️
-        </div>
-
-        <h3>
-          Hava durumu şu anda yüklenemedi
-        </h3>
-
-        <p style="color:#c7d7ce;margin-top:6px;">
-          İnternet bağlantısını kontrol edip tekrar deneyebilirsin.
-        </p>
-
-        <button
-          onclick="loadWeather()"
-        >
-          🔄 Tekrar Dene
-        </button>
-
-      </div>
-
-    `;
-
-  }
 
 }
-
 
 loadWeather();
 
 
-/* =====================================================
-   HARİTA
-===================================================== */
+/* =========================================================
+   MAP
+========================================================= */
 
 const map =
-  L.map("map").setView(
-    [41.0201,40.5234],
-    9
-  );
+    L.map("map").setView(
+        [41.0201,40.5234],
+        9
+    );
 
 
 L.tileLayer(
-  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  {
-    attribution:
-      "&copy; OpenStreetMap contributors",
-    maxZoom:19
-  }
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+        attribution:"&copy; OpenStreetMap contributors",
+        maxZoom:19
+    }
 ).addTo(map);
 
 
 const locations = [
 
-  {
-    name:"Rize Merkez",
-    lat:41.0201,
-    lng:40.5234
-  },
+    {
+        name:"Rize Merkez",
+        lat:41.0201,
+        lng:40.5234
+    },
 
-  {
-    name:"Ayder Yaylası",
-    lat:40.9524,
-    lng:41.0911
-  },
+    {
+        name:"Ayder Yaylası",
+        lat:40.9524,
+        lng:41.0911
+    },
 
-  {
-    name:"Pokut Yaylası",
-    lat:40.997,
-    lng:41.184
-  },
+    {
+        name:"Pokut Yaylası",
+        lat:40.997,
+        lng:41.184
+    },
 
-  {
-    name:"Zilkale",
-    lat:40.9529,
-    lng:40.995
-  },
+    {
+        name:"Zilkale",
+        lat:40.9529,
+        lng:40.995
+    },
 
-  {
-    name:"Palovit Şelalesi",
-    lat:40.962,
-    lng:40.994
-  },
+    {
+        name:"Palovit Şelalesi",
+        lat:40.962,
+        lng:40.994
+    },
 
-  {
-    name:"Anzer Yaylası",
-    lat:40.613,
-    lng:40.649
-  },
+    {
+        name:"Anzer Yaylası",
+        lat:40.613,
+        lng:40.649
+    },
 
-  {
-    name:"Fırtına Vadisi",
-    lat:40.946,
-    lng:41.056
-  }
+    {
+        name:"Fırtına Vadisi",
+        lat:40.946,
+        lng:41.056
+    }
 
 ];
 
 
-locations.forEach(
-  place => {
+locations.forEach(function(place){
 
     const marker =
-      L.marker(
-        [place.lat,place.lng]
-      ).addTo(map);
+        L.marker([
+            place.lat,
+            place.lng
+        ]).addTo(map);
 
+    const mapsUrl =
+        "https://www.google.com/maps/dir/?api=1&destination="
+        + encodeURIComponent(
+            place.lat + "," + place.lng
+        );
 
     marker.bindPopup(`
 
-      <div>
+        <strong>${place.name}</strong>
 
-        <div class="popup-title">
-          ${place.name}
-        </div>
+        <br><br>
 
         <a
-          class="popup-link"
-          target="_blank"
-          href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name + " Rize")}"
+            href="${mapsUrl}"
+            target="_blank"
+            style="
+                display:inline-block;
+                background:#1b7353;
+                color:white;
+                padding:7px 10px;
+                border-radius:7px;
+                text-decoration:none;
+            "
         >
-          📍 Yol Tarifi Al →
+            📍 Yol Tarifi
         </a>
-
-      </div>
 
     `);
 
-  }
-);
+});
 
 
-/* =====================================================
-   RASTGELE YER
-===================================================== */
+/* =========================================================
+   RANDOM PLACE
+========================================================= */
 
 const randomPlaces = [
 
-  {
-    name:"Ayder Yaylası",
-    description:
-      "Yayla havası almak ve doğayla iç içe olmak için güzel bir seçenek.",
-    link:
-      "https://www.google.com/maps/dir/?api=1&destination=Ayder+Yaylası+Rize"
-  },
+    {
+        name:"Ayder Yaylası",
+        description:"Yayla havasını solumak için güzel bir rota.",
+        map:"Ayder+Yaylası"
+    },
 
-  {
-    name:"Pokut Yaylası",
-    description:
-      "Bulutların üzerinde eşsiz Karadeniz manzarası görmek isteyenlere.",
-    link:
-      "https://www.google.com/maps/dir/?api=1&destination=Pokut+Yaylası+Rize"
-  },
+    {
+        name:"Pokut Yaylası",
+        description:"Bulutların üzerinde eşsiz Karadeniz manzarası.",
+        map:"Pokut+Yaylası"
+    },
 
-  {
-    name:"Zilkale",
-    description:
-      "Tarih ve doğayı aynı rotada görmek isteyenlere.",
-    link:
-      "https://www.google.com/maps/dir/?api=1&destination=Zilkale+Rize"
-  },
+    {
+        name:"Zilkale",
+        description:"Fırtına Vadisi'nin tarihi sembollerinden.",
+        map:"Zilkale+Rize"
+    },
 
-  {
-    name:"Palovit Şelalesi",
-    description:
-      "Ormanların arasında güçlü bir şelale görmek isteyenlere.",
-    link:
-      "https://www.google.com/maps/dir/?api=1&destination=Palovit+Şelalesi+Rize"
-  },
+    {
+        name:"Palovit Şelalesi",
+        description:"Doğanın içinde güçlü bir şelale deneyimi.",
+        map:"Palovit+Şelalesi"
+    },
 
-  {
-    name:"Anzer Yaylası",
-    description:
-      "Yüksek yayla havası ve sakinlik isteyenlere.",
-    link:
-      "https://www.google.com/maps/dir/?api=1&destination=Anzer+Yaylası+Rize"
-  },
+    {
+        name:"Anzer Yaylası",
+        description:"Yüksek yayla atmosferini deneyimle.",
+        map:"Anzer+Yaylası"
+    },
 
-  {
-    name:"Fırtına Vadisi",
-    description:
-      "Dere, orman ve Karadeniz atmosferini bir arada yaşamak isteyenlere.",
-    link:
-      "https://www.google.com/maps/dir/?api=1&destination=Fırtına+Vadisi+Rize"
-  }
+    {
+        name:"Fırtına Vadisi",
+        description:"Dere, köprüler ve yemyeşil Karadeniz doğası.",
+        map:"Fırtına+Vadisi"
+    }
 
 ];
 
 
 function randomPlace(){
 
-  const result =
-    document.getElementById(
-      "randomResult"
-    );
+    const place =
+        randomPlaces[
+            Math.floor(
+                Math.random() *
+                randomPlaces.length
+            )
+        ];
 
+    document.getElementById("randomPlace").textContent =
+        place.name;
 
-  const place =
-    randomPlaces[
-      Math.floor(
-        Math.random() *
-        randomPlaces.length
-      )
-    ];
+    document.getElementById("randomDescription").textContent =
+        place.description;
 
-
-  result.innerHTML = `
-
-    <strong>
-      🎯 ${place.name}
-    </strong>
-
-    <p style="color:#6d7c74;margin-top:5px;">
-      ${place.description}
-    </p>
-
-    <a
-      href="${place.link}"
-      target="_blank"
-      style="
-        display:inline-block;
-        margin-top:10px;
-        background:#1f6b49;
-        color:white;
-        padding:9px 15px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:bold;
-      "
-    >
-      📍 Yol Tarifini Aç
-    </a>
-
-  `;
-
-
-  result.style.display =
-    "block";
+    document.getElementById("randomMapLink").href =
+        "https://www.google.com/maps/search/?api=1&query="
+        + place.map;
 
 }
 
 
-/* =====================================================
-   FAVORİLER
-===================================================== */
+/* =========================================================
+   FAVORITES
+========================================================= */
 
 let favorites =
-  JSON.parse(
-    localStorage.getItem(
-      "rizeFavorites"
-    ) || "[]"
-  );
+    JSON.parse(
+        localStorage.getItem("rizeFavorites") || "[]"
+    );
 
 
 let foodFavorites =
-  JSON.parse(
-    localStorage.getItem(
-      "rizeFoodFavorites"
-    ) || "[]"
-  );
+    JSON.parse(
+        localStorage.getItem("rizeFoodFavorites") || "[]"
+    );
 
 
 function saveFavorite(name){
 
-  if(
-    favorites.includes(name)
-  ){
+    if(!favorites.includes(name)){
 
-    favorites =
-      favorites.filter(
-        item => item !== name
-      );
+        favorites.push(name);
 
-  }
-  else{
+    }else{
 
-    favorites.push(name);
+        favorites =
+            favorites.filter(
+                item => item !== name
+            );
 
-  }
+    }
 
+    localStorage.setItem(
+        "rizeFavorites",
+        JSON.stringify(favorites)
+    );
 
-  localStorage.setItem(
-    "rizeFavorites",
-    JSON.stringify(favorites)
-  );
-
-
-  renderFavorites();
+    renderFavorites();
 
 }
 
 
-function toggleFoodFavorite(
-  button,
-  name
-){
+function toggleFoodFavorite(button,name){
 
-  if(
-    foodFavorites.includes(name)
-  ){
+    if(!foodFavorites.includes(name)){
 
-    foodFavorites =
-      foodFavorites.filter(
-        item => item !== name
-      );
+        foodFavorites.push(name);
 
-    button.classList.remove(
-      "active"
+        button.textContent = "❤️ Favoride";
+
+    }else{
+
+        foodFavorites =
+            foodFavorites.filter(
+                item => item !== name
+            );
+
+        button.textContent = "❤️ Favori";
+
+    }
+
+    localStorage.setItem(
+        "rizeFoodFavorites",
+        JSON.stringify(foodFavorites)
     );
 
-    button.innerHTML =
-      "♡";
-
-  }
-  else{
-
-    foodFavorites.push(name);
-
-    button.classList.add(
-      "active"
-    );
-
-    button.innerHTML =
-      "♥";
-
-  }
-
-
-  localStorage.setItem(
-    "rizeFoodFavorites",
-    JSON.stringify(foodFavorites)
-  );
-
-
-  renderFavorites();
+    renderFavorites();
 
 }
 
 
 function renderFavorites(){
 
-  const list =
-    document.getElementById(
-      "favoriteList"
-    );
+    const list =
+        document.getElementById("favoritesList");
 
+    const allFavorites =
+        [...favorites,...foodFavorites];
 
-  const foodList =
-    document.getElementById(
-      "foodFavoriteList"
-    );
+    if(allFavorites.length === 0){
 
+        list.innerHTML =
+            "Henüz favori eklemedin.";
 
-  if(
-    favorites.length === 0
-  ){
+        return;
 
-    list.innerHTML = `
-
-      <span
-        style="
-          color:#7b8881;
-          font-size:14px;
-        "
-      >
-        Henüz favori eklemedin.
-      </span>
-
-    `;
-
-  }
-  else{
+    }
 
     list.innerHTML =
-      favorites
+        allFavorites
         .map(
-          item => `
-
-            <span class="favorite-item">
-              ❤️ ${item}
-            </span>
-
-          `
+            item =>
+            `<div class="favorite-item">❤️ ${item}</div>`
         )
         .join("");
-
-  }
-
-
-  foodList.innerHTML =
-    foodFavorites
-      .map(
-        item => `
-
-          <span class="favorite-item">
-            🍴 ${item}
-          </span>
-
-        `
-      )
-      .join("");
 
 }
 
 
 function loadFavoriteButtons(){
 
-  document
-    .querySelectorAll(
-      ".food-card"
-    )
-    .forEach(card => {
+    document
+        .querySelectorAll(".food-card .favorite-btn")
+        .forEach(function(button){
 
-      const button =
-        card.querySelector(
-          ".favorite-btn"
-        );
+            const onclickText =
+                button.getAttribute("onclick");
 
+            const match =
+                onclickText &&
+                onclickText.match(
+                    /toggleFoodFavorite\(this,'(.+?)'\)/
+                );
 
-      if(!button){
-        return;
-      }
+            if(
+                match &&
+                foodFavorites.includes(match[1])
+            ){
 
+                button.textContent =
+                    "❤️ Favoride";
 
-      const title =
-        card.querySelector(
-          "h3"
-        ).innerText;
+            }
 
-
-      if(
-        foodFavorites.includes(title)
-      ){
-
-        button.classList.add(
-          "active"
-        );
-
-        button.innerHTML =
-          "♥";
-
-      }
-
-    });
+        });
 
 }
 
 
 renderFavorites();
-
 loadFavoriteButtons();
 
 
-/* =====================================================
-   YEMEK FİLTRELERİ
-===================================================== */
+/* =========================================================
+   FOOD FILTER
+========================================================= */
 
-function filterFood(
-  category,
-  button
-){
+function filterFood(category,button){
 
-  document
-    .querySelectorAll(
-      ".filter-btn"
-    )
-    .forEach(
-      btn =>
-        btn.classList.remove(
-          "active"
-        )
-    );
-
-
-  button.classList.add(
-    "active"
-  );
-
-
-  document
-    .querySelectorAll(
-      ".food-card"
-    )
-    .forEach(card => {
-
-      const cardCategory =
-        card.dataset.category;
-
-
-      if(
-        category === "all" ||
-        cardCategory === category
-      ){
-
-        card.classList.remove(
-          "hidden"
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(
+            btn => btn.classList.remove("active")
         );
 
-      }
-      else{
+    button.classList.add("active");
 
-        card.classList.add(
-          "hidden"
-        );
 
-      }
+    document
+        .querySelectorAll(".food-card")
+        .forEach(function(card){
 
-    });
+            if(
+                category === "Hepsi" ||
+                card.dataset.category === category
+            ){
+
+                card.classList.remove("hidden");
+
+            }else{
+
+                card.classList.add("hidden");
+
+            }
+
+        });
 
 }
 
 
-/* =====================================================
-   RESİM HATA KONTROLÜ
-===================================================== */
+/* =========================================================
+   IMAGE ERROR
+========================================================= */
 
 document
-  .querySelectorAll(
-    "img"
-  )
-  .forEach(
-    img => {
+    .querySelectorAll("img")
+    .forEach(function(img){
 
-      img.addEventListener(
-        "error",
-        function(){
+        img.addEventListener(
+            "error",
+            function(){
 
-          this.style.background =
-            "#dfe9e3";
+                this.style.background =
+                    "#dfe8e3";
 
-          this.style.objectFit =
-            "cover";
-
-        }
-      );
-
-    }
-  );
-
-
-/* =====================================================
-   ALT MENÜ AKTİF DURUM
-===================================================== */
-
-const navItems =
-  document.querySelectorAll(
-    ".nav-item"
-  );
-
-
-navItems.forEach(
-  item => {
-
-    item.addEventListener(
-      "click",
-      function(){
-
-        navItems.forEach(
-          n =>
-            n.classList.remove(
-              "active"
-            )
+            }
         );
 
-        this.classList.add(
-          "active"
+    });
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+document
+    .querySelectorAll(".bottom-nav a")
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                document
+                    .querySelectorAll(".bottom-nav a")
+                    .forEach(
+                        item =>
+                        item.classList.remove("active")
+                    );
+
+                this.classList.add("active");
+
+            }
         );
 
-      }
-    );
-
-  }
-
-);
+    });
 
 </script>
 
