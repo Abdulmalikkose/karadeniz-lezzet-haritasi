@@ -22,7 +22,662 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 html{
     scroll-behavior:smooth;
 }
+<!-- ============================= -->
+<!-- RİZE NEREDE NE YENİR -->
+<!-- ============================= -->
 
+<style>
+.food-guide {
+  padding: 35px 18px 110px;
+  background: linear-gradient(180deg, #f7faf8 0%, #ffffff 100%);
+}
+
+.food-guide-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.food-guide-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.food-guide-title .mini-title {
+  color: #16865b;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.food-guide-title h2 {
+  font-size: 32px;
+  margin: 8px 0;
+  color: #16352a;
+}
+
+.food-guide-title p {
+  color: #66736d;
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.food-categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 22px 0;
+  scrollbar-width: none;
+}
+
+.food-categories::-webkit-scrollbar {
+  display: none;
+}
+
+.food-filter {
+  flex: 0 0 auto;
+  border: 1px solid #dce8e2;
+  background: white;
+  padding: 11px 17px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #315247;
+  transition: .2s;
+}
+
+.food-filter.active,
+.food-filter:hover {
+  background: #16865b;
+  color: white;
+  border-color: #16865b;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.food-card {
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(20, 60, 45, .08);
+  border: 1px solid #e8efeb;
+  transition: .25s;
+}
+
+.food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(20, 60, 45, .13);
+}
+
+.food-image {
+  height: 190px;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.food-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255,255,255,.92);
+  color: #167b55;
+  padding: 7px 11px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.food-body {
+  padding: 18px;
+}
+
+.food-body h3 {
+  margin: 0 0 8px;
+  color: #18382c;
+  font-size: 20px;
+}
+
+.food-body p {
+  color: #697770;
+  line-height: 1.55;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.food-place {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #315247;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.food-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.food-button {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 11px 8px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.food-map {
+  background: #16865b;
+  color: white;
+}
+
+.food-save {
+  background: #edf6f1;
+  color: #16865b;
+  border: 0;
+  cursor: pointer;
+}
+
+.food-note {
+  margin-top: 25px;
+  padding: 18px;
+  background: #edf7f2;
+  border-radius: 18px;
+  color: #315247;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.food-note strong {
+  color: #126f4b;
+}
+
+@media (max-width: 700px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-guide-title h2 {
+    font-size: 27px;
+  }
+
+  .food-image {
+    height: 210px;
+  }
+}
+</style>
+
+
+<section class="food-guide" id="nerede-ne-yenir">
+
+  <div class="food-guide-container">
+
+    <div class="food-guide-title">
+      <div class="mini-title">🍽️ Rize Lezzet Rehberi</div>
+
+      <h2>Rize'de Nerede Ne Yenir?</h2>
+
+      <p>
+        Rize'ye geldin. Ne yiyeceğini ve hangi lezzet için nereye gideceğini
+        bilmiyor musun? Sana özel hazırladığımız lezzet duraklarını keşfet.
+      </p>
+    </div>
+
+
+    <!-- KATEGORİLER -->
+
+    <div class="food-categories">
+
+      <button class="food-filter active" onclick="filterFood('all', this)">
+        🍽️ Hepsi
+      </button>
+
+      <button class="food-filter" onclick="filterFood('kahvalti', this)">
+        🍳 Kahvaltı
+      </button>
+
+      <button class="food-filter" onclick="filterFood('yoresel', this)">
+        🥘 Yöresel
+      </button>
+
+      <button class="food-filter" onclick="filterFood('fasulye', this)">
+        🍛 Kuru Fasulye
+      </button>
+
+      <button class="food-filter" onclick="filterFood('cay', this)">
+        ☕ Çay & Kahve
+      </button>
+
+    </div>
+
+
+    <!-- YEMEK KARTLARI -->
+
+    <div class="food-grid">
+
+
+      <!-- DAĞMARAN -->
+
+      <article class="food-card" data-category="kahvalti">
+
+        <div class="food-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=85"
+            alt="Kahvaltı"
+            loading="lazy"
+          >
+
+          <span class="food-tag">🍳 Kahvaltı</span>
+
+        </div>
+
+        <div class="food-body">
+
+          <h3>Dağmaran</h3>
+
+          <p>
+            Rize şehir manzarasına karşı kahvaltı yapmak isteyenler için
+            öne çıkan seçeneklerden biri.
+          </p>
+
+          <div class="food-place">
+            📍 Rize Merkez
+          </div>
+
+          <div class="food-buttons">
+
+            <a
+              class="food-button food-map"
+              href="https://www.google.com/maps/search/?api=1&query=Dağmaran+Rize"
+              target="_blank"
+            >
+              📍 Yol Tarifi
+            </a>
+
+            <button
+              class="food-button food-save"
+              onclick="saveFood('Dağmaran')"
+            >
+              ♡ Favori
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- NALIA -->
+
+      <article class="food-card" data-category="yoresel">
+
+        <div class="food-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85"
+            alt="Karadeniz yöresel yemekleri"
+            loading="lazy"
+          >
+
+          <span class="food-tag">🥘 Karadeniz Mutfağı</span>
+
+        </div>
+
+        <div class="food-body">
+
+          <h3>Nalia Karadeniz Mutfağı</h3>
+
+          <p>
+            Karadeniz mutfağını şehir merkezinde keşfetmek isteyenler için
+            değerlendirebileceğin yöresel mutfak seçeneklerinden biri.
+          </p>
+
+          <div class="food-place">
+            📍 Rize Merkez
+          </div>
+
+          <div class="food-buttons">
+
+            <a
+              class="food-button food-map"
+              href="https://www.google.com/maps/search/?api=1&query=Nalia+Karadeniz+Mutfağı+Rize"
+              target="_blank"
+            >
+              📍 Yol Tarifi
+            </a>
+
+            <button
+              class="food-button food-save"
+              onclick="saveFood('Nalia Karadeniz Mutfağı')"
+            >
+              ♡ Favori
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- LALE -->
+
+      <article class="food-card" data-category="fasulye">
+
+        <div class="food-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1200&q=85"
+            alt="Kuru fasulye"
+            loading="lazy"
+          >
+
+          <span class="food-tag">🍛 Çayeli</span>
+
+        </div>
+
+        <div class="food-body">
+
+          <h3>LALE 1973</h3>
+
+          <p>
+            Çayeli kuru fasulyesi denince adı sık geçen köklü duraklardan.
+            Klasik seçim: kuru fasulye, pilav ve turşu.
+          </p>
+
+          <div class="food-place">
+            📍 Çayeli / Rize
+          </div>
+
+          <div class="food-buttons">
+
+            <a
+              class="food-button food-map"
+              href="https://www.google.com/maps/search/?api=1&query=LALE+1973+Çayeli+Rize"
+              target="_blank"
+            >
+              📍 Yol Tarifi
+            </a>
+
+            <button
+              class="food-button food-save"
+              onclick="saveFood('LALE 1973')"
+            >
+              ♡ Favori
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- FASULİ -->
+
+      <article class="food-card" data-category="fasulye">
+
+        <div class="food-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=85"
+            alt="Karadeniz yemekleri"
+            loading="lazy"
+          >
+
+          <span class="food-tag">🍛 Yöresel</span>
+
+        </div>
+
+        <div class="food-body">
+
+          <h3>Fasuli Rize</h3>
+
+          <p>
+            Rize merkezde yöresel yemekler ve özellikle kuru fasulye
+            arayanların değerlendirebileceği seçeneklerden biri.
+          </p>
+
+          <div class="food-place">
+            📍 Rize Merkez
+          </div>
+
+          <div class="food-buttons">
+
+            <a
+              class="food-button food-map"
+              href="https://www.google.com/maps/search/?api=1&query=Fasuli+Rize"
+              target="_blank"
+            >
+              📍 Yol Tarifi
+            </a>
+
+            <button
+              class="food-button food-save"
+              onclick="saveFood('Fasuli Rize')"
+            >
+              ♡ Favori
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- ÇAYLA -->
+
+      <article class="food-card" data-category="cay">
+
+        <div class="food-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=85"
+            alt="Rize çayı"
+            loading="lazy"
+          >
+
+          <span class="food-tag">☕ Çay</span>
+
+        </div>
+
+        <div class="food-body">
+
+          <h3>ÇAYLA RİZE</h3>
+
+          <p>
+            Rize'de çay ve kahvaltı molası vermek isteyenlerin
+            değerlendirebileceği şehir merkezindeki seçeneklerden biri.
+          </p>
+
+          <div class="food-place">
+            📍 Rize Merkez
+          </div>
+
+          <div class="food-buttons">
+
+            <a
+              class="food-button food-map"
+              href="https://www.google.com/maps/search/?api=1&query=ÇAYLA+RİZE"
+              target="_blank"
+            >
+              📍 Yol Tarifi
+            </a>
+
+            <button
+              class="food-button food-save"
+              onclick="saveFood('ÇAYLA RİZE')"
+            >
+              ♡ Favori
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- HUZUR -->
+
+      <article class="food-card" data-category="yoresel">
+
+        <div class="food-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85"
+            alt="Karadeniz yemekleri"
+            loading="lazy"
+          >
+
+          <span class="food-tag">🥘 Yöresel</span>
+
+        </div>
+
+        <div class="food-body">
+
+          <h3>Huzur Pide & Kebap</h3>
+
+          <p>
+            Rize merkezde pide ve farklı yemek seçenekleri arayanların
+            değerlendirebileceği alternatiflerden biri.
+          </p>
+
+          <div class="food-place">
+            📍 Rize Merkez
+          </div>
+
+          <div class="food-buttons">
+
+            <a
+              class="food-button food-map"
+              href="https://www.google.com/maps/search/?api=1&query=Huzur+Pide+Kebap+Rize"
+              target="_blank"
+            >
+              📍 Yol Tarifi
+            </a>
+
+            <button
+              class="food-button food-save"
+              onclick="saveFood('Huzur Pide & Kebap')"
+            >
+              ♡ Favori
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+    <!-- BİLGİ KUTUSU -->
+
+    <div class="food-note">
+
+      <strong>🌿 Rize'de ne yemeli?</strong><br>
+
+      İlk kez geliyorsan başlangıç için
+      <strong>muhlama, Çayeli kuru fasulyesi, karalahana yemekleri,
+      Rize pidesi, Laz böreği ve Rize çayı</strong>
+      gibi yöresel lezzetleri deneyebilirsin.
+      Rize mutfağında bu lezzetler öne çıkan yöresel seçenekler arasında.
+      <br><br>
+
+      <strong>💡 İpucu:</strong>
+      Mekanların menüleri, fiyatları ve çalışma saatleri değişebilir.
+      Gitmeden önce Google Maps üzerinden güncel durumu kontrol et.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+function filterFood(category, button) {
+
+  const cards = document.querySelectorAll('.food-card');
+
+  const buttons = document.querySelectorAll('.food-filter');
+
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+
+  cards.forEach(card => {
+
+    if (category === 'all') {
+
+      card.style.display = '';
+
+    } else {
+
+      if (card.dataset.category === category) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+
+    }
+
+  });
+
+}
+
+
+function saveFood(name) {
+
+  let favorites =
+    JSON.parse(localStorage.getItem('rizeFoodFavorites')) || [];
+
+  if (favorites.includes(name)) {
+
+    favorites =
+      favorites.filter(item => item !== name);
+
+    alert(name + ' favorilerden çıkarıldı.');
+
+  } else {
+
+    favorites.push(name);
+
+    alert(name + ' favorilere eklendi ❤️');
+
+  }
+
+  localStorage.setItem(
+    'rizeFoodFavorites',
+    JSON.stringify(favorites)
+  );
+
+}
+
+</script>
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#f4f7f5;
