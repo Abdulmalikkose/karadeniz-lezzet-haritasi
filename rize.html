@@ -24,21 +24,20 @@ body{
     color:#17251c;
     overflow-x:hidden;
     width:100%;
-    padding-bottom:0;
 }
 
 img{
-    max-width:100%;
     display:block;
-}
-
-button,
-a{
-    -webkit-tap-highlight-color:transparent;
+    max-width:100%;
 }
 
 button{
     font-family:inherit;
+    -webkit-tap-highlight-color:transparent;
+}
+
+a{
+    -webkit-tap-highlight-color:transparent;
 }
 
 .container{
@@ -46,19 +45,19 @@ button{
     margin:auto;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
     position:sticky;
     top:0;
     z-index:5000;
-    background:rgba(255,255,255,.96);
+    background:rgba(255,255,255,.97);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid #e8ece9;
+    border-bottom:1px solid #e7ebe8;
 }
 
 .header-inner{
-    height:72px;
+    height:70px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -66,54 +65,49 @@ header{
 }
 
 .logo{
+    color:#174d2d;
     font-size:22px;
     font-weight:900;
-    color:#174d2d;
     text-decoration:none;
-    white-space:nowrap;
 }
 
 .logo span{
-    color:#79a95d;
+    color:#78a95c;
 }
 
 .desktop-nav{
     display:flex;
     align-items:center;
-    gap:24px;
+    gap:22px;
 }
 
 .desktop-nav a{
+    color:#4e5c53;
     text-decoration:none;
-    color:#445049;
     font-size:14px;
-    font-weight:700;
-}
-
-.desktop-nav a:hover{
-    color:#1d6b3b;
+    font-weight:800;
 }
 
 .header-btn{
     border:0;
     background:#174d2d;
-    color:#fff;
-    padding:12px 18px;
+    color:white;
+    padding:12px 17px;
     border-radius:12px;
-    font-weight:800;
     cursor:pointer;
+    font-weight:800;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
     min-height:570px;
-    position:relative;
     display:flex;
     align-items:center;
+    position:relative;
     overflow:hidden;
     background:
-    linear-gradient(90deg,rgba(7,27,14,.82),rgba(7,27,14,.35)),
+    linear-gradient(90deg,rgba(5,25,12,.85),rgba(5,25,12,.35)),
     url("https://upload.wikimedia.org/wikipedia/commons/b/b7/Ayder_Yaylasi_%40_Rize-Turkey.JPG")
     center/cover;
 }
@@ -126,10 +120,10 @@ header{
 
 .badge{
     display:inline-block;
+    padding:9px 14px;
+    border-radius:50px;
     background:rgba(255,255,255,.14);
     border:1px solid rgba(255,255,255,.25);
-    padding:9px 14px;
-    border-radius:999px;
     font-size:13px;
     font-weight:800;
     margin-bottom:20px;
@@ -142,38 +136,38 @@ header{
 }
 
 .hero h1 span{
-    color:#b8dd8d;
+    color:#b9dc91;
 }
 
 .hero p{
+    color:#edf4ef;
     font-size:18px;
     line-height:1.7;
-    color:#edf5ee;
     margin-bottom:28px;
 }
 
 .hero-actions{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:10px;
 }
 
 .btn{
     border:0;
-    padding:14px 19px;
+    padding:14px 18px;
     border-radius:13px;
     cursor:pointer;
-    font-weight:800;
     font-size:14px;
+    font-weight:800;
 }
 
-.btn-primary{
-    background:#fff;
+.btn-white{
+    background:white;
     color:#174d2d;
 }
 
 .btn-green{
-    background:#76a85b;
+    background:#79a95c;
     color:white;
 }
 
@@ -182,12 +176,12 @@ header{
     color:white;
 }
 
-/* ================= STATS ================= */
+/* STATS */
 
 .stats{
-    margin-top:-45px;
+    margin-top:-42px;
     position:relative;
-    z-index:10;
+    z-index:20;
 }
 
 .stats-grid{
@@ -200,7 +194,7 @@ header{
 }
 
 .stat{
-    padding:24px;
+    padding:23px;
     text-align:center;
     border-right:1px solid #edf0ed;
 }
@@ -217,50 +211,47 @@ header{
 }
 
 .stat span{
-    color:#768079;
+    color:#758078;
     font-size:13px;
 }
 
-/* ================= SECTION ================= */
+/* SECTIONS */
 
 section{
-    padding:80px 0;
+    padding:78px 0;
 }
 
 .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    gap:20px;
     margin-bottom:28px;
 }
 
 .section-head h2{
+    color:#183b24;
     font-size:34px;
-    color:#183a24;
+    margin-bottom:8px;
 }
 
 .section-head p{
-    color:#728078;
+    color:#758078;
     line-height:1.6;
-    max-width:600px;
+    max-width:700px;
 }
 
-/* ================= CITY ================= */
+/* CITY */
 
 .city-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:24px;
+    gap:22px;
 }
 
 .city-card{
     height:390px;
-    position:relative;
-    overflow:hidden;
     border-radius:24px;
+    overflow:hidden;
+    position:relative;
     cursor:pointer;
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
+    box-shadow:0 14px 35px rgba(0,0,0,.10);
 }
 
 .city-card img{
@@ -277,144 +268,182 @@ section{
 .city-overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(transparent 35%,rgba(0,0,0,.78));
     display:flex;
     flex-direction:column;
     justify-content:end;
     padding:28px;
     color:white;
+    background:linear-gradient(
+        transparent 30%,
+        rgba(0,0,0,.80)
+    );
 }
 
 .city-overlay small{
-    font-weight:800;
-    color:#c7e49e;
+    color:#c8e49d;
+    font-weight:900;
     margin-bottom:7px;
 }
 
 .city-overlay h3{
-    font-size:34px;
-    margin-bottom:7px;
+    font-size:35px;
+    margin-bottom:6px;
 }
 
 .city-overlay p{
-    color:#eef3ef;
     line-height:1.5;
+    color:#edf3ee;
 }
 
-/* ================= CATEGORY ================= */
+/* CATEGORIES */
 
 .category-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:16px;
+    gap:14px;
 }
 
 .category{
-    background:#fff;
-    border:1px solid #e5ebe6;
+    background:white;
+    border:1px solid #e2e9e3;
     border-radius:18px;
-    padding:25px 18px;
+    padding:23px 18px;
     cursor:pointer;
     transition:.25s;
 }
 
 .category:hover{
     transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    box-shadow:0 12px 28px rgba(0,0,0,.07);
 }
 
 .category-icon{
     font-size:31px;
-    margin-bottom:12px;
+    margin-bottom:11px;
 }
 
 .category h3{
+    color:#183b24;
     font-size:16px;
     margin-bottom:6px;
 }
 
 .category p{
-    color:#7b857f;
+    color:#7a847e;
     font-size:13px;
+    line-height:1.4;
 }
 
-/* ================= ASSISTANT ================= */
+/* ASSISTANT */
 
 .assistant{
-    background:#173d25;
+    background:
+    radial-gradient(circle at 90% 10%,rgba(130,190,90,.20),transparent 30%),
+    #173d25;
     color:white;
+    padding:38px;
     border-radius:28px;
-    padding:42px;
-    position:relative;
-    overflow:hidden;
-}
-
-.assistant:after{
-    content:"";
-    position:absolute;
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    background:rgba(137,190,98,.15);
-    right:-80px;
-    top:-90px;
 }
 
 .assistant h2{
-    font-size:35px;
-    margin-bottom:10px;
+    font-size:34px;
+    margin-bottom:8px;
 }
 
-.assistant p{
-    color:#c9d8cc;
+.assistant-intro{
+    color:#cbd9ce;
     line-height:1.6;
     margin-bottom:25px;
 }
 
-.assistant-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    position:relative;
-    z-index:2;
-}
-
-.assistant-buttons button{
-    border:1px solid rgba(255,255,255,.2);
-    background:rgba(255,255,255,.09);
-    color:white;
-    padding:12px 16px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.assistant-answer{
-    margin-top:22px;
-    background:white;
-    color:#203326;
-    padding:20px;
-    border-radius:16px;
+.assistant-step{
     display:none;
-    line-height:1.65;
-    position:relative;
-    z-index:2;
 }
 
-/* ================= CARDS ================= */
+.assistant-step.active{
+    display:block;
+}
+
+.assistant-question{
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:17px;
+}
+
+.assistant-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.assistant-option{
+    border:1px solid rgba(255,255,255,.17);
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:15px;
+    border-radius:13px;
+    cursor:pointer;
+    text-align:left;
+    font-weight:800;
+    transition:.2s;
+}
+
+.assistant-option:hover{
+    background:rgba(255,255,255,.16);
+}
+
+.assistant-progress{
+    display:flex;
+    gap:7px;
+    margin-bottom:25px;
+}
+
+.progress-dot{
+    width:34px;
+    height:5px;
+    border-radius:10px;
+    background:rgba(255,255,255,.20);
+}
+
+.progress-dot.active{
+    background:#9acb73;
+}
+
+.assistant-result{
+    display:none;
+    background:white;
+    color:#203126;
+    border-radius:18px;
+    padding:24px;
+    line-height:1.65;
+}
+
+.assistant-result h3{
+    color:#174d2d;
+    margin-bottom:10px;
+}
+
+.result-route{
+    margin-top:15px;
+    background:#eef6eb;
+    padding:15px;
+    border-radius:12px;
+}
+
+/* CARD */
 
 .card-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:22px;
+    gap:20px;
 }
 
 .info-card{
     background:white;
-    border:1px solid #e5eae6;
+    border:1px solid #e2e9e3;
     border-radius:20px;
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    box-shadow:0 7px 24px rgba(0,0,0,.045);
 }
 
 .info-card img{
@@ -424,73 +453,302 @@ section{
 }
 
 .info-content{
-    padding:20px;
+    padding:19px;
 }
 
 .info-content h3{
+    color:#183b24;
     font-size:20px;
-    margin-bottom:8px;
-    color:#183a24;
+    margin-bottom:7px;
 }
 
 .info-content p{
-    color:#728078;
-    line-height:1.55;
+    color:#748078;
     font-size:14px;
+    line-height:1.55;
     margin-bottom:15px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:15px;
+}
+
+.tag{
+    background:#edf5e9;
+    color:#32633d;
+    padding:5px 8px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:800;
 }
 
 .card-btn{
     width:100%;
     border:0;
-    background:#edf5ea;
+    background:#edf5e9;
     color:#205a31;
     padding:12px;
     border-radius:11px;
     cursor:pointer;
-    font-weight:800;
+    font-weight:900;
 }
 
-/* ================= ROUTE ================= */
+/* ACCOMMODATION FILTER */
+
+.filter-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:25px;
+}
+
+.filter-btn{
+    border:1px solid #dfe7e0;
+    background:white;
+    color:#46604d;
+    padding:10px 13px;
+    border-radius:11px;
+    cursor:pointer;
+    font-weight:800;
+    font-size:12px;
+}
+
+.filter-btn.active{
+    background:#174d2d;
+    color:white;
+    border-color:#174d2d;
+}
+
+/* WEATHER */
+
+.weather-box{
+    background:white;
+    border:1px solid #e3e9e4;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 7px 25px rgba(0,0,0,.05);
+}
+
+.weather-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.weather-top h3{
+    color:#183b24;
+    font-size:23px;
+}
+
+.weather-status{
+    color:#758078;
+    font-size:13px;
+}
+
+.weather-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.weather-day{
+    background:#f4f7f4;
+    border-radius:15px;
+    padding:16px 10px;
+    text-align:center;
+}
+
+.weather-day strong{
+    display:block;
+    color:#174d2d;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.weather-icon{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.weather-temp{
+    font-weight:900;
+    color:#243c2a;
+}
+
+.weather-rain{
+    color:#718078;
+    font-size:11px;
+    margin-top:5px;
+}
+
+/* ROUTE */
 
 .route-box{
     background:white;
     border-radius:22px;
-    padding:28px;
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    padding:27px;
+    box-shadow:0 7px 25px rgba(0,0,0,.05);
 }
 
-.route-form{
+.route-selects{
     display:grid;
-    grid-template-columns:1fr 1fr auto;
-    gap:12px;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.route-form select{
+.route-selects select{
     width:100%;
     border:1px solid #dfe6e0;
-    background:#fff;
-    padding:14px;
     border-radius:12px;
+    padding:14px;
+    background:white;
     outline:none;
+}
+
+.route-button{
+    margin-top:12px;
 }
 
 .route-result{
     display:none;
-    margin-top:20px;
-    padding:18px;
-    background:#f1f7ee;
-    border-radius:14px;
-    line-height:1.6;
+    margin-top:22px;
+    background:#eff7eb;
+    border-radius:16px;
+    padding:22px;
 }
 
-/* ================= BUSINESS ================= */
+.route-result h3{
+    color:#174d2d;
+    margin-bottom:12px;
+}
+
+.route-list{
+    display:grid;
+    gap:9px;
+}
+
+.route-place{
+    background:white;
+    padding:12px;
+    border-radius:10px;
+    font-weight:800;
+}
+
+/* VITRIN */
+
+.vitrin{
+    background:#fff;
+    border:1px solid #e2e8e3;
+    border-radius:24px;
+    padding:28px;
+}
+
+.vitrin-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.vitrin-head h2{
+    color:#183b24;
+    font-size:31px;
+}
+
+.vitrin-head p{
+    color:#768079;
+    margin-top:7px;
+}
+
+.vitrin-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.vitrin-card{
+    border:1px solid #e3e9e4;
+    border-radius:17px;
+    overflow:hidden;
+    background:#fafcfb;
+}
+
+.vitrin-image{
+    height:180px;
+    position:relative;
+}
+
+.vitrin-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.vitrin-badge{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#174d2d;
+    color:white;
+    padding:6px 9px;
+    border-radius:8px;
+    font-size:10px;
+    font-weight:900;
+}
+
+.vitrin-content{
+    padding:15px;
+}
+
+.vitrin-content h3{
+    color:#183b24;
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.vitrin-content p{
+    color:#77817b;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.vitrin-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+}
+
+.vitrin-actions button{
+    border:0;
+    padding:10px 6px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:800;
+    font-size:11px;
+}
+
+.vitrin-detail{
+    background:#edf5e9;
+    color:#205a31;
+}
+
+.vitrin-add{
+    background:#174d2d;
+    color:white;
+}
+
+/* BUSINESS */
 
 .business-box{
-    background:linear-gradient(135deg,#174d2d,#286f3e);
-    border-radius:25px;
-    padding:40px;
+    background:linear-gradient(135deg,#174d2d,#2a7141);
     color:white;
+    border-radius:25px;
+    padding:38px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -498,21 +756,21 @@ section{
 }
 
 .business-box h2{
-    font-size:32px;
-    margin-bottom:10px;
+    font-size:31px;
+    margin-bottom:8px;
 }
 
 .business-box p{
-    color:#dce9de;
+    color:#d8e7da;
     line-height:1.6;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 
 footer{
     background:#12251a;
     color:white;
-    padding:45px 0 100px;
+    padding:45px 0 90px;
 }
 
 .footer-inner{
@@ -521,72 +779,78 @@ footer{
     gap:30px;
 }
 
-.footer-inner p{
-    color:#aab8ae;
-    margin-top:8px;
+.footer-inner strong{
+    font-size:20px;
 }
 
-/* ================= MODAL ================= */
+.footer-inner p{
+    color:#aab8ae;
+    margin-top:7px;
+}
+
+/* MODAL */
 
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
     z-index:100000;
+    background:rgba(0,0,0,.65);
     display:none;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:20px;
 }
 
 .modal-box{
-    background:white;
-    width:min(550px,100%);
+    width:min(600px,100%);
     max-height:90vh;
     overflow:auto;
-    border-radius:22px;
+    background:white;
+    border-radius:23px;
     padding:28px;
     position:relative;
 }
 
 .close{
     position:absolute;
-    right:16px;
+    right:15px;
     top:14px;
-    border:0;
-    background:#eef1ee;
     width:36px;
     height:36px;
+    border:0;
+    background:#eef1ee;
     border-radius:50%;
     cursor:pointer;
-    font-size:18px;
+    font-size:19px;
 }
 
 .modal-box h2{
-    color:#183a24;
+    color:#183b24;
+    font-size:25px;
     margin-bottom:8px;
 }
 
-.modal-box p{
-    color:#718078;
+.modal-box > p{
+    color:#758078;
     line-height:1.5;
     margin-bottom:20px;
 }
 
 .option-list{
     display:grid;
-    gap:10px;
+    gap:9px;
 }
 
 .option{
-    border:1px solid #e2e8e3;
-    background:#f9fbf9;
-    border-radius:13px;
-    padding:15px;
+    width:100%;
+    border:1px solid #e0e7e1;
+    background:#f8faf8;
+    color:#214d2e;
+    padding:14px;
+    border-radius:12px;
     cursor:pointer;
     text-align:left;
     font-weight:800;
-    color:#214d2e;
 }
 
 .option:hover{
@@ -595,7 +859,7 @@ footer{
 
 .form-grid{
     display:grid;
-    gap:12px;
+    gap:11px;
 }
 
 .form-grid input,
@@ -603,10 +867,10 @@ footer{
 .form-grid textarea{
     width:100%;
     border:1px solid #dfe6e0;
-    border-radius:11px;
     padding:13px;
-    font-family:inherit;
+    border-radius:11px;
     outline:none;
+    font-family:inherit;
 }
 
 .form-grid textarea{
@@ -614,13 +878,13 @@ footer{
     resize:vertical;
 }
 
-/* ================= MOBILE BOTTOM ================= */
+/* MOBILE NAV */
 
 .bottom-nav{
     display:none;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:800px){
 
@@ -628,7 +892,7 @@ footer{
     body{
         width:100%;
         max-width:100%;
-        overflow-x:hidden !important;
+        overflow-x:hidden!important;
     }
 
     body{
@@ -637,11 +901,6 @@ footer{
 
     .container{
         width:calc(100% - 24px);
-    }
-
-    header{
-        position:sticky;
-        top:0;
     }
 
     .header-inner{
@@ -657,27 +916,24 @@ footer{
     }
 
     .header-btn{
-        padding:9px 12px;
-        font-size:12px;
+        padding:9px 11px;
+        font-size:11px;
     }
 
     .hero{
         min-height:530px;
-        background-position:center;
     }
 
     .hero-content{
-        padding:55px 0;
+        padding:52px 0;
     }
 
     .hero h1{
         font-size:39px;
-        line-height:1.05;
     }
 
     .hero p{
         font-size:15px;
-        line-height:1.6;
     }
 
     .hero-actions{
@@ -687,8 +943,8 @@ footer{
 
     .hero-actions .btn{
         width:100%;
-        padding:13px 8px;
-        font-size:12px;
+        padding:12px 6px;
+        font-size:11px;
     }
 
     .stats{
@@ -696,24 +952,11 @@ footer{
     }
 
     .stats-grid{
-        grid-template-columns:repeat(2,1fr);
-        border-radius:17px;
+        grid-template-columns:1fr 1fr;
     }
 
     .stat{
-        padding:17px 10px;
-        border-right:1px solid #edf0ed;
-        border-bottom:1px solid #edf0ed;
-    }
-
-    .stat:nth-child(2),
-    .stat:nth-child(4){
-        border-right:0;
-    }
-
-    .stat:nth-child(3),
-    .stat:nth-child(4){
-        border-bottom:0;
+        padding:17px 8px;
     }
 
     .stat strong{
@@ -724,14 +967,8 @@ footer{
         padding:55px 0;
     }
 
-    .section-head{
-        display:block;
-        margin-bottom:20px;
-    }
-
     .section-head h2{
         font-size:27px;
-        margin-bottom:8px;
     }
 
     .section-head p{
@@ -740,11 +977,11 @@ footer{
 
     .city-grid{
         grid-template-columns:1fr;
-        gap:16px;
+        gap:15px;
     }
 
     .city-card{
-        height:330px;
+        height:325px;
         border-radius:19px;
     }
 
@@ -758,15 +995,15 @@ footer{
 
     .category-grid{
         grid-template-columns:1fr 1fr;
-        gap:10px;
+        gap:9px;
     }
 
     .category{
-        padding:18px 14px;
+        padding:17px 13px;
     }
 
     .category-icon{
-        font-size:27px;
+        font-size:26px;
     }
 
     .category h3{
@@ -774,12 +1011,11 @@ footer{
     }
 
     .category p{
-        font-size:12px;
-        line-height:1.4;
+        font-size:11px;
     }
 
     .assistant{
-        padding:25px 18px;
+        padding:24px 17px;
         border-radius:20px;
     }
 
@@ -787,55 +1023,101 @@ footer{
         font-size:27px;
     }
 
-    .assistant p{
-        font-size:14px;
+    .assistant-question{
+        font-size:19px;
     }
 
-    .assistant-buttons{
-        display:grid;
+    .assistant-options{
         grid-template-columns:1fr 1fr;
     }
 
-    .assistant-buttons button{
-        width:100%;
+    .assistant-option{
         font-size:12px;
-        padding:12px 5px;
+        padding:13px 10px;
     }
 
     .card-grid{
         grid-template-columns:1fr;
-        gap:16px;
-    }
-
-    .info-card{
-        border-radius:18px;
+        gap:15px;
     }
 
     .info-card img{
         height:210px;
     }
 
-    .info-content{
-        padding:17px;
+    .filter-bar{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filter-btn{
+        width:100%;
+    }
+
+    .weather-box{
+        padding:16px;
+    }
+
+    .weather-top{
+        display:block;
+    }
+
+    .weather-status{
+        margin-top:5px;
+    }
+
+    .weather-grid{
+        display:flex;
+        overflow-x:auto;
+        gap:8px;
+        padding-bottom:5px;
+        scrollbar-width:none;
+    }
+
+    .weather-grid::-webkit-scrollbar{
+        display:none;
+    }
+
+    .weather-day{
+        min-width:110px;
+        flex:0 0 110px;
     }
 
     .route-box{
         padding:18px;
-        border-radius:18px;
     }
 
-    .route-form{
+    .route-selects{
         grid-template-columns:1fr;
     }
 
-    .route-form button{
+    .route-button .btn{
         width:100%;
+    }
+
+    .vitrin{
+        padding:18px;
+    }
+
+    .vitrin-head{
+        display:block;
+    }
+
+    .vitrin-head h2{
+        font-size:27px;
+    }
+
+    .vitrin-grid{
+        grid-template-columns:1fr;
+    }
+
+    .vitrin-image{
+        height:205px;
     }
 
     .business-box{
         display:block;
         padding:27px 20px;
-        border-radius:20px;
     }
 
     .business-box h2{
@@ -844,15 +1126,11 @@ footer{
 
     .business-box .btn{
         width:100%;
-        margin-top:18px;
+        margin-top:17px;
     }
 
     .footer-inner{
         display:block;
-    }
-
-    footer{
-        padding-bottom:95px;
     }
 
     .modal{
@@ -877,29 +1155,28 @@ footer{
         height:70px;
         background:rgba(255,255,255,.98);
         border-top:1px solid #dfe6e1;
+        box-shadow:0 -8px 25px rgba(0,0,0,.08);
         z-index:99999;
         display:grid;
         grid-template-columns:repeat(5,1fr);
-        box-shadow:0 -8px 25px rgba(0,0,0,.08);
     }
 
     .bottom-nav button{
         border:0;
         background:transparent;
         color:#65716a;
-        font-size:10px;
-        font-weight:800;
-        cursor:pointer;
+        font-size:9px;
+        font-weight:900;
         display:flex;
         flex-direction:column;
         align-items:center;
         justify-content:center;
         gap:4px;
+        cursor:pointer;
     }
 
     .bottom-nav button span{
         font-size:21px;
-        line-height:1;
     }
 
     .bottom-nav button.active{
@@ -917,17 +1194,10 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .category-grid{
-        grid-template-columns:1fr 1fr;
+    .assistant-options{
+        grid-template-columns:1fr;
     }
 
-    .bottom-nav button{
-        font-size:9px;
-    }
-
-    .bottom-nav button span{
-        font-size:19px;
-    }
 }
 </style>
 </head>
@@ -935,1216 +1205,2446 @@ footer{
 <body>
 
 <!-- HEADER -->
+
 <header>
-    <div class="container header-inner">
 
-        <a href="#kesfet" class="logo">
-            Rize<span>Rehberi</span>
-        </a>
+<div class="container header-inner">
 
-        <nav class="desktop-nav">
-            <a href="#kesfet">Keşfet</a>
-            <a href="#asistan">Asistan</a>
-            <a href="#yemek">Yemek</a>
-            <a href="#konaklama">Konaklama</a>
-            <a href="#rota">Rota</a>
-        </nav>
+<a href="#kesfet" class="logo">
+Rize<span>Rehberi</span>
+</a>
 
-        <button class="header-btn" onclick="openBusiness()">
-            İşletmeni Tanıt
-        </button>
+<nav class="desktop-nav">
+<a href="#kesfet">Keşfet</a>
+<a href="#asistan">Asistan</a>
+<a href="#yemek">Yemek</a>
+<a href="#konaklama">Konaklama</a>
+<a href="#vitrin">Vitrin</a>
+<a href="#rota">Rota</a>
+</nav>
 
-    </div>
+<button class="header-btn" onclick="openBusiness()">
+İşletmeni Ekle
+</button>
+
+</div>
+
 </header>
 
 
 <!-- HERO -->
+
 <section class="hero" id="kesfet">
 
-    <div class="container">
-        <div class="hero-content">
+<div class="container">
 
-            <div class="badge">
-                🌿 Rize'yi keşfetmenin kolay yolu
-            </div>
+<div class="hero-content">
 
-            <h1>
-                Rize'de<br>
-                <span>Ne Yapacağını</span><br>
-                Biliyor musun?
-            </h1>
+<div class="badge">
+🌿 Rize'yi keşfetmenin akıllı yolu
+</div>
 
-            <p>
-                Nerede gezilir, ne yenir, nerede kalınır?
-                Rize Rehberi sana tek yerde yardımcı olur.
-            </p>
+<h1>
+Rize'de<br>
+<span>Ne Yapacağını</span><br>
+Biliyor musun?
+</h1>
 
-            <div class="hero-actions">
+<p>
+Nerede gezilir, ne yenir, nerede kalınır?
+Rize Rehberi sana tek yerde yardımcı olur.
+</p>
 
-                <button class="btn btn-primary"
-                        onclick="scrollToId('asistan')">
-                    🤖 Rize Asistanı
-                </button>
+<div class="hero-actions">
 
-                <button class="btn btn-green"
-                        onclick="scrollToId('yemek')">
-                    🍽️ Ne Yenir?
-                </button>
+<button class="btn btn-white"
+onclick="scrollToId('asistan')">
+🤖 Rize Asistanı
+</button>
 
-                <button class="btn btn-primary"
-                        onclick="scrollToId('konaklama')">
-                    🏡 Nerede Kalınır?
-                </button>
+<button class="btn btn-green"
+onclick="scrollToId('yemek')">
+🍽️ Ne Yenir?
+</button>
 
-                <button class="btn btn-dark"
-                        onclick="scrollToId('rota')">
-                    🧭 Rota Oluştur
-                </button>
+<button class="btn btn-white"
+onclick="scrollToId('konaklama')">
+🏡 Nerede Kalınır?
+</button>
 
-            </div>
+<button class="btn btn-dark"
+onclick="scrollToId('rota')">
+🧭 Rota Oluştur
+</button>
 
-        </div>
-    </div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- STATS -->
+
 <div class="stats">
 
-    <div class="container">
+<div class="container">
 
-        <div class="stats-grid">
+<div class="stats-grid">
 
-            <div class="stat">
-                <strong>🏔️</strong>
-                <span>Yaylalar</span>
-            </div>
+<div class="stat">
+<strong>🏔️</strong>
+<span>Yaylalar</span>
+</div>
 
-            <div class="stat">
-                <strong>🍽️</strong>
-                <span>Yöresel Lezzetler</span>
-            </div>
+<div class="stat">
+<strong>🍽️</strong>
+<span>Yöresel Lezzetler</span>
+</div>
 
-            <div class="stat">
-                <strong>🏡</strong>
-                <span>Konaklama</span>
-            </div>
+<div class="stat">
+<strong>🏡</strong>
+<span>Konaklama</span>
+</div>
 
-            <div class="stat">
-                <strong>🧭</strong>
-                <span>Rota Önerileri</span>
-            </div>
+<div class="stat">
+<strong>🌤️</strong>
+<span>Günlük Hava</span>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </div>
 
 
 <!-- ŞEHİRLER -->
+
 <section>
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
-            <div>
-                <h2>Karadeniz'i Keşfet</h2>
-                <p>
-                    Rize ve çevresindeki doğal güzellikleri keşfet.
-                    Bir karta dokun ve detaylara ulaş.
-                </p>
-            </div>
-        </div>
+<div class="section-head">
+
+<h2>Karadeniz'i Keşfet</h2>
+
+<p>
+Rize ve çevresindeki önemli yerleri keşfet.
+Kartlara dokunarak seçenekleri aç.
+</p>
+
+</div>
+
+<div class="city-grid">
+
+<div class="city-card"
+onclick="openCity('Rize')">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Ayder_Yaylasi_%40_Rize-Turkey.JPG"
+alt="Ayder Rize">
+
+<div class="city-overlay">
+
+<small>DOĞA • YAYLA • LEZZET</small>
+
+<h3>Rize</h3>
+
+<p>
+Ayder, Pokut, Fırtına Vadisi,
+yemekler ve konaklama.
+</p>
+
+</div>
+
+</div>
 
 
-        <div class="city-grid">
+<div class="city-card"
+onclick="openCity('Trabzon')">
 
-            <!-- RİZE -->
-            <div class="city-card"
-                 onclick="openCity('Rize')">
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/a/a7/S%C3%BCmela_Manast%C4%B1r%C4%B1%2C_Trabzon.jpg"
+alt="Sümela Trabzon">
 
-                <img
-                src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Ayder_Yaylasi_%40_Rize-Turkey.JPG"
-                alt="Ayder Yaylası Rize">
+<div class="city-overlay">
 
-                <div class="city-overlay">
+<small>TARİH • DOĞA • KARADENİZ</small>
 
-                    <small>DOĞA • YAYLA • LEZZET</small>
+<h3>Trabzon</h3>
 
-                    <h3>Rize</h3>
+<p>
+Sümela, Uzungöl ve Karadeniz rotaları.
+</p>
 
-                    <p>
-                        Ayder, Pokut, Fırtına Vadisi,
-                        yaylalar ve Rize mutfağı.
-                    </p>
+</div>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
-
-            <!-- TRABZON -->
-            <div class="city-card"
-                 onclick="openCity('Trabzon')">
-
-                <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a7/S%C3%BCmela_Manast%C4%B1r%C4%B1%2C_Trabzon.jpg"
-                alt="Sümela Manastırı Trabzon">
-
-                <div class="city-overlay">
-
-                    <small>TARİH • DOĞA • KARADENİZ</small>
-
-                    <h3>Trabzon</h3>
-
-                    <p>
-                        Sümela, Uzungöl, yaylalar ve
-                        Karadeniz rotaları.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
 <!-- KATEGORİLER -->
-<section style="padding-top:0;">
 
-    <div class="container">
+<section style="padding-top:0">
 
-        <div class="section-head">
-            <div>
-                <h2>Ne Arıyorsun?</h2>
-                <p>
-                    İstediğin kategoriye dokun.
-                </p>
-            </div>
-        </div>
+<div class="container">
+
+<div class="section-head">
+
+<h2>Ne Arıyorsun?</h2>
+
+<p>
+İstediğin kategoriye dokun ve doğrudan ilgili bölüme geç.
+</p>
+
+</div>
+
+<div class="category-grid">
+
+<div class="category"
+onclick="scrollToId('yemek')">
+
+<div class="category-icon">🍽️</div>
+
+<h3>Yemek</h3>
+
+<p>Rize'nin yöresel lezzetleri</p>
+
+</div>
 
 
-        <div class="category-grid">
+<div class="category"
+onclick="scrollToId('konaklama')">
 
-            <div class="category"
-                 onclick="scrollToId('yemek')">
-                <div class="category-icon">🍽️</div>
-                <h3>Yemek</h3>
-                <p>Rize'nin yöresel lezzetleri</p>
-            </div>
+<div class="category-icon">🏡</div>
 
-            <div class="category"
-                 onclick="scrollToId('konaklama')">
-                <div class="category-icon">🏡</div>
-                <h3>Konaklama</h3>
-                <p>Otel, bungalov ve yayla evleri</p>
-            </div>
+<h3>Konaklama</h3>
 
-            <div class="category"
-                 onclick="scrollToId('rota')">
-                <div class="category-icon">🧭</div>
-                <h3>Rota</h3>
-                <p>Kendine özel gezi rotası oluştur</p>
-            </div>
+<p>Otel, bungalov, pansiyon</p>
 
-            <div class="category"
-                 onclick="scrollToId('asistan')">
-                <div class="category-icon">🤖</div>
-                <h3>Rize Asistanı</h3>
-                <p>Sorunu sor, önerini al</p>
-            </div>
+</div>
 
-        </div>
 
-    </div>
+<div class="category"
+onclick="scrollToId('rota')">
+
+<div class="category-icon">🧭</div>
+
+<h3>Rota</h3>
+
+<p>1, 2 veya 3 günlük gezi</p>
+
+</div>
+
+
+<div class="category"
+onclick="scrollToId('asistan')">
+
+<div class="category-icon">🤖</div>
+
+<h3>Rize Asistanı</h3>
+
+<p>Sana özel gezi önerisi</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- ASİSTAN -->
+
 <section id="asistan">
 
-    <div class="container">
+<div class="container">
 
-        <div class="assistant">
+<div class="assistant">
 
-            <h2>🤖 Rize Asistanı</h2>
+<h2>🤖 Rize Asistanı</h2>
 
-            <p>
-                Rize'ye ilk kez mi geliyorsun?
-                Ne yapmak istediğini seç, sana hızlıca önerelim.
-            </p>
+<p class="assistant-intro">
+Sadece hazır cevap vermiyoruz. Birkaç soru soruyoruz,
+cevaplarına göre sana özel Rize planı oluşturuyoruz.
+</p>
 
-            <div class="assistant-buttons">
+<div class="assistant-progress">
 
-                <button onclick="assistant('doga')">
-                    🏔️ Doğa
-                </button>
+<div class="progress-dot active" id="dot1"></div>
+<div class="progress-dot" id="dot2"></div>
+<div class="progress-dot" id="dot3"></div>
+<div class="progress-dot" id="dot4"></div>
 
-                <button onclick="assistant('yemek')">
-                    🍽️ Yemek
-                </button>
+</div>
 
-                <button onclick="assistant('kal')">
-                    🏡 Konaklama
-                </button>
 
-                <button onclick="assistant('foto')">
-                    📸 Fotoğraf
-                </button>
+<div class="assistant-step active" id="step1">
 
-                <button onclick="assistant('cift')">
-                    ❤️ Çiftler
-                </button>
+<div class="assistant-question">
+Bugün Rize'de ne yapmak istiyorsun?
+</div>
 
-                <button onclick="assistant('aile')">
-                    👨‍👩‍👧 Aile
-                </button>
+<div class="assistant-options">
 
-            </div>
+<button class="assistant-option"
+onclick="assistantChoose('activity','Doğa')">
+🏔️ Doğa keşfi
+</button>
 
-            <div id="assistantAnswer"
-                 class="assistant-answer">
-            </div>
+<button class="assistant-option"
+onclick="assistantChoose('activity','Yemek')">
+🍽️ Yemek turu
+</button>
 
-        </div>
+<button class="assistant-option"
+onclick="assistantChoose('activity','Fotoğraf')">
+📸 Fotoğraf
+</button>
 
-    </div>
+<button class="assistant-option"
+onclick="assistantChoose('activity','Macera')">
+🧗 Macera
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('activity','Sakin')">
+☕ Sakin gezi
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('activity','Karışık')">
+✨ Hepsinden biraz
+</button>
+
+</div>
+
+</div>
+
+
+<div class="assistant-step" id="step2">
+
+<div class="assistant-question">
+Kiminle geldin?
+</div>
+
+<div class="assistant-options">
+
+<button class="assistant-option"
+onclick="assistantChoose('group','Tek başıma')">
+🧍 Tek başıma
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('group','Çift')">
+❤️ Sevgilim / eşimle
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('group','Aile')">
+👨‍👩‍👧 Ailemle
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('group','Arkadaş')">
+👥 Arkadaşlarımla
+</button>
+
+</div>
+
+</div>
+
+
+<div class="assistant-step" id="step3">
+
+<div class="assistant-question">
+Kaç gün ayırdın?
+</div>
+
+<div class="assistant-options">
+
+<button class="assistant-option"
+onclick="assistantChoose('days','1 Gün')">
+📅 1 Gün
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('days','2 Gün')">
+📅 2 Gün
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('days','3 Gün')">
+📅 3 Gün
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('days','4+ Gün')">
+📅 4+ Gün
+</button>
+
+</div>
+
+</div>
+
+
+<div class="assistant-step" id="step4">
+
+<div class="assistant-question">
+Nasıl bir gezi istersin?
+</div>
+
+<div class="assistant-options">
+
+<button class="assistant-option"
+onclick="assistantChoose('budget','Ekonomik')">
+💰 Ekonomik
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('budget','Orta')">
+💳 Orta bütçe
+</button>
+
+<button class="assistant-option"
+onclick="assistantChoose('budget','Konforlu')">
+✨ Konforlu
+</button>
+
+</div>
+
+</div>
+
+
+<div class="assistant-result"
+id="assistantResult">
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- YEMEK -->
+
 <section id="yemek">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
+<div class="section-head">
 
-            <div>
-                <h2>🍽️ Rize'de Ne Yenir?</h2>
+<h2>🍽️ Rize'de Ne Yenir?</h2>
 
-                <p>
-                    Rize mutfağından mutlaka denemen gereken
-                    yöresel lezzetler.
-                </p>
-            </div>
+<p>
+Rize mutfağından öne çıkan yöresel lezzetleri keşfet.
+</p>
 
-        </div>
+</div>
 
-
-        <div class="card-grid">
+<div class="card-grid">
 
 
-            <!-- MUHLAMA -->
-            <div class="info-card">
+<div class="info-card">
 
-                <img
-                src="https://www.muhlama.com.tr/resimler/menu_k/MUhlama78be6.jpg"
-                alt="Rize Muhlaması">
+<img
+src="https://www.muhlama.com.tr/resimler/menu_k/MUhlama78be6.jpg"
+alt="Muhlama">
 
-                <div class="info-content">
+<div class="info-content">
 
-                    <h3>Muhlama</h3>
+<h3>Muhlama</h3>
 
-                    <p>
-                        Mısır unu, tereyağı ve kolot peyniriyle
-                        hazırlanan Karadeniz'in en meşhur lezzetlerinden.
-                    </p>
+<div class="tags">
+<span class="tag">Kahvaltı</span>
+<span class="tag">Yöresel</span>
+</div>
 
-                    <button class="card-btn"
-                            onclick="openFood('Muhlama')">
-                        Detayları Gör
-                    </button>
+<p>
+Mısır unu, tereyağı ve yöresel peynirle hazırlanan
+Karadeniz klasiği.
+</p>
 
-                </div>
+<button class="card-btn"
+onclick="openFood('Muhlama')">
+Detayları Gör
+</button>
 
-            </div>
+</div>
 
-
-            <!-- HAMSİLİ PİLAV -->
-            <div class="info-card">
-
-                <img
-                src="https://www.kulturportali.gov.tr/contents/images/08022013_62d201bb-287d-46f5-8aaf-748e2d3a56d1.JPG"
-                alt="Rize Hamsili Pilav">
-
-                <div class="info-content">
-
-                    <h3>Hamsili Pilav</h3>
-
-                    <p>
-                        Hamsi ve pirincin buluştuğu,
-                        Rize mutfağının özel yemeklerinden.
-                    </p>
-
-                    <button class="card-btn"
-                            onclick="openFood('Hamsili Pilav')">
-                        Detayları Gör
-                    </button>
-
-                </div>
-
-            </div>
+</div>
 
 
-            <!-- KARA LAHANA ÇORBASI -->
-            <div class="info-card">
+<div class="info-card">
 
-                <img
-                src="https://www.muhlama.com.tr/resimler/menu_k/Lahana-Corbasi64919.jpg"
-                alt="Rize Karalahana Çorbası">
+<img
+src="https://www.kulturportali.gov.tr/contents/images/08022013_62d201bb-287d-46f5-8aaf-748e2d3a56d1.JPG"
+alt="Hamsili Pilav">
 
-                <div class="info-content">
+<div class="info-content">
 
-                    <h3>Karalahana Çorbası</h3>
+<h3>Hamsili Pilav</h3>
 
-                    <p>
-                        Rize sofralarının klasiklerinden,
-                        karalahanayla hazırlanan yöresel çorba.
-                    </p>
+<div class="tags">
+<span class="tag">Ana Yemek</span>
+<span class="tag">Rize</span>
+</div>
 
-                    <button class="card-btn"
-                            onclick="openFood('Karalahana Çorbası')">
-                        Detayları Gör
-                    </button>
+<p>
+Hamsi ve pirincin buluştuğu geleneksel yöresel yemek.
+</p>
 
-                </div>
+<button class="card-btn"
+onclick="openFood('Hamsili Pilav')">
+Detayları Gör
+</button>
 
-            </div>
+</div>
 
-
-            <!-- KARA LAHANA SARMASI -->
-            <div class="info-card">
-
-                <img
-                src="https://www.muhlama.com.tr/resimler/menu_k/Kara-Lahana-Sarma5e53a.jpg"
-                alt="Rize Karalahana Sarması">
-
-                <div class="info-content">
-
-                    <h3>Karalahana Sarması</h3>
-
-                    <p>
-                        Rize mutfağının sevilen geleneksel
-                        yemeklerinden.
-                    </p>
-
-                    <button class="card-btn"
-                            onclick="openFood('Karalahana Sarması')">
-                        Detayları Gör
-                    </button>
-
-                </div>
-
-            </div>
+</div>
 
 
-            <!-- LAZ BÖREĞİ -->
-            <div class="info-card">
+<div class="info-card">
 
-                <img
-                src="https://www.muhlama.com.tr/resimler/menu_k/Laz-Boregi6ec52.jpg"
-                alt="Laz Böreği">
+<img
+src="https://www.muhlama.com.tr/resimler/menu_k/Lahana-Corbasi64919.jpg"
+alt="Karalahana Çorbası">
 
-                <div class="info-content">
+<div class="info-content">
 
-                    <h3>Laz Böreği</h3>
+<h3>Karalahana Çorbası</h3>
 
-                    <p>
-                        İnce yufka ve muhallebinin birleştiği
-                        Karadeniz'in meşhur tatlısı.
-                    </p>
+<div class="tags">
+<span class="tag">Çorba</span>
+<span class="tag">Yöresel</span>
+</div>
 
-                    <button class="card-btn"
-                            onclick="openFood('Laz Böreği')">
-                        Detayları Gör
-                    </button>
+<p>
+Rize sofralarının klasik karalahana lezzeti.
+</p>
 
-                </div>
+<button class="card-btn"
+onclick="openFood('Karalahana Çorbası')">
+Detayları Gör
+</button>
 
-            </div>
+</div>
+
+</div>
 
 
-            <!-- PEPEÇURA -->
-            <div class="info-card">
+<div class="info-card">
 
-                <img
-                src="https://www.muhlama.com.tr/resimler/menu_k/Pepecura-Mevsim32a18.jpg"
-                alt="Rize Pepeçurası">
+<img
+src="https://www.muhlama.com.tr/resimler/menu_k/Kara-Lahana-Sarma5e53a.jpg"
+alt="Karalahana Sarması">
 
-                <div class="info-content">
+<div class="info-content">
 
-                    <h3>Pepeçura</h3>
+<h3>Karalahana Sarması</h3>
 
-                    <p>
-                        Kokulu siyah üzümden yapılan,
-                        Rize'nin kendine özgü tatlılarından.
-                    </p>
+<div class="tags">
+<span class="tag">Ana Yemek</span>
+<span class="tag">Geleneksel</span>
+</div>
 
-                    <button class="card-btn"
-                            onclick="openFood('Pepeçura')">
-                        Detayları Gör
-                    </button>
+<p>
+Karalahana yapraklarıyla hazırlanan yöresel yemek.
+</p>
 
-                </div>
+<button class="card-btn"
+onclick="openFood('Karalahana Sarması')">
+Detayları Gör
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </div>
+
+<div class="info-card">
+
+<img
+src="https://www.muhlama.com.tr/resimler/menu_k/Laz-Boregi6ec52.jpg"
+alt="Laz Böreği">
+
+<div class="info-content">
+
+<h3>Laz Böreği</h3>
+
+<div class="tags">
+<span class="tag">Tatlı</span>
+<span class="tag">Karadeniz</span>
+</div>
+
+<p>
+İnce yufka ve muhallebiyle hazırlanan yöresel tatlı.
+</p>
+
+<button class="card-btn"
+onclick="openFood('Laz Böreği')">
+Detayları Gör
+</button>
+
+</div>
+
+</div>
+
+
+<div class="info-card">
+
+<img
+src="https://www.muhlama.com.tr/resimler/menu_k/Pepecura-Mevsim32a18.jpg"
+alt="Pepeçura">
+
+<div class="info-content">
+
+<h3>Pepeçura</h3>
+
+<div class="tags">
+<span class="tag">Tatlı</span>
+<span class="tag">Üzüm</span>
+</div>
+
+<p>
+Kokulu siyah üzümle hazırlanan Rize'nin özel tatlılarından.
+</p>
+
+<button class="card-btn"
+onclick="openFood('Pepeçura')">
+Detayları Gör
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- KONAKLAMA -->
+
 <section id="konaklama">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
+<div class="section-head">
 
-            <div>
-                <h2>🏡 Rize'de Nerede Kalınır?</h2>
+<h2>🏡 Rize'de Nerede Kalınır?</h2>
 
-                <p>
-                    Otel, bungalov ve yayla evleri için
-                    konaklama seçeneklerini keşfet.
-                </p>
-            </div>
+<p>
+Konaklama tarzını seç. Sana uygun seçenekleri keşfet.
+</p>
 
-        </div>
+</div>
 
 
-        <div class="card-grid">
+<div class="filter-bar">
 
-            <div class="info-card">
+<button class="filter-btn active"
+onclick="filterStay('all',this)">
+Tümü
+</button>
 
-                <img
-                src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85"
-                alt="Bungalov">
+<button class="filter-btn"
+onclick="filterStay('otel',this)">
+🏨 Otel
+</button>
 
-                <div class="info-content">
+<button class="filter-btn"
+onclick="filterStay('bungalov',this)">
+🌲 Bungalov
+</button>
 
-                    <h3>🌲 Bungalovlar</h3>
+<button class="filter-btn"
+onclick="filterStay('pansiyon',this)">
+🛏️ Pansiyon
+</button>
 
-                    <p>
-                        Doğanın içinde sakin ve manzaralı
-                        konaklama seçenekleri.
-                    </p>
+<button class="filter-btn"
+onclick="filterStay('apart',this)">
+🏢 Apart
+</button>
 
-                    <button class="card-btn"
-                            onclick="openStay('Bungalov')">
-                        Seçenekleri Gör
-                    </button>
+<button class="filter-btn"
+onclick="filterStay('yayla',this)">
+🏔️ Yayla Evi
+</button>
 
-                </div>
-
-            </div>
-
-
-            <div class="info-card">
-
-                <img
-                src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=85"
-                alt="Otel">
-
-                <div class="info-content">
-
-                    <h3>🏨 Oteller</h3>
-
-                    <p>
-                        Şehir merkezi ve turistik bölgelerde
-                        konforlu konaklama.
-                    </p>
-
-                    <button class="card-btn"
-                            onclick="openStay('Otel')">
-                        Seçenekleri Gör
-                    </button>
-
-                </div>
-
-            </div>
+</div>
 
 
-            <div class="info-card">
+<div class="card-grid" id="stayGrid">
 
-                <img
-                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85"
-                alt="Yayla evi">
 
-                <div class="info-content">
+<!-- OTEL -->
 
-                    <h3>🏔️ Yayla Evleri</h3>
+<div class="info-card stay-card"
+data-type="otel">
 
-                    <p>
-                        Ayder ve çevresinde doğayla iç içe
-                        konaklama deneyimi.
-                    </p>
+<img
+src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85"
+alt="Rize otel">
 
-                    <button class="card-btn"
-                            onclick="openStay('Yayla Evi')">
-                        Seçenekleri Gör
-                    </button>
+<div class="info-content">
 
-                </div>
+<h3>🏨 Oteller</h3>
 
-            </div>
+<div class="tags">
+<span class="tag">Konfor</span>
+<span class="tag">Merkez</span>
+</div>
 
-        </div>
+<p>
+Rize merkez, Ayder ve çevresindeki otel seçeneklerini keşfet.
+</p>
 
-    </div>
+<button class="card-btn"
+onclick="openStay('Otel')">
+Otel Seçenekleri
+</button>
+
+</div>
+
+</div>
+
+
+<!-- BUNGALOV -->
+
+<div class="info-card stay-card"
+data-type="bungalov">
+
+<img
+src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85"
+alt="Rize bungalov">
+
+<div class="info-content">
+
+<h3>🌲 Bungalovlar</h3>
+
+<div class="tags">
+<span class="tag">Doğa</span>
+<span class="tag">Manzara</span>
+</div>
+
+<p>
+Dere, orman ve dağ manzarası isteyenler için bungalov seçenekleri.
+</p>
+
+<button class="card-btn"
+onclick="openStay('Bungalov')">
+Bungalov Seçenekleri
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PANSİYON -->
+
+<div class="info-card stay-card"
+data-type="pansiyon">
+
+<img
+src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=85"
+alt="Rize pansiyon">
+
+<div class="info-content">
+
+<h3>🛏️ Pansiyonlar</h3>
+
+<div class="tags">
+<span class="tag">Samimi</span>
+<span class="tag">Ekonomik</span>
+</div>
+
+<p>
+Daha sıcak ve ekonomik bir konaklama arayanlar için.
+</p>
+
+<button class="card-btn"
+onclick="openStay('Pansiyon')">
+Pansiyon Seçenekleri
+</button>
+
+</div>
+
+</div>
+
+
+<!-- APART -->
+
+<div class="info-card stay-card"
+data-type="apart">
+
+<img
+src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=85"
+alt="Rize apart">
+
+<div class="info-content">
+
+<h3>🏢 Apart</h3>
+
+<div class="tags">
+<span class="tag">Aile</span>
+<span class="tag">Uzun Konaklama</span>
+</div>
+
+<p>
+Aileler ve daha uzun süre kalacak ziyaretçiler için.
+</p>
+
+<button class="card-btn"
+onclick="openStay('Apart')">
+Apart Seçenekleri
+</button>
+
+</div>
+
+</div>
+
+
+<!-- YAYLA -->
+
+<div class="info-card stay-card"
+data-type="yayla">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Ayder_Yaylasi_%40_Rize-Turkey.JPG"
+alt="Rize yayla evi">
+
+<div class="info-content">
+
+<h3>🏔️ Yayla Evleri</h3>
+
+<div class="tags">
+<span class="tag">Yayla</span>
+<span class="tag">Doğa</span>
+</div>
+
+<p>
+Ayder ve çevresinde doğayla iç içe kalmak isteyenlere.
+</p>
+
+<button class="card-btn"
+onclick="openStay('Yayla Evi')">
+Yayla Seçenekleri
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TERMAL -->
+
+<div class="info-card stay-card"
+data-type="otel">
+
+<img
+src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=85"
+alt="Rize termal">
+
+<div class="info-content">
+
+<h3>♨️ Termal</h3>
+
+<div class="tags">
+<span class="tag">Rahatlama</span>
+<span class="tag">Kaplıca</span>
+</div>
+
+<p>
+İkizdere ve çevresindeki termal konaklama seçeneklerini keşfet.
+</p>
+
+<button class="card-btn"
+onclick="openStay('Termal')">
+Termal Seçenekleri
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HAVA DURUMU -->
+
+<section id="hava">
+
+<div class="container">
+
+<div class="section-head">
+
+<h2>🌤️ Rize Günlük Hava Durumu</h2>
+
+<p>
+Rize için güncel günlük tahmini otomatik olarak getiriyoruz.
+</p>
+
+</div>
+
+<div class="weather-box">
+
+<div class="weather-top">
+
+<h3>📍 Rize</h3>
+
+<div class="weather-status"
+id="weatherStatus">
+Hava durumu yükleniyor...
+</div>
+
+</div>
+
+<div class="weather-grid"
+id="weatherGrid">
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- ROTA -->
+
 <section id="rota">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
+<div class="section-head">
 
-            <div>
-                <h2>🧭 Rota Oluştur</h2>
+<h2>🧭 Rota Oluştur</h2>
 
-                <p>
-                    Nereden başlayacağını seç,
-                    sana örnek bir Rize rotası çıkaralım.
-                </p>
-            </div>
+<p>
+Kaç günün var ve nasıl bir Rize görmek istiyorsun?
+Seçimini yap, sana rota çıkaralım.
+</p>
 
-        </div>
+</div>
 
+<div class="route-box">
 
-        <div class="route-box">
+<div class="route-selects">
 
-            <div class="route-form">
+<select id="routeDays">
 
-                <select id="routeStart">
+<option value="">
+Kaç gün?
+</option>
 
-                    <option value="">
-                        Başlangıç seç
-                    </option>
+<option value="1">
+1 Gün
+</option>
 
-                    <option value="Rize Merkez">
-                        Rize Merkez
-                    </option>
+<option value="2">
+2 Gün
+</option>
 
-                    <option value="Çamlıhemşin">
-                        Çamlıhemşin
-                    </option>
+<option value="3">
+3 Gün
+</option>
 
-                    <option value="Ayder">
-                        Ayder
-                    </option>
-
-                </select>
+</select>
 
 
-                <select id="routeType">
+<select id="routeStyle">
 
-                    <option value="">
-                        Gezi tarzı
-                    </option>
+<option value="">
+Gezi tarzı
+</option>
 
-                    <option value="doga">
-                        Doğa
-                    </option>
+<option value="doga">
+🏔️ Doğa
+</option>
 
-                    <option value="yemek">
-                        Yemek
-                    </option>
+<option value="yemek">
+🍽️ Yemek
+</option>
 
-                    <option value="fotograf">
-                        Fotoğraf
-                    </option>
+<option value="foto">
+📸 Fotoğraf
+</option>
 
-                    <option value="aile">
-                        Aile
-                    </option>
+<option value="aile">
+👨‍👩‍👧 Aile
+</option>
 
-                </select>
+<option value="cift">
+❤️ Çift
+</option>
+
+<option value="macera">
+🧗 Macera
+</option>
+
+<option value="yayla">
+🏔️ Yayla
+</option>
+
+<option value="karisik">
+✨ Karışık
+</option>
+
+</select>
 
 
-                <button class="btn btn-dark"
-                        onclick="createRoute()">
-                    Rota Oluştur
-                </button>
+<select id="routeStart">
 
-            </div>
+<option value="">
+Nereden başlayacaksın?
+</option>
+
+<option value="Rize Merkez">
+Rize Merkez
+</option>
+
+<option value="Ardeşen">
+Ardeşen
+</option>
+
+<option value="Çamlıhemşin">
+Çamlıhemşin
+</option>
+
+<option value="Ayder">
+Ayder
+</option>
+
+</select>
+
+</div>
+
+<div class="route-button">
+
+<button class="btn btn-dark"
+onclick="createRoute()">
+🧭 Rotamı Oluştur
+</button>
+
+</div>
 
 
-            <div id="routeResult"
-                 class="route-result">
-            </div>
+<div class="route-result"
+id="routeResult">
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- İŞLETME -->
+<!-- VİTRİN -->
+
+<section id="vitrin">
+
+<div class="container">
+
+<div class="vitrin">
+
+<div class="vitrin-head">
+
+<div>
+
+<h2>⭐ Rize İşletme Vitrini</h2>
+
+<p>
+Rize'ye gelen ziyaretçilerin keşfedebileceği işletmeler.
+</p>
+
+</div>
+
+<button class="btn btn-dark"
+onclick="openBusiness()">
++ İşletmeni Ekle
+</button>
+
+</div>
+
+
+<div class="vitrin-grid">
+
+
+<!-- OTEL -->
+
+<div class="vitrin-card">
+
+<div class="vitrin-image">
+
+<img
+src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85"
+alt="Otel">
+
+<div class="vitrin-badge">
+KONAKLAMA
+</div>
+
+</div>
+
+<div class="vitrin-content">
+
+<h3>🏨 Rize Otelleri</h3>
+
+<p>
+Rize merkez ve çevresindeki otel seçenekleri.
+</p>
+
+<div class="vitrin-actions">
+
+<button class="vitrin-detail"
+onclick="openStay('Otel')">
+İncele
+</button>
+
+<button class="vitrin-add"
+onclick="openBusiness()">
+İşletmeni Ekle
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BUNGALOV -->
+
+<div class="vitrin-card">
+
+<div class="vitrin-image">
+
+<img
+src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1000&q=85"
+alt="Bungalov">
+
+<div class="vitrin-badge">
+BUNGALOV
+</div>
+
+</div>
+
+<div class="vitrin-content">
+
+<h3>🌲 Rize Bungalovları</h3>
+
+<p>
+Doğayla iç içe konaklama seçenekleri.
+</p>
+
+<div class="vitrin-actions">
+
+<button class="vitrin-detail"
+onclick="openStay('Bungalov')">
+İncele
+</button>
+
+<button class="vitrin-add"
+onclick="openBusiness()">
+İşletmeni Ekle
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RESTORAN -->
+
+<div class="vitrin-card">
+
+<div class="vitrin-image">
+
+<img
+src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+alt="Restoran">
+
+<div class="vitrin-badge">
+YEMEK
+</div>
+
+</div>
+
+<div class="vitrin-content">
+
+<h3>🍽️ Rize Restoranları</h3>
+
+<p>
+Yöresel yemekleri deneyebileceğin işletmeler.
+</p>
+
+<div class="vitrin-actions">
+
+<button class="vitrin-detail"
+onclick="scrollToId('yemek')">
+İncele
+</button>
+
+<button class="vitrin-add"
+onclick="openBusiness()">
+İşletmeni Ekle
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- İŞLETME EKLE -->
+
 <section>
 
-    <div class="container">
+<div class="container">
 
-        <div class="business-box">
+<div class="business-box">
 
-            <div>
+<div>
 
-                <h2>İşletmeni Rize Rehberi'ne Ekle</h2>
+<h2>🏪 İşletmeni Rize Rehberi'ne Ekle</h2>
 
-                <p>
-                    Restoran, kafe, otel, bungalov, pansiyon
-                    veya turizm işletmeni ziyaretçilere göster.
-                </p>
+<p>
+Restoran, kafe, otel, bungalov, pansiyon,
+apart veya turizm işletmeni Rize'ye gelen ziyaretçilere göster.
+</p>
 
-            </div>
+</div>
 
-            <button class="btn btn-primary"
-                    onclick="openBusiness()">
-                İşletmeni Tanıt
-            </button>
+<button class="btn btn-white"
+onclick="openBusiness()">
+İşletmeni Ekle
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
 <!-- FOOTER -->
+
 <footer>
 
-    <div class="container">
+<div class="container">
 
-        <div class="footer-inner">
+<div class="footer-inner">
 
-            <div>
-                <strong>RizeRehberi</strong>
-                <p>
-                    Gez • Ye • Kal • Keşfet
-                </p>
-            </div>
+<div>
 
-            <div>
-                <p>
-                    Rize'yi keşfetmenin kolay yolu.
-                </p>
-            </div>
+<strong>RizeRehberi</strong>
 
-        </div>
+<p>
+Gez • Ye • Kal • Keşfet
+</p>
 
-    </div>
+</div>
+
+<div>
+
+<p>
+Rize'yi keşfetmenin kolay yolu.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </footer>
 
 
-<!-- MOBİL ALT MENÜ -->
+<!-- ALT MENÜ -->
+
 <nav class="bottom-nav">
 
-    <button class="active"
-            onclick="scrollToId('kesfet')">
-        <span>🏠</span>
-        Keşfet
-    </button>
+<button class="active"
+onclick="scrollToId('kesfet')">
 
-    <button onclick="scrollToId('asistan')">
-        <span>🤖</span>
-        Asistan
-    </button>
+<span>🏠</span>
+Keşfet
 
-    <button onclick="scrollToId('yemek')">
-        <span>🍽️</span>
-        Yemek
-    </button>
+</button>
 
-    <button onclick="scrollToId('konaklama')">
-        <span>🏡</span>
-        Kal
-    </button>
+<button onclick="scrollToId('asistan')">
 
-    <button onclick="scrollToId('rota')">
-        <span>🧭</span>
-        Rota
-    </button>
+<span>🤖</span>
+Asistan
+
+</button>
+
+<button onclick="scrollToId('yemek')">
+
+<span>🍽️</span>
+Yemek
+
+</button>
+
+<button onclick="scrollToId('konaklama')">
+
+<span>🏡</span>
+Kal
+
+</button>
+
+<button onclick="scrollToId('rota')">
+
+<span>🧭</span>
+Rota
+
+</button>
 
 </nav>
 
 
-<!-- GENEL MODAL -->
-<div class="modal" id="mainModal">
+<!-- ANA MODAL -->
 
-    <div class="modal-box">
+<div class="modal"
+id="mainModal">
 
-        <button class="close"
-                onclick="closeModal('mainModal')">
-            ×
-        </button>
+<div class="modal-box">
 
-        <h2 id="modalTitle"></h2>
+<button class="close"
+onclick="closeModal('mainModal')">
+×
+</button>
 
-        <p id="modalText"></p>
+<h2 id="modalTitle"></h2>
 
-        <div class="option-list"
-             id="modalOptions">
-        </div>
+<p id="modalText"></p>
 
-    </div>
+<div class="option-list"
+id="modalOptions">
+</div>
+
+</div>
 
 </div>
 
 
 <!-- İŞLETME MODAL -->
-<div class="modal" id="businessModal">
 
-    <div class="modal-box">
+<div class="modal"
+id="businessModal">
 
-        <button class="close"
-                onclick="closeModal('businessModal')">
-            ×
-        </button>
+<div class="modal-box">
 
-        <h2>İşletmeni Tanıt</h2>
+<button class="close"
+onclick="closeModal('businessModal')">
+×
+</button>
 
-        <p>
-            Bilgilerini doldur, başvurunu WhatsApp üzerinden gönder.
-        </p>
+<h2>🏪 İşletmeni Rize Rehberi'ne Ekle</h2>
 
-        <div class="form-grid">
+<p>
+İşletme bilgilerini bırak. Başvurunu WhatsApp üzerinden gönder.
+</p>
 
-            <input
-            id="businessName"
-            placeholder="İşletme adı">
+<div class="form-grid">
 
-            <select id="businessType">
+<input
+id="businessName"
+placeholder="İşletme adı">
 
-                <option value="">
-                    İşletme türü
-                </option>
+<select id="businessType">
 
-                <option>Restoran</option>
-                <option>Kafe</option>
-                <option>Otel</option>
-                <option>Bungalov</option>
-                <option>Pansiyon</option>
-                <option>Apart</option>
-                <option>Yayla Evi</option>
-                <option>Turizm / Aktivite</option>
-                <option>Diğer</option>
+<option value="">
+İşletme türü
+</option>
 
-            </select>
+<option>Restoran</option>
+<option>Kafe</option>
+<option>Otel</option>
+<option>Bungalov</option>
+<option>Pansiyon</option>
+<option>Apart</option>
+<option>Yayla Evi</option>
+<option>Turizm / Aktivite</option>
+<option>Diğer</option>
 
-            <input
-            id="businessPhone"
-            placeholder="Telefon">
+</select>
 
-            <input
-            id="businessInstagram"
-            placeholder="Instagram kullanıcı adı">
+<input
+id="businessLocation"
+placeholder="Konum / İlçe">
 
-            <textarea
-            id="businessInfo"
-            placeholder="İşletmeniz hakkında kısa bilgi"></textarea>
+<input
+id="businessPhone"
+placeholder="Telefon">
 
-            <button class="btn btn-dark"
-                    onclick="sendBusiness()">
-                WhatsApp'tan Başvur
-            </button>
+<input
+id="businessInstagram"
+placeholder="Instagram kullanıcı adı">
 
-        </div>
+<textarea
+id="businessInfo"
+placeholder="İşletmenizi kısaca anlatın"></textarea>
 
-    </div>
+<button class="btn btn-dark"
+onclick="sendBusiness()">
+📲 WhatsApp'tan Başvur
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* ================= GENEL ================= */
+/* GENEL */
 
 function scrollToId(id){
 
-    const element=document.getElementById(id);
+const element=document.getElementById(id);
 
-    if(element){
-        element.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-        });
-    }
+if(element){
+
+element.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
 
 }
 
 
-/* ================= ŞEHİR ================= */
-
-function openCity(city){
-
-    const title=document.getElementById("modalTitle");
-    const text=document.getElementById("modalText");
-    const options=document.getElementById("modalOptions");
-
-    if(city==="Rize"){
-
-        title.innerText="🏔️ Rize'yi Keşfet";
-
-        text.innerText=
-        "Rize'de ne yapmak istediğini seç.";
-
-        options.innerHTML=`
-
-            <button class="option"
-            onclick="scrollToId('yemek');closeModal('mainModal')">
-            🍽️ Rize'de Ne Yenir?
-            </button>
-
-            <button class="option"
-            onclick="scrollToId('konaklama');closeModal('mainModal')">
-            🏡 Nerede Kalınır?
-            </button>
-
-            <button class="option"
-            onclick="openInfo('Ayder Yaylası','Rize’nin en bilinen yayla destinasyonlarından biri. Doğa, kaplıca ve fotoğraf için tercih edilir.')">
-            🌲 Ayder Yaylası
-            </button>
-
-            <button class="option"
-            onclick="openInfo('Pokut Yaylası','Çamlıhemşin çevresindeki yüksek yaylalardan biri. Manzara ve fotoğraf için öne çıkar.')">
-            🏔️ Pokut Yaylası
-            </button>
-
-            <button class="option"
-            onclick="openInfo('Fırtına Vadisi','Rafting, doğa ve yolculuk rotaları için Rize’nin önemli bölgelerinden.')">
-            🌊 Fırtına Vadisi
-            </button>
-
-        `;
-
-    }else{
-
-        title.innerText="🌿 Trabzon'u Keşfet";
-
-        text.innerText=
-        "Trabzon'da görmek istediğin yeri seç.";
-
-        options.innerHTML=`
-
-            <button class="option"
-            onclick="openInfo('Sümela Manastırı','Trabzon’un Maçka ilçesinde, kayalık yamaç üzerine kurulu tarihi manastır.')">
-            🏛️ Sümela Manastırı
-            </button>
-
-            <button class="option"
-            onclick="openInfo('Uzungöl','Trabzon’un Çaykara ilçesinde bulunan göl ve çevresindeki doğal güzellikler.')">
-            🌲 Uzungöl
-            </button>
-
-            <button class="option"
-            onclick="openInfo('Trabzon Yemekleri','Akçaabat köfte, kuymak, hamsili yemekler ve Karadeniz mutfağını keşfet.')">
-            🍽️ Ne Yenir?
-            </button>
-
-        `;
-
-    }
-
-    document.getElementById("mainModal").style.display="flex";
-}
-
-
-/* ================= YEMEK ================= */
-
-function openFood(food){
-
-    const title=document.getElementById("modalTitle");
-    const text=document.getElementById("modalText");
-    const options=document.getElementById("modalOptions");
-
-    const data={
-
-        "Muhlama":
-        "Mısır unu, tereyağı ve yöresel peynirle hazırlanan Rize mutfağının en bilinen sıcak lezzetlerinden.",
-
-        "Hamsili Pilav":
-        "Hamsi ve pirincin bir araya geldiği geleneksel Rize yemeği. Sıcak servis edilir.",
-
-        "Karalahana Çorbası":
-        "Karalahana ile hazırlanan, Rize sofralarında önemli yeri olan geleneksel çorba.",
-
-        "Karalahana Sarması":
-        "Karalahana yapraklarıyla hazırlanan geleneksel Rize yemeği.",
-
-        "Laz Böreği":
-        "İnce yufka ve muhallebiyle hazırlanan, Karadeniz mutfağında sevilen tatlı.",
-
-        "Pepeçura":
-        "Kokulu siyah üzüm ve mısır unu ile hazırlanan Rize'nin yöresel tatlılarından."
-
-    };
-
-    title.innerText="🍽️ "+food;
-
-    text.innerText=data[food] || "Rize'nin yöresel lezzetlerinden.";
-
-    options.innerHTML=`
-
-        <button class="option"
-        onclick="openInfo('Nerede Yenir?','Bu bölümde ilerleyen aşamada Rize’de bu yemeği yapan işletmeleri listeleyebiliriz.')">
-        📍 Nerede Yenir?
-        </button>
-
-        <button class="option"
-        onclick="closeModal('mainModal');scrollToId('yemek')">
-        🍽️ Diğer Yemeklere Bak
-        </button>
-
-    `;
-
-    document.getElementById("mainModal").style.display="flex";
-}
-
-
-/* ================= KONAKLAMA ================= */
-
-function openStay(type){
-
-    let text="";
-
-    if(type==="Bungalov"){
-        text="Rize'nin doğa içindeki bungalovlarını keşfet.";
-    }
-
-    if(type==="Otel"){
-        text="Rize merkez ve turistik bölgelerdeki otelleri keşfet.";
-    }
-
-    if(type==="Yayla Evi"){
-        text="Yaylalarda doğayla iç içe konaklama seçeneklerini keşfet.";
-    }
-
-    openInfo(type,text);
-}
-
-
-/* ================= BİLGİ ================= */
-
-function openInfo(title,text){
-
-    document.getElementById("modalTitle").innerText=title;
-    document.getElementById("modalText").innerText=text;
-
-    document.getElementById("modalOptions").innerHTML=`
-
-        <button class="option"
-        onclick="closeModal('mainModal')">
-        ✓ Tamam
-        </button>
-
-    `;
-
-    document.getElementById("mainModal").style.display="flex";
-}
-
-
-/* ================= ASİSTAN ================= */
-
-function assistant(type){
-
-    const box=document.getElementById("assistantAnswer");
-
-    let answer="";
-
-    if(type==="doga"){
-        answer=
-        "<strong>🏔️ Doğa için:</strong><br><br>"+
-        "Ayder → Fırtına Vadisi → Pokut çevresini değerlendirebilirsin.";
-    }
-
-    if(type==="yemek"){
-        answer=
-        "<strong>🍽️ Yemek için:</strong><br><br>"+
-        "Muhlama, hamsili pilav, karalahana sarması, karalahana çorbası, Laz böreği ve pepeçurayı dene.";
-    }
-
-    if(type==="kal"){
-        answer=
-        "<strong>🏡 Konaklama için:</strong><br><br>"+
-        "Doğa istiyorsan bungalov veya yayla evi, şehir merkezine yakınlık istiyorsan otel tercih edebilirsin.";
-    }
-
-    if(type==="foto"){
-        answer=
-        "<strong>📸 Fotoğraf için:</strong><br><br>"+
-        "Pokut, Ayder, Fırtına Vadisi ve yayla yollarını değerlendirebilirsin.";
-    }
-
-    if(type==="cift"){
-        answer=
-        "<strong>❤️ Çiftler için:</strong><br><br>"+
-        "Manzaralı bungalov + Ayder + Fırtına Vadisi şeklinde sakin bir rota oluşturabilirsin.";
-    }
-
-    if(type==="aile"){
-        answer=
-        "<strong>👨‍👩‍👧 Aile için:</strong><br><br>"+
-        "Ayder, Fırtına Vadisi ve kolay ulaşılabilen doğal alanlardan oluşan bir rota tercih edebilirsin.";
-    }
-
-    box.innerHTML=answer;
-    box.style.display="block";
-}
-
-
-/* ================= ROTA ================= */
-
-function createRoute(){
-
-    const start=document.getElementById("routeStart").value;
-    const type=document.getElementById("routeType").value;
-
-    const result=document.getElementById("routeResult");
-
-    if(!start || !type){
-
-        result.style.display="block";
-
-        result.innerHTML=
-        "⚠️ Önce başlangıç noktasını ve gezi tarzını seç.";
-
-        return;
-    }
-
-    let route="";
-
-    if(type==="doga"){
-
-        route=
-        "🌲 <strong>Doğa Rotası</strong><br><br>"+
-        start+" → Fırtına Vadisi → Ayder → Şelaleler";
-
-    }
-
-    if(type==="yemek"){
-
-        route=
-        "🍽️ <strong>Lezzet Rotası</strong><br><br>"+
-        start+" → Muhlama → Karalahana → Hamsili Pilav → Laz Böreği";
-
-    }
-
-    if(type==="fotograf"){
-
-        route=
-        "📸 <strong>Fotoğraf Rotası</strong><br><br>"+
-        start+" → Ayder → Pokut → Fırtına Vadisi";
-
-    }
-
-    if(type==="aile"){
-
-        route=
-        "👨‍👩‍👧 <strong>Aile Rotası</strong><br><br>"+
-        start+" → Ayder → Fırtına Vadisi → Rize Merkez";
-
-    }
-
-    result.innerHTML=route;
-    result.style.display="block";
-}
-
-
-/* ================= İŞLETME ================= */
-
-function openBusiness(){
-
-    document.getElementById("businessModal").style.display="flex";
-}
-
-
-function sendBusiness(){
-
-    const name=
-    document.getElementById("businessName").value.trim();
-
-    const type=
-    document.getElementById("businessType").value;
-
-    const phone=
-    document.getElementById("businessPhone").value.trim();
-
-    const instagram=
-    document.getElementById("businessInstagram").value.trim();
-
-    const info=
-    document.getElementById("businessInfo").value.trim();
-
-    if(!name){
-
-        alert("Lütfen işletme adını yaz.");
-
-        return;
-    }
-
-    const message=
-    "Merhaba, Rize Rehberi'nde işletmemi tanıtmak istiyorum.%0A%0A"+
-    "İşletme: "+encodeURIComponent(name)+
-    "%0Aİşletme Türü: "+encodeURIComponent(type)+
-    "%0ATelefon: "+encodeURIComponent(phone)+
-    "%0AInstagram: "+encodeURIComponent(instagram)+
-    "%0ABilgi: "+encodeURIComponent(info);
-
-    window.location.href=
-    "https://wa.me/905349329878?text="+message;
-}
-
-
-/* ================= MODAL KAPAT ================= */
+/* MODAL */
 
 function closeModal(id){
 
-    document.getElementById(id).style.display="none";
+document.getElementById(id).style.display="none";
+
 }
 
 
 document.querySelectorAll(".modal").forEach(function(modal){
 
-    modal.addEventListener("click",function(e){
+modal.addEventListener("click",function(e){
 
-        if(e.target===modal){
-            modal.style.display="none";
-        }
+if(e.target===modal){
 
-    });
+modal.style.display="none";
+
+}
+
+});
 
 });
 
 
-/* ================= ALT MENÜ ================= */
+/* ŞEHİR */
 
-document.querySelectorAll(".bottom-nav button").forEach(function(button){
+function openCity(city){
 
-    button.addEventListener("click",function(){
+let title=document.getElementById("modalTitle");
+let text=document.getElementById("modalText");
+let options=document.getElementById("modalOptions");
 
-        document.querySelectorAll(".bottom-nav button")
-        .forEach(function(btn){
-            btn.classList.remove("active");
-        });
+if(city==="Rize"){
 
-        this.classList.add("active");
+title.innerText="🏔️ Rize'yi Keşfet";
 
-    });
+text.innerText="Rize'de ne yapmak istediğini seç.";
+
+options.innerHTML=`
+
+<button class="option"
+onclick="scrollToId('yemek');closeModal('mainModal')">
+🍽️ Rize'de Ne Yenir?
+</button>
+
+<button class="option"
+onclick="scrollToId('konaklama');closeModal('mainModal')">
+🏡 Nerede Kalınır?
+</button>
+
+<button class="option"
+onclick="openInfo('Ayder Yaylası','Doğa, kaplıca, yayla atmosferi ve fotoğraf için Rize’nin en bilinen bölgelerinden.')">
+🌲 Ayder Yaylası
+</button>
+
+<button class="option"
+onclick="openInfo('Pokut Yaylası','Yüksek yayla manzarası ve fotoğraf için tercih edilen bölgelerden.')">
+🏔️ Pokut Yaylası
+</button>
+
+<button class="option"
+onclick="openInfo('Fırtına Vadisi','Doğa, rafting, yürüyüş ve yolculuk rotaları için önemli bir bölge.')">
+🌊 Fırtına Vadisi
+</button>
+
+<button class="option"
+onclick="scrollToId('rota');closeModal('mainModal')">
+🧭 Rize Rotası Oluştur
+</button>
+
+`;
+
+}else{
+
+title.innerText="🌿 Trabzon'u Keşfet";
+
+text.innerText="Trabzon'da görmek istediğin yeri seç.";
+
+options.innerHTML=`
+
+<button class="option"
+onclick="openInfo('Sümela Manastırı','Trabzon’un Maçka ilçesindeki tarihi manastır.')">
+🏛️ Sümela Manastırı
+</button>
+
+<button class="option"
+onclick="openInfo('Uzungöl','Trabzon Çaykara’daki doğal göl ve çevresi.')">
+🌲 Uzungöl
+</button>
+
+<button class="option"
+onclick="openInfo('Trabzon Yemekleri','Karadeniz mutfağından farklı yöresel lezzetleri keşfedebilirsin.')">
+🍽️ Ne Yenir?
+</button>
+
+`;
+
+}
+
+document.getElementById("mainModal").style.display="flex";
+
+}
+
+
+/* BİLGİ */
+
+function openInfo(title,text){
+
+document.getElementById("modalTitle").innerText=title;
+
+document.getElementById("modalText").innerText=text;
+
+document.getElementById("modalOptions").innerHTML=`
+
+<button class="option"
+onclick="closeModal('mainModal')">
+✓ Kapat
+</button>
+
+`;
+
+document.getElementById("mainModal").style.display="flex";
+
+}
+
+
+/* YEMEK */
+
+function openFood(food){
+
+let descriptions={
+
+"Muhlama":
+"Rize mutfağının en bilinen sıcak lezzetlerinden. Mısır unu, tereyağı ve yöresel peynirle hazırlanır.",
+
+"Hamsili Pilav":
+"Hamsi ve pirincin bir araya geldiği geleneksel Rize yemeklerinden.",
+
+"Karalahana Çorbası":
+"Karalahana ile hazırlanan Rize sofralarının klasik çorbası.",
+
+"Karalahana Sarması":
+"Karalahana yapraklarıyla hazırlanan geleneksel yöresel yemek.",
+
+"Laz Böreği":
+"İnce yufka ve muhallebiyle hazırlanan meşhur Karadeniz tatlısı.",
+
+"Pepeçura":
+"Kokulu siyah üzümle hazırlanan Rize'nin yöresel tatlılarından."
+
+};
+
+document.getElementById("modalTitle").innerText="🍽️ "+food;
+
+document.getElementById("modalText").innerText=
+descriptions[food];
+
+document.getElementById("modalOptions").innerHTML=`
+
+<button class="option"
+onclick="openInfo('Nerede Yenir?','Bu bölümde Rize’de bu yemeği sunan işletmeler listelenecek.')">
+📍 Nerede Yenir?
+</button>
+
+<button class="option"
+onclick="scrollToId('yemek');closeModal('mainModal')">
+🍽️ Diğer Yemekler
+</button>
+
+<button class="option"
+onclick="scrollToId('asistan');closeModal('mainModal')">
+🤖 Rize Asistanına Sor
+</button>
+
+`;
+
+document.getElementById("mainModal").style.display="flex";
+
+}
+
+
+/* KONAKLAMA */
+
+function openStay(type){
+
+let title="";
+let text="";
+let options="";
+
+if(type==="Otel"){
+
+title="🏨 Rize Otelleri";
+
+text="Rize'de otel seçerken bölge, bütçe ve seyahat amacına göre seçim yapabilirsin.";
+
+options=`
+
+<button class="option"
+onclick="openInfo('Rize Merkez Otelleri','Şehir merkezine yakın olmak isteyenler için.')">
+📍 Rize Merkez
+</button>
+
+<button class="option"
+onclick="openInfo('Ayder Otelleri','Yayla atmosferi ve Ayder çevresinde konaklama isteyenler için.')">
+🏔️ Ayder
+</button>
+
+<button class="option"
+onclick="openInfo('Çamlıhemşin Otelleri','Fırtına Vadisi ve yaylalara yakın olmak isteyenler için.')">
+🌲 Çamlıhemşin
+</button>
+
+<button class="option"
+onclick="openInfo('Aile İçin Otel','Aileyle seyahat edenler için daha geniş ve konforlu seçenekleri araştır.')">
+👨‍👩‍👧 Aile
+</button>
+
+`;
+
+}
+
+if(type==="Bungalov"){
+
+title="🌲 Rize Bungalovları";
+
+text="Doğa, dere, orman ve manzara isteyenler için bungalov seçenekleri.";
+
+options=`
+
+<button class="option"
+onclick="openInfo('Çamlıhemşin Bungalovları','Fırtına Vadisi ve çevresindeki doğa odaklı konaklamaları araştır.')">
+🌲 Çamlıhemşin
+</button>
+
+<button class="option"
+onclick="openInfo('Manzaralı Bungalov','Dağ veya vadi manzaralı seçenekleri tercih edebilirsin.')">
+🏔️ Manzaralı
+</button>
+
+<button class="option"
+onclick="openInfo('Çiftler İçin Bungalov','Daha sakin ve özel bir konaklama arayan çiftler için.')">
+❤️ Çiftler
+</button>
+
+<button class="option"
+onclick="openInfo('Aile Bungalovu','Birden fazla kişinin konaklayabileceği seçenekler.')">
+👨‍👩‍👧 Aile
+</button>
+
+`;
+
+}
+
+if(type==="Pansiyon"){
+
+title="🛏️ Rize Pansiyonları";
+
+text="Daha samimi ve ekonomik konaklama arayanlar için.";
+
+options=`
+
+<button class="option"
+onclick="openInfo('Ayder Pansiyonları','Ayder Turizm Merkezi çevresinde çok sayıda pansiyon seçeneği bulunuyor.')">
+🏔️ Ayder
+</button>
+
+<button class="option"
+onclick="openInfo('Çamlıhemşin Pansiyonları','Yayla rotalarına yakın konaklama için değerlendirilebilir.')">
+🌲 Çamlıhemşin
+</button>
+
+<button class="option"
+onclick="openInfo('Ekonomik Konaklama','Bütçeyi düşük tutmak isteyenler için pansiyonlar değerlendirilebilir.')">
+💰 Ekonomik
+</button>
+
+`;
+
+}
+
+if(type==="Apart"){
+
+title="🏢 Rize Apartları";
+
+text="Özellikle aile ve daha uzun konaklamalar için apart seçenekleri.";
+
+options=`
+
+<button class="option"
+onclick="openInfo('Aile İçin Apart','Mutfak ve daha geniş yaşam alanı isteyen aileler için.')">
+👨‍👩‍👧 Aile
+</button>
+
+<button class="option"
+onclick="openInfo('Ayder Apartları','Ayder çevresindeki apart seçeneklerini araştır.')">
+🏔️ Ayder
+</button>
+
+<button class="option"
+onclick="openInfo('Uzun Konaklama','Birkaç gün veya daha uzun konaklamalarda değerlendirilebilir.')">
+📅 Uzun Konaklama
+</button>
+
+`;
+
+}
+
+if(type==="Yayla Evi"){
+
+title="🏔️ Yayla Evleri";
+
+text="Rize'nin yayla atmosferini doğrudan yaşamak isteyenler için.";
+
+options=`
+
+<button class="option"
+onclick="openInfo('Ayder','Rize'nin en bilinen yayla destinasyonlarından.')">
+🌲 Ayder
+</button>
+
+<button class="option"
+onclick="openInfo('Pokut','Yüksek yayla manzarası için.')">
+🏔️ Pokut
+</button>
+
+<button class="option"
+onclick="openInfo('Elevit','Daha sakin yayla deneyimi arayanlar için.')">
+🌿 Elevit
+</button>
+
+`;
+
+}
+
+if(type==="Termal"){
+
+title="♨️ Termal Konaklama";
+
+text="Rize'nin termal kaynaklarıyla öne çıkan bölgelerini keşfet.";
+
+options=`
+
+<button class="option"
+onclick="openInfo('İkizdere','Rize'nin termal turizm açısından öne çıkan bölgelerinden.')">
+♨️ İkizdere
+</button>
+
+<button class="option"
+onclick="openInfo('Termal Tatil','Dinlenme ve doğayı bir arada isteyenler için.')">
+🌿 Doğa + Termal
+</button>
+
+`;
+
+}
+
+document.getElementById("modalTitle").innerText=title;
+
+document.getElementById("modalText").innerText=text;
+
+document.getElementById("modalOptions").innerHTML=options;
+
+document.getElementById("mainModal").style.display="flex";
+
+}
+
+
+/* KONAKLAMA FİLTRE */
+
+function filterStay(type,button){
+
+document.querySelectorAll(".filter-btn")
+.forEach(function(btn){
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+document.querySelectorAll(".stay-card")
+.forEach(function(card){
+
+if(type==="all"){
+card.style.display="";
+}else{
+card.style.display=
+card.dataset.type===type ? "" : "none";
+}
+
+});
+
+}
+
+
+/* ASİSTAN */
+
+let assistantData={
+activity:"",
+group:"",
+days:"",
+budget:""
+};
+
+function assistantChoose(field,value){
+
+assistantData[field]=value;
+
+let next=1;
+
+if(field==="activity"){
+next=2;
+}
+
+if(field==="group"){
+next=3;
+}
+
+if(field==="days"){
+next=4;
+}
+
+if(field==="budget"){
+
+showAssistantResult();
+
+return;
+
+}
+
+document.querySelectorAll(".assistant-step")
+.forEach(function(step){
+step.classList.remove("active");
+});
+
+document.getElementById("step"+next)
+.classList.add("active");
+
+document.querySelectorAll(".progress-dot")
+.forEach(function(dot,index){
+
+dot.classList.toggle(
+"active",
+index<next
+);
+
+});
+
+}
+
+
+function showAssistantResult(){
+
+document.querySelectorAll(".assistant-step")
+.forEach(function(step){
+step.classList.remove("active");
+});
+
+document.querySelectorAll(".progress-dot")
+.forEach(function(dot){
+dot.classList.add("active");
+});
+
+let a=assistantData.activity;
+let g=assistantData.group;
+let d=assistantData.days;
+let b=assistantData.budget;
+
+let route="";
+
+if(a==="Doğa"){
+route="Rize Merkez → Çamlıhemşin → Fırtına Vadisi → Ayder";
+}
+
+else if(a==="Yemek"){
+route="Rize Merkez → Yöresel Kahvaltı → Muhlama → Karalahana → Akşam Yemeği";
+}
+
+else if(a==="Fotoğraf"){
+route="Rize → Fırtına Vadisi → Ayder → Pokut";
+}
+
+else if(a==="Macera"){
+route="Çamlıhemşin → Fırtına Vadisi → Rafting → Ayder";
+}
+
+else if(a==="Sakin"){
+route="Rize Merkez → Çay Molası → Fırtına Vadisi → Manzaralı Konaklama";
+}
+
+else{
+route="Rize Merkez → Çamlıhemşin → Fırtına Vadisi → Ayder → Rize";
+}
+
+let advice="";
+
+if(g==="Çift"){
+advice="Çift olarak geldiğiniz için manzaralı bungalov ve sakin akşam planı uygun olabilir.";
+}
+
+else if(g==="Aile"){
+advice="Aileyle geldiğiniz için ulaşımı kolay noktaları ve daha rahat konaklamaları önceliklendiriyoruz.";
+}
+
+else if(g==="Arkadaş"){
+advice="Arkadaş grubuyla geldiğiniz için doğa ve aktivite ağırlıklı plan öneriyoruz.";
+}
+
+else{
+advice="Tek başına seyahat ettiğin için günü fazla sıkıştırmadan ilerleyen bir plan öneriyoruz.";
+}
+
+let budgetText=
+b==="Ekonomik"
+? "Ekonomik seçenekleri önceliklendir."
+: b==="Konforlu"
+? "Konfor ve manzara öncelikli seçenekleri değerlendir."
+: "Fiyat/performans dengesini gözet.";
+
+let result=document.getElementById("assistantResult");
+
+result.innerHTML=`
+
+<h3>✨ Sana Özel Rize Önerin</h3>
+
+<p>
+<strong>Gezi tarzı:</strong> ${a}<br>
+<strong>Kiminle:</strong> ${g}<br>
+<strong>Süre:</strong> ${d}<br>
+<strong>Bütçe:</strong> ${b}
+</p>
+
+<p style="margin-top:12px">
+${advice} ${budgetText}
+</p>
+
+<div class="result-route">
+
+<strong>🧭 Önerdiğim rota:</strong><br><br>
+
+${route}
+
+</div>
+
+<div style="margin-top:17px;display:flex;gap:8px;flex-wrap:wrap">
+
+<button class="btn btn-dark"
+onclick="scrollToId('konaklama')">
+🏡 Konaklamaya Bak
+</button>
+
+<button class="btn btn-green"
+onclick="scrollToId('yemek')">
+🍽️ Yemeklere Bak
+</button>
+
+<button class="btn btn-white"
+style="border:1px solid #dfe6e0"
+onclick="resetAssistant()">
+🔄 Yeniden Sor
+</button>
+
+</div>
+
+`;
+
+result.style.display="block";
+
+}
+
+
+function resetAssistant(){
+
+assistantData={
+activity:"",
+group:"",
+days:"",
+budget:""
+};
+
+document.getElementById("assistantResult").style.display="none";
+
+document.querySelectorAll(".assistant-step")
+.forEach(function(step){
+step.classList.remove("active");
+});
+
+document.getElementById("step1")
+.classList.add("active");
+
+document.querySelectorAll(".progress-dot")
+.forEach(function(dot,index){
+dot.classList.toggle("active",index===0);
+});
+
+}
+
+
+/* ROTA */
+
+function createRoute(){
+
+let days=document.getElementById("routeDays").value;
+
+let style=document.getElementById("routeStyle").value;
+
+let start=document.getElementById("routeStart").value;
+
+let result=document.getElementById("routeResult");
+
+if(!days || !style || !start){
+
+result.style.display="block";
+
+result.innerHTML=
+"⚠️ Lütfen kaç gün kalacağını, gezi tarzını ve başlangıç noktasını seç.";
+
+return;
+
+}
+
+let routes={
+
+doga:[
+"Rize Merkez",
+"Çamlıhemşin",
+"Fırtına Vadisi",
+"Ayder Yaylası",
+"Gelintülü Şelalesi"
+],
+
+yemek:[
+"Rize Merkez",
+"Yöresel Kahvaltı",
+"Muhlama",
+"Karalahana",
+"Akşam Yemeği"
+],
+
+foto:[
+"Rize Merkez",
+"Fırtına Vadisi",
+"Ayder",
+"Pokut Yaylası",
+"Yayla Manzaraları"
+],
+
+aile:[
+"Rize Merkez",
+"Çamlıhemşin",
+"Fırtına Vadisi",
+"Ayder",
+"Rize Merkez"
+],
+
+cift:[
+"Rize Merkez",
+"Fırtına Vadisi",
+"Manzaralı Bungalov",
+"Ayder",
+"Akşam Manzarası"
+],
+
+macera:[
+"Çamlıhemşin",
+"Fırtına Vadisi",
+"Rafting",
+"Ayder",
+"Doğa Yürüyüşü"
+],
+
+yayla:[
+"Çamlıhemşin",
+"Ayder",
+"Pokut",
+"Elevit",
+"Yayla Köyleri"
+],
+
+karisik:[
+"Rize Merkez",
+"Çamlıhemşin",
+"Fırtına Vadisi",
+"Ayder",
+"Yöresel Yemek"
+]
+
+};
+
+let selected=routes[style];
+
+let multiplier=parseInt(days);
+
+let routeHtml="";
+
+if(multiplier===1){
+
+routeHtml=selected
+.slice(0,5)
+.map((x,i)=>`
+<div class="route-place">
+${i+1}. ${x}
+</div>
+`).join("");
+
+}
+
+else if(multiplier===2){
+
+routeHtml=`
+
+<div class="route-place">
+📅 1. Gün — ${start} → ${selected.slice(1,3).join(" → ")}
+</div>
+
+<div class="route-place">
+📅 2. Gün — ${selected.slice(3,5).join(" → ")}
+</div>
+
+`;
+
+}
+
+else{
+
+routeHtml=`
+
+<div class="route-place">
+📅 1. Gün — ${start} → ${selected[1]} → ${selected[2]}
+</div>
+
+<div class="route-place">
+📅 2. Gün — ${selected[3]} → ${selected[4]}
+</div>
+
+<div class="route-place">
+📅 3. Gün — Serbest zaman → Yöresel yemek → Rize Merkez
+</div>
+
+`;
+
+}
+
+let titles={
+
+doga:"🏔️ Doğa Rotası",
+yemek:"🍽️ Lezzet Rotası",
+foto:"📸 Fotoğraf Rotası",
+aile:"👨‍👩‍👧 Aile Rotası",
+cift:"❤️ Çift Rotası",
+macera:"🧗 Macera Rotası",
+yayla:"🏔️ Yayla Rotası",
+karisik:"✨ Rize Karışık Rota"
+
+};
+
+result.innerHTML=`
+
+<h3>${titles[style]}</h3>
+
+<p style="margin-bottom:15px">
+<strong>Başlangıç:</strong> ${start}<br>
+<strong>Süre:</strong> ${days} gün
+</p>
+
+<div class="route-list">
+
+${routeHtml}
+
+</div>
+
+`;
+
+result.style.display="block";
+
+}
+
+
+/* HAVA DURUMU */
+
+function weatherIcon(code){
+
+if(code===0){
+return "☀️";
+}
+
+if(code<=3){
+return "🌤️";
+}
+
+if(code<=48){
+return "🌫️";
+}
+
+if(code<=67){
+return "🌧️";
+}
+
+if(code<=77){
+return "❄️";
+}
+
+if(code<=82){
+return "🌦️";
+}
+
+return "⛈️";
+
+}
+
+
+function weatherText(code){
+
+if(code===0)return "Açık";
+
+if(code<=3)return "Parçalı bulutlu";
+
+if(code<=48)return "Sisli";
+
+if(code<=67)return "Yağmurlu";
+
+if(code<=77)return "Karlı";
+
+if(code<=82)return "Sağanak";
+
+return "Fırtınalı";
+
+}
+
+
+async function loadWeather(){
+
+const grid=document.getElementById("weatherGrid");
+
+const status=document.getElementById("weatherStatus");
+
+try{
+
+const url=
+"https://api.open-meteo.com/v1/forecast"+
+"?latitude=41.0201"+
+"&longitude=40.5234"+
+"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"+
+"&timezone=Europe%2FIstanbul"+
+"&forecast_days=5";
+
+const response=await fetch(url);
+
+if(!response.ok){
+throw new Error("weather");
+}
+
+const data=await response.json();
+
+grid.innerHTML="";
+
+data.daily.time.forEach(function(date,index){
+
+let d=new Date(date+"T12:00:00");
+
+let day=d.toLocaleDateString("tr-TR",{
+weekday:"short"
+});
+
+let max=Math.round(data.daily.temperature_2m_max[index]);
+
+let min=Math.round(data.daily.temperature_2m_min[index]);
+
+let rain=data.daily.precipitation_probability_max[index];
+
+let code=data.daily.weather_code[index];
+
+grid.innerHTML+=`
+
+<div class="weather-day">
+
+<strong>${index===0 ? "Bugün" : day}</strong>
+
+<div class="weather-icon">
+${weatherIcon(code)}
+</div>
+
+<div style="font-size:11px;color:#718078;margin-bottom:5px">
+${weatherText(code)}
+</div>
+
+<div class="weather-temp">
+${max}° / ${min}°
+</div>
+
+<div class="weather-rain">
+💧 Yağış ${rain}%
+</div>
+
+</div>
+
+`;
+
+});
+
+status.innerText="5 günlük tahmin";
+
+}
+
+catch(error){
+
+status.innerText="Hava durumu alınamadı";
+
+grid.innerHTML=`
+
+<div style="color:#758078;padding:10px">
+Hava durumu şu anda yüklenemedi. Birkaç saniye sonra tekrar deneyebilirsin.
+</div>
+
+`;
+
+}
+
+}
+
+loadWeather();
+
+
+/* İŞLETME */
+
+function openBusiness(){
+
+document.getElementById("businessModal")
+.style.display="flex";
+
+}
+
+
+function sendBusiness(){
+
+let name=
+document.getElementById("businessName")
+.value.trim();
+
+let type=
+document.getElementById("businessType")
+.value;
+
+let location=
+document.getElementById("businessLocation")
+.value.trim();
+
+let phone=
+document.getElementById("businessPhone")
+.value.trim();
+
+let instagram=
+document.getElementById("businessInstagram")
+.value.trim();
+
+let info=
+document.getElementById("businessInfo")
+.value.trim();
+
+if(!name){
+
+alert("Lütfen işletme adını yaz.");
+
+return;
+
+}
+
+let message=
+"Merhaba, Rize Rehberi'nde işletmemi tanıtmak istiyorum.\n\n"+
+"İşletme: "+name+
+"\nİşletme Türü: "+type+
+"\nKonum: "+location+
+"\nTelefon: "+phone+
+"\nInstagram: "+instagram+
+"\nBilgi: "+info;
+
+window.location.href=
+"https://wa.me/905349329878?text="+
+encodeURIComponent(message);
+
+}
+
+
+/* ALT MENÜ */
+
+document.querySelectorAll(".bottom-nav button")
+.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+document.querySelectorAll(".bottom-nav button")
+.forEach(function(btn){
+btn.classList.remove("active");
+});
+
+this.classList.add("active");
+
+});
 
 });
 
