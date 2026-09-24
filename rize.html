@@ -111,7 +111,7 @@ align-items:center;
 overflow:hidden;
 background:
 linear-gradient(90deg,rgba(7,40,31,.90),rgba(7,40,31,.48),rgba(7,40,31,.18)),
-url("https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylas%C4%B1.jpg?width=1800")
+url("https://commons.wikimedia.org/wiki/Special:FilePath/Rize%2C%20Ayder%20Yaylas%C4%B1.jpg?width=1800")
 center/cover no-repeat;
 color:white
 }
@@ -303,7 +303,8 @@ position:relative;
 min-height:350px;
 overflow:hidden;
 border-radius:26px;
-box-shadow:var(--shadow)
+box-shadow:var(--shadow);
+background:#dce9e4
 }
 
 .city-card img{
@@ -1165,6 +1166,12 @@ opacity:1;
 transform:translateX(-50%) translateY(0)
 }
 
+/* IMAGE FALLBACK */
+
+img{
+background:#dfeae6
+}
+
 @media(max-width:900px){
 
 .navlinks{display:none}
@@ -1342,7 +1349,7 @@ Rize Rehberi ile aradığını tek yerde bul.
 
 <div class="city-card">
 <img
-src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylas%C4%B1.jpg?width=1400"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Rize%2C%20Ayder%20Yaylas%C4%B1.jpg?width=1400"
 alt="Ayder Yaylası Rize">
 <div class="city-overlay">
 <div>
@@ -1571,7 +1578,7 @@ Seçenekleri Gör
 <div class="card stay-card" data-type="pansiyon">
 
 <img class="card-img"
-src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylas%C4%B1.jpg?width=1200"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Rize%2C%20Ayder%20Yaylas%C4%B1.jpg?width=1200"
 alt="Rize pansiyon">
 
 <div class="card-body">
@@ -1623,7 +1630,7 @@ Seçenekleri Gör
 <div class="card stay-card" data-type="termal">
 
 <img class="card-img"
-src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%2C%20Rize%2C%20Turkey.jpg?width=1200"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylasi%20%40%20Rize-Turkey.JPG?width=1200"
 alt="Rize termal">
 
 <div class="card-body">
@@ -1815,7 +1822,6 @@ onclick="openBusinessModal()">
 
 <div class="price-grid">
 
-<!-- FREE -->
 <div class="price-card">
 
 <h3>🌱 Ücretsiz</h3>
@@ -1825,27 +1831,22 @@ onclick="openBusinessModal()">
 </div>
 
 <ul class="price-list">
-
 <li>İşletme adı</li>
 <li>Kategori</li>
 <li>İlçe bilgisi</li>
 <li>Temel rehber kaydı</li>
 <li>Yol tarifi bağlantısı</li>
 <li>Başvuru sonrası değerlendirme</li>
-
 </ul>
 
 <button class="btn btn-primary"
 style="width:100%"
 onclick="selectPackage('Ücretsiz')">
-
 Ücretsiz Başvur
-
 </button>
 
 </div>
 
-<!-- STANDARD -->
 <div class="price-card featured">
 
 <div class="popular">
@@ -1859,7 +1860,6 @@ onclick="selectPackage('Ücretsiz')">
 </div>
 
 <ul class="price-list">
-
 <li>Vitrinde daha görünür konum</li>
 <li>Fotoğraf</li>
 <li>Detaylı açıklama</li>
@@ -1867,20 +1867,16 @@ onclick="selectPackage('Ücretsiz')">
 <li>Instagram bağlantısı</li>
 <li>Rezervasyon bağlantısı</li>
 <li>Öne çıkan işletme etiketi</li>
-
 </ul>
 
 <button class="btn btn-primary"
 style="width:100%"
 onclick="selectPackage('Standart - 750 TL')">
-
 Başvur
-
 </button>
 
 </div>
 
-<!-- PREMIUM -->
 <div class="price-card premium-price">
 
 <h3>👑 Premium</h3>
@@ -1890,7 +1886,6 @@ Başvur
 </div>
 
 <ul class="price-list">
-
 <li>Vitrinde en üst görünürlük</li>
 <li>Büyük işletme kartı</li>
 <li>Fotoğraf galerisi</li>
@@ -1899,15 +1894,12 @@ Başvur
 <li>Rezervasyon bağlantısı</li>
 <li>Web sitesi bağlantısı</li>
 <li>Premium işletme etiketi</li>
-
 </ul>
 
 <button class="btn btn-primary"
 style="width:100%"
 onclick="selectPackage('Premium - 1.500 TL')">
-
 Premium Başvur
-
 </button>
 
 </div>
@@ -1942,8 +1934,6 @@ onclick="openBusinessModal()">
 
 </div>
 
-<!-- PACKAGE EXPLANATION -->
-
 <div class="package-info">
 
 <div class="package-mini premium-mini">
@@ -1962,8 +1952,6 @@ onclick="openBusinessModal()">
 </div>
 
 </div>
-
-<!-- FILTERS -->
 
 <div class="filters">
 
@@ -2006,9 +1994,7 @@ onclick="filterBusiness('Pansiyon',this)">
 
 <div class="grid grid-3" id="businessGrid">
 
-<!-- =================================================
-     ÖRNEK İŞLETME 1
-================================================= -->
+<!-- İŞLETME 1 -->
 
 <div class="card business-card premium"
 data-category="Otel"
@@ -2028,7 +2014,7 @@ data-website=""
 data-reservation="">
 
 <div class="verified">
-✓ REHBER KAYDI
+✓ ÖRNEK TESİS
 </div>
 
 <div class="package-badge premium">
@@ -2053,7 +2039,7 @@ Rize merkezde konaklama seçeneği.
 </p>
 
 <div class="business-visibility premium">
-👑 Premium görünürlük
+👑 Premium görünürlük örneği
 </div>
 
 <div class="business-actions">
@@ -2092,9 +2078,7 @@ onclick="mapBusinessFromCard(this)">
 </div>
 </div>
 
-<!-- =================================================
-     ÖRNEK İŞLETME 2
-================================================= -->
+<!-- İŞLETME 2 -->
 
 <div class="card business-card standard"
 data-category="Otel"
@@ -2114,7 +2098,7 @@ data-website=""
 data-reservation="">
 
 <div class="verified">
-✓ REHBER KAYDI
+✓ ÖRNEK TESİS
 </div>
 
 <div class="package-badge standard">
@@ -2139,7 +2123,7 @@ Rize merkez ve sahil bölgesinde konaklama seçeneği.
 </p>
 
 <div class="business-visibility standard">
-⭐ Standart görünürlük
+⭐ Standart görünürlük örneği
 </div>
 
 <div class="business-actions">
@@ -2178,9 +2162,7 @@ onclick="mapBusinessFromCard(this)">
 </div>
 </div>
 
-<!-- =================================================
-     ÖRNEK İŞLETME 3
-================================================= -->
+<!-- İŞLETME 3 -->
 
 <div class="card business-card standard"
 data-category="Otel"
@@ -2200,7 +2182,7 @@ data-website=""
 data-reservation="">
 
 <div class="verified">
-✓ REHBER KAYDI
+✓ ÖRNEK TESİS
 </div>
 
 <div class="package-badge standard">
@@ -2225,7 +2207,7 @@ Ayder Turizm Merkezi'nde konaklama seçeneği.
 </p>
 
 <div class="business-visibility standard">
-⭐ Standart görünürlük
+⭐ Standart görünürlük örneği
 </div>
 
 <div class="business-actions">
@@ -2264,9 +2246,7 @@ onclick="mapBusinessFromCard(this)">
 </div>
 </div>
 
-<!-- =================================================
-     ÖRNEK İŞLETME 4
-================================================= -->
+<!-- İŞLETME 4 -->
 
 <div class="card business-card free"
 data-category="Termal Otel"
@@ -2277,7 +2257,7 @@ data-name="Ridos Termal Otel"
 data-type="Termal Otel"
 data-location="İkizdere / Rize"
 data-description="Rize'nin İkizdere ilçesindeki termal konaklama seçeneği."
-data-image="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%2C%20Rize%2C%20Turkey.jpg?width=1200"
+data-image="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylasi%20%40%20Rize-Turkey.JPG?width=1200"
 
 data-phone=""
 data-whatsapp=""
@@ -2286,7 +2266,7 @@ data-website=""
 data-reservation="">
 
 <div class="verified">
-✓ REHBER KAYDI
+✓ ÖRNEK TESİS
 </div>
 
 <div class="package-badge free">
@@ -2294,7 +2274,7 @@ data-reservation="">
 </div>
 
 <img class="card-img"
-src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%2C%20Rize%2C%20Turkey.jpg?width=1200"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylasi%20%40%20Rize-Turkey.JPG?width=1200"
 alt="Ridos Termal Otel">
 
 <div class="card-body">
@@ -2311,7 +2291,7 @@ Rize'nin İkizdere ilçesindeki termal konaklama seçeneği.
 </p>
 
 <div class="business-visibility free">
-🌱 Temel görünürlük
+🌱 Temel görünürlük örneği
 </div>
 
 <div class="business-actions">
@@ -2350,9 +2330,7 @@ onclick="mapBusinessFromCard(this)">
 </div>
 </div>
 
-<!-- =================================================
-     ÖRNEK İŞLETME 5
-================================================= -->
+<!-- İŞLETME 5 -->
 
 <div class="card business-card free"
 data-category="Bungalov"
@@ -2363,7 +2341,7 @@ data-name="Teona Bungalov"
 data-type="Bungalov"
 data-location="Fındıklı / Rize"
 data-description="Rize Fındıklı çevresinde bungalov konaklama seçeneği."
-data-image="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylas%C4%B1.jpg?width=1200"
+data-image="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylasi%40Rize-1.JPG?width=1200"
 
 data-phone=""
 data-whatsapp=""
@@ -2372,7 +2350,7 @@ data-website=""
 data-reservation="">
 
 <div class="verified">
-✓ REHBER KAYDI
+✓ ÖRNEK TESİS
 </div>
 
 <div class="package-badge free">
@@ -2380,7 +2358,7 @@ data-reservation="">
 </div>
 
 <img class="card-img"
-src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylas%C4%B1.jpg?width=1200"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Yaylasi%40Rize-1.JPG?width=1200"
 alt="Teona Bungalov">
 
 <div class="card-body">
@@ -2397,7 +2375,7 @@ Rize Fındıklı çevresinde bungalov konaklama seçeneği.
 </p>
 
 <div class="business-visibility free">
-🌱 Temel görünürlük
+🌱 Temel görünürlük örneği
 </div>
 
 <div class="business-actions">
@@ -2436,9 +2414,7 @@ onclick="mapBusinessFromCard(this)">
 </div>
 </div>
 
-<!-- =================================================
-     ÖRNEK İŞLETME 6
-================================================= -->
+<!-- İŞLETME 6 -->
 
 <div class="card business-card free"
 data-category="Otel"
@@ -2449,7 +2425,7 @@ data-name="Ayder Doğa Resort Hotel"
 data-type="Otel"
 data-location="Ayder / Çamlıhemşin"
 data-description="Ayder Turizm Merkezi'nde konaklama seçeneği."
-data-image="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20yaylasi%20-Rize%20-%20panoramio.jpg?width=1200"
+data-image="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Doga%20Resort.jpg?width=1200"
 
 data-phone=""
 data-whatsapp=""
@@ -2458,7 +2434,7 @@ data-website=""
 data-reservation="">
 
 <div class="verified">
-✓ REHBER KAYDI
+✓ ÖRNEK TESİS
 </div>
 
 <div class="package-badge free">
@@ -2466,7 +2442,7 @@ data-reservation="">
 </div>
 
 <img class="card-img"
-src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20yaylasi%20-Rize%20-%20panoramio.jpg?width=1200"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Ayder%20Doga%20Resort.jpg?width=1200"
 alt="Ayder Doğa Resort Hotel">
 
 <div class="card-body">
@@ -2483,7 +2459,7 @@ Ayder Turizm Merkezi'nde konaklama seçeneği.
 </p>
 
 <div class="business-visibility free">
-🌱 Temel görünürlük
+🌱 Temel görünürlük örneği
 </div>
 
 <div class="business-actions">
@@ -2531,7 +2507,7 @@ onclick="mapBusinessFromCard(this)">
 <p style="margin-top:8px">
 
 Buradaki işletme isimleri Rize'deki turizm tesislerine ilişkin
-örnek rehber kayıtlarıdır. Paket etiketleri mevcut sistemin nasıl
+örnek rehber kayıtlarıdır. Paket etiketleri sistemin nasıl
 çalışacağını göstermek amacıyla kullanılmıştır. Gerçek işletme
 başvuruları ayrıca değerlendirilir.
 
@@ -2677,29 +2653,10 @@ WA
 
 <ul>
 
-<li>
-<a href="#yemek">
-Ne Yenir?
-</a>
-</li>
-
-<li>
-<a href="#konaklama">
-Nerede Kalınır?
-</a>
-</li>
-
-<li>
-<a href="#rota">
-Rota Oluştur
-</a>
-</li>
-
-<li>
-<a href="#yakinda">
-Yakınımda Ne Var?
-</a>
-</li>
+<li><a href="#yemek">Ne Yenir?</a></li>
+<li><a href="#konaklama">Nerede Kalınır?</a></li>
+<li><a href="#rota">Rota Oluştur</a></li>
+<li><a href="#yakinda">Yakınımda Ne Var?</a></li>
 
 </ul>
 
@@ -2711,17 +2668,8 @@ Yakınımda Ne Var?
 
 <ul>
 
-<li>
-<a href="#vitrin">
-İşletme Vitrini
-</a>
-</li>
-
-<li>
-<a href="#isletme">
-İşletmeni Ekle
-</a>
-</li>
+<li><a href="#vitrin">İşletme Vitrini</a></li>
+<li><a href="#isletme">İşletmeni Ekle</a></li>
 
 <li>
 <a href="https://www.instagram.com/malikkosephotographer/"
@@ -2815,7 +2763,6 @@ placeholder="Örn: Rize Kahvaltı Evi">
 <label>İşletme türü *</label>
 
 <select id="businessType">
-
 <option>Restoran</option>
 <option>Kafe</option>
 <option>Otel</option>
@@ -2824,93 +2771,66 @@ placeholder="Örn: Rize Kahvaltı Evi">
 <option>Aktivite</option>
 <option>Turizm</option>
 <option>Diğer</option>
-
 </select>
 
 </div>
 
 <div class="field">
-
 <label>İlçe / Konum *</label>
-
 <input id="businessDistrict"
 placeholder="Örn: Çamlıhemşin">
-
 </div>
 
 <div class="field">
-
 <label>Telefon</label>
-
 <input id="businessPhone"
 placeholder="05xx xxx xx xx">
-
 </div>
 
 <div class="field">
-
 <label>WhatsApp</label>
-
 <input id="businessWhatsapp"
 placeholder="05xx xxx xx xx">
-
 </div>
 
 <div class="field">
-
 <label>Instagram</label>
-
 <input id="businessInstagram"
 placeholder="@kullaniciadi">
-
 </div>
 
 <div class="field">
-
 <label>Web sitesi</label>
-
 <input id="businessWebsite"
 placeholder="https://...">
-
 </div>
 
 <div class="field">
-
 <label>Rezervasyon bağlantısı</label>
-
 <input id="businessReservation"
 placeholder="https://...">
-
 </div>
 
 <div class="field">
-
 <label>Fotoğraf bağlantısı</label>
-
 <input id="businessImage"
 placeholder="Fotoğraf URL'si">
-
 </div>
 
 <div class="field field-full">
 
-<label>
-İşletme açıklaması *
-</label>
+<label>İşletme açıklaması *</label>
 
 <textarea
 id="businessDescription"
 rows="4"
-placeholder="İşletmeni kısaca anlat...">
-</textarea>
+placeholder="İşletmeni kısaca anlat..."></textarea>
 
 </div>
 
 <div class="field field-full">
 
-<label>
-Özellikler
-</label>
+<label>Özellikler</label>
 
 <input
 id="businessFeatures"
@@ -2920,9 +2840,7 @@ placeholder="Manzara, kahvaltı, otopark, aile dostu...">
 
 <div class="field">
 
-<label>
-Paket
-</label>
+<label>Paket</label>
 
 <select id="businessPackage">
 
@@ -2936,9 +2854,7 @@ Paket
 
 <div class="field">
 
-<label>
-Fiyat bilgisi
-</label>
+<label>Fiyat bilgisi</label>
 
 <input
 id="businessPrice"
@@ -2994,6 +2910,29 @@ onclick="closeModal('generalModal')">
 ===================================================== */
 
 const WHATSAPP="905349329878";
+
+/* Güvenli Rize görseli */
+const RIZE_FALLBACK_IMAGE=
+"https://commons.wikimedia.org/wiki/Special:FilePath/Rize%2C%20Ayder%20Yaylas%C4%B1.jpg?width=1400";
+
+/* Görsel hata kontrolü */
+document.addEventListener("error",function(e){
+
+if(e.target.tagName==="IMG"){
+
+const img=e.target;
+
+if(!img.dataset.fallbackApplied){
+
+img.dataset.fallbackApplied="1";
+img.src=RIZE_FALLBACK_IMAGE;
+
+}
+
+}
+
+},true);
+
 
 function toast(message){
 
@@ -3279,6 +3218,13 @@ function closeAssistantResult(){
 
 document.getElementById("assistantResult").style.display="none";
 
+document.getElementById("assistantQuestion").style.display="block";
+
+assistantStep=0;
+assistantAnswers={};
+
+renderAssistant();
+
 }
 
 function resetAssistant(){
@@ -3369,10 +3315,19 @@ route=[
 
 }
 
+let themeNames={
+nature:"Doğa",
+food:"Yemek",
+photo:"Fotoğraf",
+couple:"Çift",
+family:"Aile",
+adventure:"Macera"
+};
+
 let html=`
 
 <h3>
-🗺️ ${days} günlük ${theme} rotası
+🗺️ ${days} günlük ${themeNames[theme]} rotası
 </h3>
 
 <p style="color:var(--gray);margin:5px 0 15px">
