@@ -4431,9 +4431,11 @@ async function findNearby(type){
           item.lon ??
           item.center?.lon;
 
-        const mapUrl=
-          `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+       const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+const mapUrl=isMobile
+  ? `comgooglemaps://?saddr=${userLocation.lat},${userLocation.lon}&daddr=${lat},${lon}&directionsmode=driving`
+  : `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lon}&destination=${lat},${lon}&travelmode=driving`;
         results.innerHTML+=`
 
           <div class="nearby-item">
