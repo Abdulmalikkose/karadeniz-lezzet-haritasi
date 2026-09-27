@@ -6578,6 +6578,361 @@ console.log(
     "🌿 Rize Asistanı gerçek AI moduna bağlandı."
 );
 </script>
+ <script>
+/* =====================================================
+   🌿 RİZE ASİSTANI — SON BAĞLANTI
+   Eski cevap sistemlerini devre dışı bırakır.
+   ===================================================== */
+
+(function () {
+
+    const WORKER =
+        "https://rize-asistani.koseailesi5375.workers.dev/";
+
+    let history = [];
+
+
+    /* AI'ya gönder */
+
+    async function gercekRizeAI(mesaj) {
+
+        const chat =
+            document.getElementById("rizeAiV2Chat");
+
+        if (!chat) return;
+
+
+        /* Kullanıcı mesajı */
+
+        const user =
+            document.createElement("div");
+
+        user.className =
+            "rize-ai-v2-message user";
+
+        user.innerHTML =
+            '<div class="rize-ai-v2-bubble"></div>';
+
+        user.querySelector(
+            ".rize-ai-v2-bubble"
+        ).textContent = mesaj;
+
+        chat.appendChild(user);
+
+
+        /* Hafızaya ekle */
+
+        history.push({
+            role: "user",
+            content: mesaj
+        });
+
+
+        if (history.length > 20) {
+            history = history.slice(-20);
+        }
+
+
+        /* Bekleme */
+
+        const loading =
+            document.createElement("div");
+
+        loading.className =
+            "rize-ai-v2-message bot";
+
+        loading.id =
+            "rizeYeniLoading";
+
+        loading.innerHTML =
+            '<div class="rize-ai-v2-bubble">🌿 Rize Asistanı düşünüyor...</div>';
+
+        chat.appendChild(loading);
+
+        chat.scrollTop = chat.scrollHeight;
+
+
+        try {
+
+            const response =
+                await fetch(WORKER, {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        messages: history
+                    })
+
+                });
+
+
+            const data =
+                await response.json();
+
+
+            const oldLoading =
+                document.getElementById(
+                    "rizeYeniLoading"
+                );
+
+            if (oldLoading) {
+                oldLoading.remove();
+            }
+
+
+            if (
+                !data.success ||
+                !data.answer
+            ) {
+
+                throw new Error(
+                    data.error ||
+                    "AI cevap vermedi"
+                );
+            }
+
+
+            /* AI cevabı */
+
+            const bot =
+                document.createElement("div");
+
+            bot.className =
+                "rize-ai-v2-message bot";
+
+            bot.innerHTML =
+                '<div class="rize-ai-v2-bubble"></div>';
+
+            bot.querySelector(
+                ".rize-ai-v2-bubble"
+            ).textContent =
+                data.answer;
+
+            chat.appendChild(bot);
+
+
+            /* Hafızaya ekle */
+
+            history.push({
+                role: "assistant",
+                content: data.answer
+            });
+
+
+            if (history.length > 20) {
+                history = history.slice(-20);
+            }
+
+
+            chat.scrollTop =
+                chat.scrollHeight;
+
+
+        } catch (error) {
+
+            console.error(
+                "Rize AI:",
+                error
+            );
+
+
+            const oldLoading =
+                document.getElementById(
+                    "rizeYeniLoading"
+                );
+
+            if (oldLoading) {
+                oldLoading.remove();
+            }
+
+
+            const errorBox =
+                document.createElement("div");
+
+            errorBox.className =
+                "rize-ai-v2-message bot";
+
+            errorBox.innerHTML =
+                '<div class="rize-ai-v2-bubble">⚠️ AI bağlantısında bir sorun oluştu.</div>';
+
+            chat.appendChild(errorBox);
+
+            chat.scrollTop =
+                chat.scrollHeight;
+        }
+    }
+
+
+    /* -------------------------------------------------
+       INPUT
+       ------------------------------------------------- */
+
+    const input =
+        document.getElementById(
+            "rizeAiV2Input"
+        );
+
+
+    if (input) {
+
+        /* Eski Enter kodlarını engelle */
+
+        input.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    event.stopImmediatePropagation();
+
+                    const mesaj =
+                        input.value.trim();
+
+                    if (!mesaj) return;
+
+                    input.value = "";
+
+                    gercekRizeAI(mesaj);
+                }
+
+            },
+            true
+        );
+    }
+
+
+    /* -------------------------------------------------
+       GÖNDER BUTONU
+       ------------------------------------------------- */
+
+    const sendButton =
+        document.querySelector(
+            ".rize-ai-v2-send"
+        );
+
+
+    if (sendButton) {
+
+        sendButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopImmediatePropagation();
+
+                const mesaj =
+                    input
+                    ? input.value.trim()
+                    : "";
+
+                if (!mesaj) return;
+
+                input.value = "";
+
+                gercekRizeAI(mesaj);
+
+            },
+            true
+        );
+    }
+
+
+    /* -------------------------------------------------
+       HIZLI BUTONLAR
+       ------------------------------------------------- */
+
+    const quickButtons =
+        document.querySelectorAll(
+            ".rize-ai-v2-action"
+        );
+
+
+    quickButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                event.stopImmediatePropagation();
+
+                const mesaj =
+                    button.textContent.trim();
+
+
+                /* Butonun kendi yazısını
+                   anlamlı soruya çevir */
+
+                let soru = mesaj;
+
+
+                if (
+                    mesaj.includes("Ne Yenir")
+                ) {
+                    soru =
+                        "Rize'de ne yemeliyim?";
+                }
+
+                else if (
+                    mesaj.includes("2 Günlük")
+                ) {
+                    soru =
+                        "Rize için 2 günlük doğa ve yemek rotası hazırlar mısın?";
+                }
+
+                else if (
+                    mesaj.includes("Fotoğraf")
+                ) {
+                    soru =
+                        "Fotoğraf çekmek için Rize'de nereye gitmeliyim?";
+                }
+
+                else if (
+                    mesaj.includes("Ayder")
+                ) {
+                    soru =
+                        "Ayder için güzel bir gezi planı hazırlar mısın?";
+                }
+
+                else if (
+                    mesaj.includes("Yağmur")
+                ) {
+                    soru =
+                        "Yağmurlu havada Rize'de ne yapabilirim?";
+                }
+
+                else if (
+                    mesaj.includes("Aile")
+                ) {
+                    soru =
+                        "Çocukla Rize'de neler yapabiliriz?";
+                }
+
+
+                gercekRizeAI(soru);
+
+            },
+            true
+        );
+
+    });
+
+
+    console.log(
+        "🌿 Rize Asistanı SON AI bağlantısı aktif."
+    );
+
+})();
+</script> 
 </body>
   <!-- =========================================================
      🌿 RİZE ASİSTANI 3.0
