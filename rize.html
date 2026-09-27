@@ -5441,6 +5441,495 @@ function escapeHTML(value){
 }
 
 </script>
+<!-- =========================================================
+     🌿 RİZE ASİSTANI v1
+     ========================================================= -->
 
+<style>
+/* Rize Asistanı */
+.rize-ai-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.rize-ai-box {
+    background: linear-gradient(145deg, #0f3d2e, #176044);
+    border-radius: 28px;
+    padding: 28px;
+    color: white;
+    box-shadow: 0 18px 50px rgba(0,0,0,.15);
+    overflow: hidden;
+    position: relative;
+}
+
+.rize-ai-box::before {
+    content: "🌿";
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    font-size: 70px;
+    opacity: .08;
+}
+
+.rize-ai-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.rize-ai-subtitle {
+    font-size: 15px;
+    opacity: .85;
+    margin-bottom: 22px;
+}
+
+.rize-ai-chat {
+    background: rgba(255,255,255,.96);
+    border-radius: 20px;
+    padding: 18px;
+    min-height: 260px;
+    max-height: 430px;
+    overflow-y: auto;
+    color: #222;
+}
+
+.rize-ai-message {
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.rize-ai-message.user {
+    justify-content: flex-end;
+}
+
+.rize-ai-bubble {
+    max-width: 82%;
+    padding: 12px 15px;
+    border-radius: 17px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.rize-ai-message.bot .rize-ai-bubble {
+    background: #eef7f1;
+    border-bottom-left-radius: 5px;
+}
+
+.rize-ai-message.user .rize-ai-bubble {
+    background: #176044;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.rize-ai-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.rize-ai-option {
+    border: 1px solid #d7e5dc;
+    background: white;
+    color: #145238;
+    border-radius: 20px;
+    padding: 9px 13px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: .2s;
+}
+
+.rize-ai-option:hover {
+    background: #eaf6ef;
+    transform: translateY(-1px);
+}
+
+.rize-ai-input-area {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.rize-ai-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    padding: 14px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.rize-ai-send {
+    border: none;
+    background: white;
+    color: #145238;
+    font-weight: 800;
+    border-radius: 16px;
+    padding: 0 18px;
+    cursor: pointer;
+}
+
+.rize-ai-send:hover {
+    background: #eaf6ef;
+}
+
+.rize-ai-typing {
+    font-size: 13px;
+    color: #5f7568;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .rize-ai-section {
+        padding: 12px;
+        margin: 30px auto;
+    }
+
+    .rize-ai-box {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .rize-ai-title {
+        font-size: 23px;
+    }
+
+    .rize-ai-input-area {
+        flex-direction: row;
+    }
+
+    .rize-ai-send {
+        padding: 0 14px;
+    }
+}
+</style>
+
+<section class="rize-ai-section" id="rizeAsistani">
+
+    <div class="rize-ai-box">
+
+        <div class="rize-ai-title">
+            🤖 Rize Asistanı
+        </div>
+
+        <div class="rize-ai-subtitle">
+            Rize'de ne yapmak istediğini söyle, sana bir rota çıkaralım.
+        </div>
+
+        <div class="rize-ai-chat" id="rizeAiChat">
+
+            <div class="rize-ai-message bot">
+                <div class="rize-ai-bubble">
+                    🌿 <strong>Merhaba!</strong><br><br>
+                    Ben Rize Asistanı. Rize'de gezi, yemek, rota veya
+                    fotoğraf noktaları konusunda sana yardımcı olabilirim.
+                    <br><br>
+                    Nereden başlayalım?
+                </div>
+            </div>
+
+            <div class="rize-ai-options">
+                <button class="rize-ai-option"
+                    onclick="rizeQuickAsk('Rize’de nereleri gezmeliyim?')">
+                    📍 Gezi öner
+                </button>
+
+                <button class="rize-ai-option"
+                    onclick="rizeQuickAsk('Rize’de ne yemeliyim?')">
+                    🍴 Ne yiyelim?
+                </button>
+
+                <button class="rize-ai-option"
+                    onclick="rizeQuickAsk('Bana 1 günlük Rize rotası oluştur')">
+                    🗺️ Rota oluştur
+                </button>
+
+                <button class="rize-ai-option"
+                    onclick="rizeQuickAsk('Rize’de fotoğraf çekilecek yerler nereler?')">
+                    📸 Fotoğraf
+                </button>
+
+                <button class="rize-ai-option"
+                    onclick="rizeQuickAsk('Yağmurlu havada Rize’de ne yapılır?')">
+                    🌧️ Yağmurlu hava
+                </button>
+            </div>
+
+        </div>
+
+        <div class="rize-ai-input-area">
+
+            <input
+                type="text"
+                id="rizeAiInput"
+                class="rize-ai-input"
+                placeholder="Örn: 2 günlük Rize rotası istiyorum..."
+                onkeydown="if(event.key==='Enter') rizeSendMessage()"
+            >
+
+            <button
+                class="rize-ai-send"
+                onclick="rizeSendMessage()">
+                Gönder
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+/* =========================================================
+   RİZE ASİSTANI - TEMEL CEVAP MOTORU
+   ========================================================= */
+
+function rizeAddMessage(text, type) {
+
+    const chat = document.getElementById("rizeAiChat");
+
+    const message = document.createElement("div");
+    message.className = "rize-ai-message " + type;
+
+    const bubble = document.createElement("div");
+    bubble.className = "rize-ai-bubble";
+
+    bubble.innerHTML = text;
+
+    message.appendChild(bubble);
+    chat.appendChild(message);
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+
+function rizeSendMessage() {
+
+    const input = document.getElementById("rizeAiInput");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    rizeQuickAsk(text);
+
+    input.value = "";
+}
+
+
+function rizeQuickAsk(question) {
+
+    rizeAddMessage(question, "user");
+
+    const chat = document.getElementById("rizeAiChat");
+
+    const typing = document.createElement("div");
+    typing.className = "rize-ai-message bot";
+    typing.id = "rizeTyping";
+
+    typing.innerHTML = `
+        <div class="rize-ai-bubble">
+            <span class="rize-ai-typing">🌿 Rize Asistanı düşünüyor...</span>
+        </div>
+    `;
+
+    chat.appendChild(typing);
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(function() {
+
+        const typingElement = document.getElementById("rizeTyping");
+
+        if (typingElement) {
+            typingElement.remove();
+        }
+
+        const answer = rizeCreateAnswer(question);
+
+        rizeAddMessage(answer, "bot");
+
+    }, 650);
+}
+
+
+function rizeCreateAnswer(question) {
+
+    const q = question
+        .toLocaleLowerCase("tr-TR")
+        .replace(/ı/g, "i")
+        .replace(/ğ/g, "g")
+        .replace(/ü/g, "u")
+        .replace(/ş/g, "s")
+        .replace(/ö/g, "o")
+        .replace(/ç/g, "c");
+
+    /* YEMEK */
+
+    if (
+        q.includes("yemek") ||
+        q.includes("ne yiy") ||
+        q.includes("muhlama") ||
+        q.includes("kahvalti") ||
+        q.includes("laz boregi")
+    ) {
+
+        return `
+        🍴 <strong>Rize'de ne yenir?</strong><br><br>
+
+        İlk kez geliyorsan mutlaka yöresel lezzetlere bak:
+        <br><br>
+
+        🧀 Muhlama<br>
+        🥬 Karalahana yemekleri<br>
+        🥧 Laz böreği<br>
+        🍚 Hamsili pilav<br>
+        🍵 Rize çayı<br><br>
+
+        İstersen sana <strong>kahvaltı, yöresel yemek veya tatlı</strong>
+        için mekan önerileri de çıkarabilirim.
+        `;
+    }
+
+
+    /* GEZİ */
+
+    if (
+        q.includes("gez") ||
+        q.includes("nereleri") ||
+        q.includes("nereye") ||
+        q.includes("yerler")
+    ) {
+
+        return `
+        📍 <strong>Rize'de gezilecek yerlerden bazıları:</strong><br><br>
+
+        ☁️ Huser Yaylası<br>
+        🌿 Elevit Yaylası<br>
+        🏔️ Ayder Yaylası<br>
+        💦 Palovit Şelalesi<br>
+        🏰 Zilkale<br>
+        🌊 Fırtına Vadisi<br><br>
+
+        Eğer doğa ve manzara seviyorsan
+        <strong>Huser → Fırtına Vadisi → Palovit</strong>
+        şeklinde bir rota düşünebiliriz.
+        `;
+    }
+
+
+    /* 1 GÜNLÜK ROTA */
+
+    if (
+        q.includes("1 gun") ||
+        q.includes("bir gun") ||
+        q.includes("rota")
+    ) {
+
+        return `
+        🗺️ <strong>Örnek 1 günlük Rize rotası:</strong><br><br>
+
+        🌅 <strong>09:00</strong> — Kahvaltı<br>
+        🏔️ <strong>10:30</strong> — Ayder Yaylası<br>
+        💦 <strong>13:00</strong> — Palovit Şelalesi<br>
+        🍴 <strong>15:00</strong> — Yöresel yemek<br>
+        🏰 <strong>16:30</strong> — Zilkale<br>
+        🌊 <strong>18:00</strong> — Fırtına Vadisi<br><br>
+
+        Bu rota yaklaşık bir günlük gezi mantığında
+        hazırlanmış örnek bir plandır.
+        `;
+    }
+
+
+    /* FOTOĞRAF */
+
+    if (
+        q.includes("fotograf") ||
+        q.includes("foto") ||
+        q.includes("manzara")
+    ) {
+
+        return `
+        📸 <strong>Fotoğraf için Rize'de öne çıkan yerler:</strong><br><br>
+
+        ☁️ Huser — bulut denizi ve geniş manzara<br>
+        🌿 Pokut — yayla evleri ve sis<br>
+        🌊 Fırtına Vadisi — doğa ve nehir<br>
+        💦 Palovit — şelale görüntüleri<br>
+        🌅 Sahil — gün batımı<br><br>
+
+        Özellikle gün doğumu ve gün batımı
+        saatlerinde ışık çok daha etkileyici olabilir.
+        `;
+    }
+
+
+    /* YAĞMUR */
+
+    if (
+        q.includes("yagmur") ||
+        q.includes("yagmurlu") ||
+        q.includes("hava")
+    ) {
+
+        return `
+        🌧️ <strong>Yağmurlu bir Rize gününde</strong>
+        açık hava planını biraz değiştirebilirsin.<br><br>
+
+        🍵 Çay kültürünü keşfet<br>
+        🧀 Yöresel yemek dene<br>
+        🏡 Kapalı mekanlarda vakit geçir<br>
+        📸 Yağmur sonrası doğa fotoğrafları çek<br><br>
+
+        Rize'de yağmur bazen manzarayı
+        daha da güzel hale getirebilir. 🌿
+        `;
+    }
+
+
+    /* AYDER */
+
+    if (q.includes("ayder")) {
+
+        return `
+        🏔️ <strong>Ayder için küçük bir öneri:</strong><br><br>
+
+        Ayder'i sadece kısa bir durak olarak değil,
+        çevresindeki doğal güzelliklerle birlikte düşün.<br><br>
+
+        💦 Şelaleler<br>
+        🌿 Yayla manzaraları<br>
+        🍴 Yöresel lezzetler<br>
+        📸 Fotoğraf noktaları<br><br>
+
+        İstersen sana <strong>Ayder için özel 1 günlük rota</strong>
+        da oluşturabilirim.
+        `;
+    }
+
+
+    /* DEFAULT */
+
+    return `
+    🌿 <strong>Bunu birlikte planlayabiliriz.</strong><br><br>
+
+    Bana biraz daha detay verir misin?<br><br>
+
+    Örneğin:<br>
+    • "2 günlük Rize rotası"<br>
+    • "Rize'de ne yenir?"<br>
+    • "Ayder'de ne yapılır?"<br>
+    • "Fotoğraf için nereye gideyim?"<br>
+    • "Yağmurda ne yapabilirim?"<br><br>
+
+    Yaz, sana Rize'ye özel bir öneri hazırlayayım. 🤖
+    `;
+}
+</script>
+
+<!-- =========================================================
+     🌿 RİZE ASİSTANI v1 SONU
+     ========================================================= -->
 </body>
 </html>
