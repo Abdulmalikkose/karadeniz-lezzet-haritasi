@@ -6292,6 +6292,33 @@ function rizeAiV2CreateAnswer(question) {
 <!-- =========================================================
      🌿 RİZE ASİSTANI 2.0 SONU
      ========================================================= -->
+  <script>
+console.log("🌿 Rize Asistanı Worker bağlantısı hazırlanıyor...");
+
+const RIZE_AI_WORKER_URL =
+"https://rize-asistani.koseailesi5375.workers.dev/";
+
+async function rizeAItest() {
+    try {
+        const response = await fetch(RIZE_AI_WORKER_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: "Merhaba"
+            })
+        });
+
+        const data = await response.json();
+
+        console.log("🤖 Rize AI cevap:", data);
+
+    } catch (error) {
+        console.error("❌ Rize AI bağlantı hatası:", error);
+    }
+}
+</script>
 </body>
   <!-- =========================================================
      🌿 RİZE ASİSTANI 3.0
