@@ -6340,6 +6340,244 @@ async function rizeGercekAI(question) {
     return data.answer || "Şu anda cevap oluşturamadım 🌿";
 }
 </script>  
+  <script>
+/* =====================================================
+   🌿 RİZE ASİSTANI — GERÇEK AI BAĞLANTISI
+   ===================================================== */
+
+let rizeGercekAIHistory = [];
+
+
+/* Mesajı ekrana ekle */
+function rizeGercekAIMesaj(role, text) {
+
+    const chat =
+        document.getElementById("rizeAiV2Chat");
+
+    if (!chat) return;
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "rize-ai-v2-message " +
+        (role === "user" ? "user" : "bot");
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        "rize-ai-v2-bubble";
+
+    bubble.textContent = text;
+
+    message.appendChild(bubble);
+
+    chat.appendChild(message);
+
+    chat.scrollTop =
+        chat.scrollHeight;
+}
+
+
+/* AI'ya gönder */
+async function rizeGercekAISor(question) {
+
+    if (!question || !question.trim()) return;
+
+    question = question.trim();
+
+
+    /* Kullanıcı mesajı */
+    rizeGercekAIMesaj(
+        "user",
+        question
+    );
+
+
+    /* Hafızaya ekle */
+    rizeGercekAIHistory.push({
+        role: "user",
+        content: question
+    });
+
+
+    /* Son 20 mesaj */
+    if (rizeGercekAIHistory.length > 20) {
+
+        rizeGercekAIHistory =
+            rizeGercekAIHistory.slice(-20);
+    }
+
+
+    /* Bekleme mesajı */
+    rizeGercekAIMesaj(
+        "assistant",
+        "🌿 Rize Asistanı düşünüyor..."
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                "https://rize-asistani.koseailesi5375.workers.dev/",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        messages:
+                            rizeGercekAIHistory
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        /* Bekleme mesajını kaldır */
+        const chat =
+            document.getElementById(
+                "rizeAiV2Chat"
+            );
+
+        if (chat) {
+
+            const messages =
+                chat.querySelectorAll(
+                    ".rize-ai-v2-message"
+                );
+
+            const last =
+                messages[messages.length - 1];
+
+            if (
+                last &&
+                last.textContent.includes(
+                    "Rize Asistanı düşünüyor"
+                )
+            ) {
+                last.remove();
+            }
+        }
+
+
+        /* Hata */
+        if (
+            !data.success ||
+            !data.answer
+        ) {
+
+            rizeGercekAIMesaj(
+                "assistant",
+                "Şu anda cevap oluşturamadım. Birkaç saniye sonra tekrar deneyebilir misin? 🌿"
+            );
+
+            return;
+        }
+
+
+        /* Gerçek AI cevabı */
+        rizeGercekAIMesaj(
+            "assistant",
+            data.answer
+        );
+
+
+        /* Hafızaya ekle */
+        rizeGercekAIHistory.push({
+            role: "assistant",
+            content: data.answer
+        });
+
+
+        if (
+            rizeGercekAIHistory.length > 20
+        ) {
+
+            rizeGercekAIHistory =
+                rizeGercekAIHistory.slice(-20);
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Rize AI bağlantı hatası:",
+            error
+        );
+
+
+        rizeGercekAIMesaj(
+            "assistant",
+            "Bağlantıda küçük bir sorun oldu. Birkaç saniye sonra tekrar deneyebilir misin? 🌿"
+        );
+    }
+}
+
+
+/* Gönder butonu */
+function rizeAiV2Send() {
+
+    const input =
+        document.getElementById(
+            "rizeAiV2Input"
+        );
+
+    if (!input) return;
+
+    const question =
+        input.value.trim();
+
+    if (!question) return;
+
+    input.value = "";
+
+    rizeGercekAISor(question);
+}
+
+
+/* Hızlı butonlar */
+function rizeAiV2Quick(question) {
+
+    rizeGercekAISor(question);
+}
+
+
+/* Enter tuşu */
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        const input =
+            document.getElementById(
+                "rizeAiV2Input"
+            );
+
+        if (
+            input &&
+            document.activeElement === input &&
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            rizeAiV2Send();
+        }
+    }
+);
+
+console.log(
+    "🌿 Rize Asistanı gerçek AI moduna bağlandı."
+);
+</script>
 </body>
   <!-- =========================================================
      🌿 RİZE ASİSTANI 3.0
