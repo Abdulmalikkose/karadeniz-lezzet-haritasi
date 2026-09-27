@@ -6293,4 +6293,543 @@ function rizeAiV2CreateAnswer(question) {
      🌿 RİZE ASİSTANI 2.0 SONU
      ========================================================= -->
 </body>
+  <!-- =========================================================
+     🌿 RİZE ASİSTANI 3.0
+     ========================================================= -->
+
+<style>
+.rize-ai-v2{
+    width:100%;
+    max-width:900px;
+    margin:60px auto;
+    padding:0 20px;
+}
+
+.rize-ai-v2-box{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 20px 60px rgba(15,23,42,.10);
+}
+
+.rize-ai-v2-title{
+    font-size:28px;
+    font-weight:800;
+    color:#102a2a;
+    margin-bottom:8px;
+}
+
+.rize-ai-v2-subtitle{
+    color:#64748b;
+    margin-bottom:24px;
+}
+
+.rize-ai-v2-chat{
+    max-height:520px;
+    overflow-y:auto;
+    padding:5px;
+}
+
+.rize-ai-v2-message{
+    display:flex;
+    margin:14px 0;
+}
+
+.rize-ai-v2-message.bot{
+    justify-content:flex-start;
+}
+
+.rize-ai-v2-message.user{
+    justify-content:flex-end;
+}
+
+.rize-ai-v2-bubble{
+    max-width:82%;
+    padding:14px 18px;
+    border-radius:18px;
+    line-height:1.6;
+    font-size:15px;
+}
+
+.rize-ai-v2-message.bot .rize-ai-v2-bubble{
+    background:#f0fdfa;
+    color:#334155;
+    border-bottom-left-radius:5px;
+}
+
+.rize-ai-v2-message.user .rize-ai-v2-bubble{
+    background:#0f766e;
+    color:#ffffff;
+    border-bottom-right-radius:5px;
+}
+
+.rize-ai-v2-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.rize-ai-v2-action{
+    border:1px solid #cbd5e1;
+    background:#ffffff;
+    color:#334155;
+    border-radius:14px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.2s;
+}
+
+.rize-ai-v2-action:hover{
+    background:#f0fdfa;
+    border-color:#14b8a6;
+    color:#0f766e;
+}
+
+.rize-ai-v2-input-area{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.rize-ai-v2-input{
+    flex:1;
+    min-width:0;
+    border:1px solid #cbd5e1;
+    border-radius:15px;
+    padding:14px 16px;
+    font-size:15px;
+    outline:none;
+}
+
+.rize-ai-v2-input:focus{
+    border-color:#14b8a6;
+    box-shadow:0 0 0 3px rgba(20,184,166,.10);
+}
+
+.rize-ai-v2-send{
+    border:0;
+    background:#0f766e;
+    color:#ffffff;
+    padding:0 22px;
+    border-radius:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.rize-ai-v2-send:hover{
+    background:#115e59;
+}
+
+@media(max-width:600px){
+
+    .rize-ai-v2{
+        padding:0 12px;
+        margin:40px auto;
+    }
+
+    .rize-ai-v2-box{
+        padding:18px;
+        border-radius:20px;
+    }
+
+    .rize-ai-v2-title{
+        font-size:23px;
+    }
+
+    .rize-ai-v2-bubble{
+        max-width:90%;
+    }
+
+    .rize-ai-v2-input-area{
+        flex-direction:column;
+    }
+
+    .rize-ai-v2-send{
+        min-height:48px;
+    }
+}
+</style>
+
+
+<section class="rize-ai-v2" id="rizeAsistaniV2">
+
+    <div class="rize-ai-v2-box">
+
+        <div class="rize-ai-v2-title">
+            🤖 Rize Asistanı
+        </div>
+
+        <div class="rize-ai-v2-subtitle">
+            Sana uygun Rize planını birlikte oluşturalım.
+        </div>
+
+        <div class="rize-ai-v2-chat" id="rizeAiV2Chat">
+
+            <div class="rize-ai-v2-message bot">
+
+                <div class="rize-ai-v2-bubble">
+
+                    🌿 <strong>Rize'ye hoş geldin!</strong><br><br>
+
+                    Bana nasıl bir gezi istediğini anlat.
+                    Süre, ilgi alanın, hava durumu veya kimlerle
+                    geldiğini yazabilirsin.<br><br>
+
+                    Örneğin:<br>
+
+                    <strong>
+                    “2 günüm var, sevgilimle geldim.
+                    Doğa ve güzel yemek istiyoruz.”
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="rize-ai-v2-actions">
+
+                <button class="rize-ai-v2-action"
+                    onclick="rizeAiV2Quick('2 günlük doğa ve yemek rotası istiyorum')">
+                    🗺️ 2 Günlük Rota
+                </button>
+
+                <button class="rize-ai-v2-action"
+                    onclick="rizeAiV2Quick('Rize’de ne yemeliyim?')">
+                    🍴 Ne Yenir?
+                </button>
+
+                <button class="rize-ai-v2-action"
+                    onclick="rizeAiV2Quick('Fotoğraf çekmek için Rize’de nereye gitmeliyim?')">
+                    📸 Fotoğraf
+                </button>
+
+                <button class="rize-ai-v2-action"
+                    onclick="rizeAiV2Quick('Ayder için gezi planı yap')">
+                    🏔️ Ayder
+                </button>
+
+                <button class="rize-ai-v2-action"
+                    onclick="rizeAiV2Quick('Yağmurlu havada Rize’de ne yapabilirim?')">
+                    🌧️ Yağmur
+                </button>
+
+                <button class="rize-ai-v2-action"
+                    onclick="rizeAiV2Quick('Çocukla Rize’ye geldim, ne yapabiliriz?')">
+                    👨‍👩‍👧 Aile
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="rize-ai-v2-input-area">
+
+            <input
+                id="rizeAiV2Input"
+                class="rize-ai-v2-input"
+                type="text"
+                placeholder="Örn: 2 günüm var, doğa ve yemek istiyorum..."
+            >
+
+            <button
+                class="rize-ai-v2-send"
+                onclick="rizeAiV2Send()">
+                Gönder
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+const RIZE_AI_WORKER_URL =
+"https://rize-asistani.koseailesi5375.workers.dev/";
+
+
+/* AI KONUŞMA HAFIZASI */
+
+let rizeAiHistory = [];
+
+
+/* MESAJI EKRANA EKLE */
+
+function rizeAiV2AddMessage(role,text){
+
+    const chat =
+    document.getElementById("rizeAiV2Chat");
+
+    if(!chat) return;
+
+    const message =
+    document.createElement("div");
+
+    message.className =
+    "rize-ai-v2-message " +
+    (role === "user" ? "user" : "bot");
+
+    const bubble =
+    document.createElement("div");
+
+    bubble.className =
+    "rize-ai-v2-bubble";
+
+    bubble.innerHTML =
+    String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/\n/g,"<br>");
+
+    message.appendChild(bubble);
+
+    chat.appendChild(message);
+
+    chat.scrollTop =
+    chat.scrollHeight;
+}
+
+
+/* DÜŞÜNÜYOR */
+
+function rizeAiShowTyping(){
+
+    const chat =
+    document.getElementById("rizeAiV2Chat");
+
+    if(!chat) return;
+
+    const old =
+    document.getElementById("rizeAiV2Typing");
+
+    if(old) return;
+
+    const typing =
+    document.createElement("div");
+
+    typing.id =
+    "rizeAiV2Typing";
+
+    typing.className =
+    "rize-ai-v2-message bot";
+
+    typing.innerHTML = `
+        <div class="rize-ai-v2-bubble">
+            🌿 Rize Asistanı düşünüyor...
+        </div>
+    `;
+
+    chat.appendChild(typing);
+
+    chat.scrollTop =
+    chat.scrollHeight;
+}
+
+
+/* DÜŞÜNÜYORU KALDIR */
+
+function rizeAiHideTyping(){
+
+    const typing =
+    document.getElementById("rizeAiV2Typing");
+
+    if(typing){
+        typing.remove();
+    }
+}
+
+
+/* GERÇEK AI */
+
+async function rizeAiV2Quick(question){
+
+    if(!question) return;
+
+    question =
+    String(question).trim();
+
+    if(!question) return;
+
+
+    /* Kullanıcı mesajı */
+
+    rizeAiV2AddMessage(
+        "user",
+        question
+    );
+
+
+    /* Hafızaya ekle */
+
+    rizeAiHistory.push({
+        role:"user",
+        content:question
+    });
+
+
+    /* Son 20 mesaj */
+
+    if(rizeAiHistory.length > 20){
+
+        rizeAiHistory =
+        rizeAiHistory.slice(-20);
+    }
+
+
+    rizeAiShowTyping();
+
+
+    try{
+
+        const response =
+        await fetch(
+            RIZE_AI_WORKER_URL,
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:JSON.stringify({
+                    messages:
+                    rizeAiHistory
+                })
+            }
+        );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Worker bağlantısı başarısız"
+            );
+        }
+
+
+        const data =
+        await response.json();
+
+
+        rizeAiHideTyping();
+
+
+        if(
+            !data.success ||
+            !data.answer
+        ){
+
+            rizeAiV2AddMessage(
+                "assistant",
+                "Şu anda cevap oluşturamadım. Birkaç saniye sonra tekrar deneyebilir misin? 🌿"
+            );
+
+            return;
+        }
+
+
+        /* AI CEVABI */
+
+        rizeAiV2AddMessage(
+            "assistant",
+            data.answer
+        );
+
+
+        /* AI hafızası */
+
+        rizeAiHistory.push({
+            role:"assistant",
+            content:data.answer
+        });
+
+
+        if(rizeAiHistory.length > 20){
+
+            rizeAiHistory =
+            rizeAiHistory.slice(-20);
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "Rize AI Hatası:",
+            error
+        );
+
+        rizeAiHideTyping();
+
+        rizeAiV2AddMessage(
+            "assistant",
+            "Bağlantıda küçük bir sorun oldu. Birkaç saniye sonra tekrar deneyebilir misin? 🌿"
+        );
+    }
+}
+
+
+/* GÖNDER */
+
+async function rizeAiV2Send(){
+
+    const input =
+    document.getElementById(
+        "rizeAiV2Input"
+    );
+
+    if(!input) return;
+
+    const question =
+    input.value.trim();
+
+    if(!question) return;
+
+    input.value = "";
+
+    await rizeAiV2Quick(
+        question
+    );
+}
+
+
+/* ENTER */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+    const input =
+    document.getElementById(
+        "rizeAiV2Input"
+    );
+
+    if(
+        input &&
+        document.activeElement === input &&
+        event.key === "Enter"
+    ){
+
+        event.preventDefault();
+
+        rizeAiV2Send();
+    }
+});
+
+
+console.log(
+"🌿 Rize Asistanı 3.0 aktif"
+);
+
+</script>
+
+
+</body>
+</html>
 </html>
