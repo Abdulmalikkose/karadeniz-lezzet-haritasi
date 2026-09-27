@@ -5123,85 +5123,366 @@ function renderAddBusinessPanel(){
 
 function bindBusinessForm(){
 
-  const form=document.getElementById("businessForm");
+  const form = document.getElementById("businessForm");
 
   if(!form) return;
 
   form.addEventListener(
     "submit",
-    function(e){
+    async function(e){
 
       e.preventDefault();
 
-      const name=
+
+      /* =========================
+         FORM BİLGİLERİ
+      ========================= */
+
+      const name =
         document.getElementById("bizName")
           .value.trim();
 
-      const category=
+      const category =
         document.getElementById("bizCategory")
           .value;
 
-      const owner=
+      const owner =
         document.getElementById("bizOwner")
           .value.trim();
 
-      const phone=
+      const phone =
         document.getElementById("bizPhone")
           .value.trim();
 
-      const instagram=
+      const instagram =
         document.getElementById("bizInstagram")
           .value.trim();
 
-      const website=
+      const website =
         document.getElementById("bizWebsite")
           .value.trim();
 
-      const packageName=
+      const packageName =
         document.getElementById("bizPackage")
           .value;
 
-      const image=
+      const image =
         document.getElementById("bizImage")
           .value.trim();
 
-      const description=
+      const description =
         document.getElementById("bizDescription")
           .value.trim();
 
 
-      const message=
-`RİZE REHBERİ İŞLETME BAŞVURUSU
+      /* =========================
+         ZORUNLU ALANLAR
+      ========================= */
 
-İşletme: ${name}
-Kategori: ${category}
-Yetkili: ${owner || "-"}
-Telefon: ${phone || "-"}
-Instagram: ${instagram || "-"}
-Web sitesi: ${website || "-"}
-Paket: ${packageName}
-Görsel: ${image || "-"}
-Açıklama:
+      if(!name){
+
+        showToast(
+          "⚠️ Lütfen işletme adını yaz."
+        );
+
+        document.getElementById("bizName").focus();
+
+        return;
+      }
+
+
+      if(!category){
+
+        showToast(
+          "⚠️ Lütfen işletme kategorisini seç."
+        );
+
+        document.getElementById("bizCategory").focus();
+
+        return;
+      }
+
+
+      /* =========================
+         BUTONU GEÇİCİ OLARAK KİLİTLE
+      ========================= */
+
+      const submitButton =
+        form.querySelector(
+          'button[type="submit"]'
+        );
+
+      if(submitButton){
+
+        submitButton.disabled = true;
+
+        submitButton.innerText =
+          "⏳ Başvuru gönderiliyor...";
+
+      }
+
+
+      try{
+
+        /* =========================
+           D1 / WORKER KAYDI
+        ========================= */
+
+        const response =
+          await fetch(
+            "https://rize-asistani.koseailesi5375.workers.dev/",
+            {
+
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body: JSON.stringify({
+
+                action:
+                  "save_business",
+
+                business_name:
+                  name,
+
+                category:
+                  category,
+
+                owner_name:
+                  owner,
+
+                phone:
+                  phone,
+
+                instagram:
+                  instagram,
+
+                website:
+                  website,
+
+                package_name:
+                  packageName,
+
+                image_url:
+                  image,
+
+                description:
+                  description
+
+              })
+
+            }
+          );
+
+
+        /* =========================
+           WORKER CEVABI
+        ========================= */
+
+        const data =
+          await response.json();
+
+
+        if(
+          !response.ok ||
+          !data.success
+        ){
+
+          throw new Error(
+            data.error ||
+            "Başvuru kaydedilemedi."
+          );
+
+        }
+
+
+        /* =========================
+           BAŞVURU NUMARASI
+        ========================= */
+
+        const applicationId =
+          data.application_id ||
+          "-";
+
+
+        /* =========================
+           TARİH / SAAT
+        ========================= */
+
+        const now =
+          new Date();
+
+        const date =
+          now.toLocaleDateString(
+            "tr-TR"
+          );
+
+        const time =
+          now.toLocaleTimeString(
+            "tr-TR",
+            {
+              hour:"2-digit",
+              minute:"2-digit"
+            }
+          );
+
+
+        /* =========================
+           WHATSAPP MESAJI
+        ========================= */
+
+        const message =
+`🌿 RİZE REHBERİ
+İŞLETME BAŞVURUSU
+
+━━━━━━━━━━━━━━━━━━
+
+🆔 Başvuru No:
+${applicationId}
+
+🏪 İŞLETME
+
+İşletme:
+${name}
+
+Kategori:
+${category}
+
+Yetkili:
+${owner || "-"}
+
+Telefon:
+${phone || "-"}
+
+Instagram:
+${instagram || "-"}
+
+Web sitesi:
+${website || "-"}
+
+━━━━━━━━━━━━━━━━━━
+
+💳 PAKET
+
+${packageName}
+
+━━━━━━━━━━━━━━━━━━
+
+🖼️ GÖRSEL
+
+${image || "-"}
+
+━━━━━━━━━━━━━━━━━━
+
+📝 AÇIKLAMA
+
 ${description || "-"}
 
-Başvuru web sitesinden gönderildi.`;
+━━━━━━━━━━━━━━━━━━
+
+📅 Tarih:
+${date}
+
+🕐 Saat:
+${time}
+
+📌 Durum:
+Başvuru alındı — İnceleme bekliyor.
+
+🌐 Rize Rehberi web sitesinden
+gönderilmiştir.`;
 
 
-      const url=
-        "https://wa.me/905349329878?text="+
-        encodeURIComponent(message);
+        /* =========================
+           WHATSAPP
+        ========================= */
+
+        const whatsappNumber =
+          "905349329878";
+
+        const whatsappUrl =
+          "https://wa.me/" +
+          whatsappNumber +
+          "?text=" +
+          encodeURIComponent(
+            message
+          );
 
 
-      window.open(
-        url,
-        "_blank"
-      );
+        /* =========================
+           WHATSAPP'I AÇ
+        ========================= */
 
-      showToast(
-        "WhatsApp başvuru mesajın hazırlandı."
-      );
+        window.open(
+          whatsappUrl,
+          "_blank"
+        );
+
+
+        /* =========================
+           BAŞARILI BİLDİRİM
+        ========================= */
+
+        showToast(
+          "✅ Başvurun kaydedildi. WhatsApp mesajı hazırlandı."
+        );
+
+
+        /* =========================
+           FORMU TEMİZLE
+        ========================= */
+
+        setTimeout(
+          function(){
+
+            form.reset();
+
+          },
+          500
+        );
+
+
+      }
+
+      catch(error){
+
+        console.error(
+          "Business application error:",
+          error
+        );
+
+
+        showToast(
+          "❌ Başvuru kaydedilemedi. Lütfen tekrar dene."
+        );
+
+      }
+
+
+      finally{
+
+        /* =========================
+           BUTONU AKTİFLEŞTİR
+        ========================= */
+
+        if(submitButton){
+
+          submitButton.disabled = false;
+
+          submitButton.innerText =
+            "📲 WhatsApp'tan Başvur";
+
+        }
+
+      }
 
     }
+  );
+
+}
   );
 
 }
